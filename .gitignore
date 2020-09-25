@@ -2,10 +2,17 @@
 node_modules
 /dist
 
+<<<<<<< HEAD
 # local env files
 .env.local
 .env.*.local
 .env
+=======
+
+# local env files
+.env.local
+.env.*.local
+>>>>>>> 468b0f4... init commit
 
 # Log files
 npm-debug.log*

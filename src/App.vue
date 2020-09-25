@@ -1,9 +1,13 @@
 <template>
-  <div id="app" class="min-vh-100 container">
-    <div class="row min-vh-100">
-      <Navbar class="col-12 align-self-start"/>
-      <router-view class="col-12 align-self-start"/>
-      <BottomFooter class="col-12 align-self-end" />
+  <div id="app" class="min-vh-100 d-flex">
+    <div class="container d-flex flex-column align-items-center">
+      <header class="header">
+       <Navbar />
+      </header>
+      <router-view class="flex-grow-1"/>
+      <footer class="footer p-2">
+        <small class="small">copyright <i class="far fa-copyright"></i> typein.ninja</small>
+      </footer>
     </div>
   </div>
 </template>
@@ -16,31 +20,35 @@
 }
 
 html,body {
-  font-family: 'Press Start 2P', cursive;
+font-family: 'Noto Sans JP', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: white !important;
-  background:rgb(55,37,56) !important;
-  font-size:14px;
+  color: #2c3e50;
+  font-size:18px;
 }
-a{
-  text-decoration: none !important;
+
+.header{
+  display:block;
+  width:100%;
+  & nav ul li i{
+    min-width:1.5rem;
+  }
 }
+
 </style>
 
 <script>
 import { 
   firebaseInit,
+  googleSignIn,
+  logout
 } from '@/functions/firebase.js';
-import Navbar from '@/components/Navbar';
-import BottomFooter from '@/components/BottomFooter';
-
+import Navbar from '@/components/Navbar'
 export default {
   name:'App',
   components:{
-    Navbar,
-    BottomFooter
+    Navbar
   },
   data(){
     return {
@@ -48,6 +56,9 @@ export default {
     }
   },
   computed:{
+    isAuth(){
+      return this.$store.getters.isAuth;
+    }
   },
   created(){
     firebaseInit();
@@ -56,3 +67,8 @@ export default {
   }
 }
 </script>
+<style lang="scss" >
+body{
+  background:#f1f1f1;
+}
+</style>
