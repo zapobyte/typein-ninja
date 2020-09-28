@@ -9,6 +9,7 @@ export default new Vuex.Store({
   state: {
     user:{
     },
+    appVersion: process.env.VERSION || '0',
     users:[],
     token:''
   },
@@ -37,6 +38,9 @@ export default new Vuex.Store({
     },
   },
   getters: {
+    getAppVersion(state){
+      return state.appVersion;
+    },
     isAuth(state){
       return state.token.length > 0 ? true : false;
     },

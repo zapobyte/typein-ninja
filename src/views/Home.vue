@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <span>App version {{ appVersion }}</span>
     <GameText />
   </div>
 </template>
@@ -12,6 +13,12 @@ export default {
   name: 'Home',
   components: {
     GameText
+  },
+  computed:{
+    appVersion(){
+      console.log(this.$store)
+      return this.$store.getters.getAppVersion;
+    }
   }
 }
 </script>
