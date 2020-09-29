@@ -1,0 +1,30 @@
+#!/bin/sh
+
+echo "App versioning pre-hook"
+
+# Read user input, assign stdin to keyboard
+exec < /dev/tty
+
+#/bin/sh
+
+while read -p "Please choose one:
+patch[increases version as x.x.1] (0),
+minor[increases version as x.1.x] (1),
+major[increases version as 1.x.x] (2)
+" yn; do
+    case $yn in
+        [0] ) 
+        echo "App version has been updated as patch fixed."
+        npm version patch
+        exit 0;;
+        [1] ) echo "App version has been updated as minor release."
+        npm version minor
+        exit 1;;
+        [2] ) echo "App version has been updated as major release."
+        npm version major
+        exit 1;;
+        * ) echo "Please answer 0, 1, 2" && continue;
+    esac
+done
+
+exec <&-

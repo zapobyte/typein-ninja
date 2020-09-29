@@ -1,22 +1,21 @@
 <template>
   <div class="pixiejs">
-   <img src="@/assets/idle.gif" width="64" height="64" class="m-auto mt-0 mb-0"/>
+      {{ username }}
   </div>
 </template>
 
 <script>
 export default {
-  name: 'PixieAnimation',
-  props: {
-    msg: String
-  }
+    name: 'UserProfile',
+    computed:{
+        username(){
+            return this.$store.getters.getAuthUser.displayName
+        }
+    }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-.pixiejs{
-  min-height:30vh;
-  max-height:40vh;
-}
+
 </style>
