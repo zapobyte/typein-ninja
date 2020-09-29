@@ -1,6 +1,6 @@
 {
   "name": "typein-ninja",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "private": true,
   "scripts": {
     "dev": "npm version minor && npm run serve",
