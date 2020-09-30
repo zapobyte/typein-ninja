@@ -1,6 +1,7 @@
 <template>
-  <div class="pixiejs">
-      {{ username }}
+  <div class="user">
+      <img :src="user.photoURL" class="user-avatar" />
+      {{ user.displayName }} -  LVL {{Math.floor(user.xp / 1000) }} 
   </div>
 </template>
 
@@ -8,8 +9,8 @@
 export default {
     name: 'UserProfile',
     computed:{
-        username(){
-            return this.$store.getters.getAuthUser.displayName
+        user(){
+            return this.$store.getters.getAuthUser
         }
     }
 }
@@ -17,5 +18,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-
+.user{
+    &-avatar{
+        max-width:48px;
+        max-height:48px;
+        border-radius:50%;
+    }
+}
 </style>

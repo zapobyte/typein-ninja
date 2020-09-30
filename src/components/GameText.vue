@@ -1,23 +1,28 @@
 <template>
-  <div class="game p-4 m-auto row align-items-end ">
-    <div class="game--stats text-right p-2">
-        WPM {{wpm}} / ACC {{acc}}
+  <div class="game m-auto row align-items-end ">
+    <div class="game--stats text-right p-2 pr-0">
+        <small>
+          <span  title="word per minute" class="pr-2">
+            <i class="far fa-keyboard text-success"></i>/<i class="far fa-clock text-primary"></i> {{wpm}} 
+          </span>
+          
+          <span  title="accuracy">
+           <i class="fas fa-crosshairs text-danger"></i> {{acc}} 
+          </span>
+        </small>
     </div>
-    <div class="game--container p-4 ">
-      <div class="game--text text-left mb-3">
+    <div class="game--container p-3 ">
+      <div class="game--text text-left pb-3">
         {{ wordList.join(" ") }}
       </div>
 
-      <div class="game--input ">
-        <div class="input-group mb-3">
+      <div class="game--text ">
+        <div class="input-group">
           <input type="text" name="inputField" id="textinput" class="d-inline-flex form-control" @keydown="inputCheck">
           <div class="input-group-append">
             <button class="btn btn-dark ml-4" type="button"  @click="reset">Reset</button>
           </div>
         </div>
-      </div>
-
-      <div class="game-reset">
       </div>
     </div>
   </div>
@@ -100,14 +105,15 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .game{
-  width:70%;
+  width:100%;
   &--text{
     color:white;
-
+    min-width:100%;
   }
   &--container{
     background: rgba(0,0,0,0.3);
-    border-radius:2rem;
+    border-radius:0.5rem;
   }
 }
+
 </style>

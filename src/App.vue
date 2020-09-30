@@ -28,14 +28,15 @@
                 </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                    <i class="fas fa-user"></i> 
+                    <i class="fas fa-user-circle"></i>
                     <span class="">User</span>
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li class="dropdown-item" v-if="isAuth" @click="deleteAcc">
-                      <i class="fas fa-user-times"></i>
-                      <span class=""> Delete typein.ninja account</span> 
+                    <li class="dropdown-item" v-if="isAuth" @click="goToProfile">
+                      <i class="fas fa-user"></i> 
+                      <span class="">Profile</span> 
                     </li>
+                    <div class="dropdown-divider"  v-if="isAuth"></div>
                     <li class="dropdown-item" v-if="isAuth" @click="logout">
                       <i class="fas fa-sign-out-alt"></i>
                       <span class=""> Logout</span>
@@ -55,7 +56,7 @@
       </header>
       <router-view class="flex-grow-1"/>
       <footer class="footer p-2">
-        <small>copyright <i class="far fa-copyright"></i> typein.ninja</small>
+        <small class="small">copyright <i class="far fa-copyright"></i> typein.ninja</small>
       </footer>
     </div>
   </div>
@@ -69,7 +70,7 @@
 }
 
 html,body {
-  font-family: 'NotoSans', sans-serif;
+font-family: 'Noto Sans JP', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -116,7 +117,7 @@ export default {
     login(){
       googleSignIn();
     },
-    deleteAcc(){
+    goToProfile(){
       
     }
   }

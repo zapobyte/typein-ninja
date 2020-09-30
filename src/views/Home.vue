@@ -29,3 +29,14 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.home{
+  margin:auto;
+  @media screen and (min-width:970px) {
+      width:60%;
+
+  }
+  width:100%;
+}
+</style>
