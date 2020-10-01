@@ -1,5 +1,5 @@
 <template>
-  <div class="game m-auto row align-items-end ">
+  <div class="game m-auto row align-items-end" id="gametext">
     <div class="game--stats text-right p-2 pr-0">
         <small>
           <span  title="word per minute" class="pr-2">
@@ -11,16 +11,15 @@
           </span>
         </small>
     </div>
-    <div class="game--container p-3 ">
-      <div class="game--text text-left pb-3">
-        {{ wordList.join(" ") }}
+    <div class="game--container p-3">
+      <div class="game--text text-left pb-3" id="game--text" v-html='getText'>
       </div>
 
       <div class="game--text ">
         <div class="input-group">
           <input type="text" name="inputField" id="textinput" class="d-inline-flex form-control" @keydown="inputCheck">
           <div class="input-group-append">
-            <button class="btn btn-dark ml-4" type="button"  @click="reset">Reset</button>
+            <button class="btn btn-dark ml-4" type="button"  @click="reset($event)">Reset</button>
           </div>
         </div>
       </div>
@@ -29,14 +28,17 @@
 </template>
 
 <script>
-import { calculateResult,generateText } from '@/functions/type';
+import { 
+  calculateResult,
+  generateText,
+  classAdding
+} from '@/functions/type';
 export default {
   name: 'GameText',
   components:{
   },
   data(){
     return {
-      wordCount:0,
       correctKeys:0,
       wordList:[],
       currentWord:0,
@@ -44,59 +46,86 @@ export default {
       acc:0,
       wpm:0
     }
-  },
+  }, 
   mounted(){
     const inputField = document.querySelector('#textinput');
-    this.wordCount = this.wordList.length;
-    this.wordList = generateText();
+    const newWords = generateText();
+    newWords.forEach(word=> this.wordList.push(word))
     inputField.focus();
+  },
+  computed:{
+    getText(){
+      return this.wordList.join(" ")
+    }
   },
   methods:{
     inputCheck(e){
+      const inputField = document.getElementById('textinput');
+      const textField = document.getElementById('game--text');
       if(this.currentWord < this.wordList.length){
-        const inputField = document.getElementById('textinput');
         if(this.currentWord === 0){
             this.startDate = Date.now();
         }
         if(e.key === ' '){
           e.preventDefault()
           if(inputField.value !=='') {
-            console.log(inputField.value)
               if(this.currentWord< this.wordList.length -1){
                   const correct = inputField.value == this.wordList[this.currentWord];
                   if(correct){
                     this.correctKeys += this.wordList[this.currentWord].length + 1; 
+                    classAdding(textField,this.wordList,this.currentWord,true);
+                  } else {
+                    classAdding(textField,this.wordList,this.currentWord,false);
                   }
               }
+              if(this.currentWord === this.wordList.length -1){
+                const result = calculateResult(this.wordList,this.correctKeys,this.startDate);
+                 const correct = inputField.value == this.wordList[this.currentWord];
+                if(correct){
+                  classAdding(textField,this.wordList,this.currentWord,true);
+                } else {
+                  classAdding(textField,this.wordList,this.currentWord,false);
+                }
+                this.acc = result.acc;
+                this.wpm = result.wpm;
+              }  
+              inputField.value = '';
+              this.currentWord++;
           }
-          if(this.currentWord === this.wordList.length -1){
-              const result = calculateResult(this.wordList,this.correctKeys,this.startDate);
-              this.acc = result.acc;
-              this.wpm = result.wpm;
-          }  
-          inputField.value = '';
-          this.currentWord++;
+          
         } else if (this.currentWord === this.wordList.length - 1) {
           if (inputField.value + e.key === this.wordList[this.currentWord]) {
+            const correct = inputField.value + e.key == this.wordList[this.currentWord];
+            if(correct){
+              classAdding(textField,this.wordList,this.currentWord,true);
+            } else {
+              classAdding(textField,this.wordList,this.currentWord,false);
+            }
             this.correctKeys += this.wordList[this.currentWord].length;
             this.currentWord++;
             const result = calculateResult(this.wordList,this.correctKeys,this.startDate);
             this.acc = result.acc;
             this.wpm = result.wpm;
-            inputField.value='';
           }
+        }
+      } else {
+          if(e.key === ' '){
+          inputField.value='';
         }
       }
     },
-    reset(){
-      this.wordCount=0;
+    reset(e){
+      const textField = document.getElementById('game--text');
+      textField.innerHTML = '';
+      this.wordList = [];
       this.correctKeys=0;
-      this.wordList=[];
       this.currentWord=0;
       this.startDate=0;
       this.acc=0;
       this.wpm=0;
-      this.wordList = generateText();
+      const newWords = generateText();
+      newWords.forEach(word=> this.wordList.push(word));
+      textField.innerHTML  = this.wordList.join(' ')
     }
   }
 }

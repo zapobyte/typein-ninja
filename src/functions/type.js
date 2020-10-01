@@ -16,3 +16,7 @@ export const generateText = () =>{
     const bookOfKnowledge = "late develop must but plan person each".split(" ");
     return bookOfKnowledge;
 }
+
+export const classAdding = (textField,wordList,currentWord,correct) => {
+    return  textField.innerHTML = correct ? textField.innerHTML.replace(wordList[currentWord],'<span class="text-success">'+wordList[currentWord]+'</span>') : textField.innerHTML.replace(wordList[currentWord],'<span class="text-danger">'+wordList[currentWord]+'</span>')
+}
