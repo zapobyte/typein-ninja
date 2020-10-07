@@ -33,6 +33,7 @@ import {
   generateText,
   classAdding
 } from '@/functions/type';
+
 export default {
   name: 'GameText',
   components:{
@@ -62,57 +63,42 @@ export default {
     inputCheck(e){
       const inputField = document.getElementById('textinput');
       const textField = document.getElementById('game--text');
-      if(this.currentWord < this.wordList.length){
-        if(this.currentWord === 0){
+        if(this.currentWord === 0 && inputField.value === ''){
             this.startDate = Date.now();
         }
         if(e.key === ' '){
-          e.preventDefault()
+          e.preventDefault();
           if(inputField.value !=='') {
-              if(this.currentWord< this.wordList.length -1){
+
+              if(this.currentWord < this.wordList.length -1){
                   const correct = inputField.value == this.wordList[this.currentWord];
                   if(correct){
                     this.correctKeys += this.wordList[this.currentWord].length + 1; 
-                    classAdding(textField,this.wordList,this.currentWord,true);
                   } else {
-                    classAdding(textField,this.wordList,this.currentWord,false);
                   }
               }
-              if(this.currentWord === this.wordList.length -1){
+
+              if(this.currentWord  === this.wordList.length -1 ){
                 const result = calculateResult(this.wordList,this.correctKeys,this.startDate);
-                 const correct = inputField.value == this.wordList[this.currentWord];
-                if(correct){
-                  classAdding(textField,this.wordList,this.currentWord,true);
-                } else {
-                  classAdding(textField,this.wordList,this.currentWord,false);
-                }
                 this.acc = result.acc;
                 this.wpm = result.wpm;
+                this.wordList = [];
               }  
               inputField.value = '';
               this.currentWord++;
           }
           
-        } else if (this.currentWord === this.wordList.length - 1) {
-          if (inputField.value + e.key === this.wordList[this.currentWord]) {
-            const correct = inputField.value + e.key == this.wordList[this.currentWord];
-            if(correct){
-              classAdding(textField,this.wordList,this.currentWord,true);
-            } else {
-              classAdding(textField,this.wordList,this.currentWord,false);
-            }
+        } else if (this.currentWord === this.wordList.length -1) {
+          if (inputField.value + e.key === this.wordList[this.currentWord] ) {
             this.correctKeys += this.wordList[this.currentWord].length;
             this.currentWord++;
             const result = calculateResult(this.wordList,this.correctKeys,this.startDate);
             this.acc = result.acc;
             this.wpm = result.wpm;
+            inputField.value = '';
+            this.wordList = []
           }
         }
-      } else {
-          if(e.key === ' '){
-          inputField.value='';
-        }
-      }
     },
     reset(e){
       const textField = document.getElementById('game--text');
