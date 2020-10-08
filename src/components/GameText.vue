@@ -11,10 +11,11 @@
           </span>
         </small>
     </div>
+    
     <div class="game--container p-3">
-      <div class="game--text text-left pb-3" id="game--text" v-html='getText'>
-      </div>
+      <div class="game--text text-left pb-3" id="game--text" v-html="wordList.join(' ')">
 
+      </div>
       <div class="game--text ">
         <div class="input-group">
           <input type="text" name="inputField" id="textinput" class="d-inline-flex form-control" @keydown="inputCheck">
@@ -45,20 +46,18 @@ export default {
       currentWord:0,
       startDate:0,
       acc:0,
-      wpm:0
+      wpm:0,
+      correct:0,
     }
   }, 
   mounted(){
     const inputField = document.querySelector('#textinput');
-    const newWords = generateText();
-    newWords.forEach(word=> this.wordList.push(word))
+    this.wordList = generateText();
     inputField.focus();
   },
   computed:{
-    getText(){
-      return this.wordList.join(" ")
-    }
   },
+
   methods:{
     inputCheck(e){
       const inputField = document.getElementById('textinput');
@@ -68,14 +67,15 @@ export default {
         }
         if(e.key === ' '){
           e.preventDefault();
+          console.log(inputField.value,this.wordList[this.currentWord])
           if(inputField.value !=='') {
 
               if(this.currentWord < this.wordList.length -1){
                   const correct = inputField.value == this.wordList[this.currentWord];
                   if(correct){
                     this.correctKeys += this.wordList[this.currentWord].length + 1; 
-                  } else {
-                  }
+                 }
+                textField.innerHTML = textField.innerHTML.substr(this.wordList[this.currentWord].length + 1);
               }
 
               if(this.currentWord  === this.wordList.length -1 ){
@@ -96,7 +96,7 @@ export default {
             this.acc = result.acc;
             this.wpm = result.wpm;
             inputField.value = '';
-            this.wordList = []
+            this.wordList = [];
           }
         }
     },
@@ -109,9 +109,9 @@ export default {
       this.startDate=0;
       this.acc=0;
       this.wpm=0;
-      const newWords = generateText();
-      newWords.forEach(word=> this.wordList.push(word));
-      textField.innerHTML  = this.wordList.join(' ')
+      this.correct = null;
+      this.wordList = generateText();
+      textField.innerHTML  = this.wordList.join(' ');
     }
   }
 }
