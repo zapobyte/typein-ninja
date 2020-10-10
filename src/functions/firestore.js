@@ -35,7 +35,6 @@ export const updateUser = async (data) =>{
 }
 export const getFsUser = async (user) => {
     db = firebase.firestore();
-    console.log(user.uid)
     return new Promise((resolve,reject)=>{
    return  db.collection("users").doc(user.uid)
         .onSnapshot((function(doc){

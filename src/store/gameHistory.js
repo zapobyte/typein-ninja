@@ -70,7 +70,7 @@ const state = {
         let newLvl = Math.floor(newXp / 1000);
         const data = {
             xp: newXp,
-            lvl:newLvl
+            lvl:newLvl > 1 ? newLvl:1
         }
         store.dispatch('updateUser',data);
         context.commit('setScore',value);

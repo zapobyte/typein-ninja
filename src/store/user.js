@@ -49,7 +49,7 @@ const mutations = {
         state.users= value;
     },
     setDifficulty(state,value){
-        state.users= value;
+        state.gameDifficulty= value;
     },
 };
   
@@ -63,8 +63,6 @@ const actions = {
       },
       async updateUser({commit},data){
             await updateUserFs(data);
-            commit('setUserXp',data.xp);
-            commit('setUserLvl',data.lvl);
       },
       async checkFsUser({
         commit
