@@ -16,7 +16,7 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
                 <i class="fas fa-trophy"></i> 
-                <span class="">Leaderboard</span>
+                <span class="">Scoreboard</span>
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="#">Top 100</a></li>

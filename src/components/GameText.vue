@@ -1,15 +1,24 @@
 <template>
   <div class="game m-auto row align-items-end" id="gametext">
-    <div class="game--stats text-right p-2 pr-0">
-        <small>
-          <span  title="word per minute" class="pr-2">
-            <i class="far fa-keyboard text-success"></i>/<i class="far fa-clock text-primary"></i> {{wpm}} 
-          </span>
-          
-          <span  title="accuracy">
-           <i class="fas fa-crosshairs text-danger"></i> {{acc}} 
-          </span>
-        </small>
+    <div class="col-12">
+    <div class="game--content row pb-2 ">
+        <div class="game--difficulty col-lg-6 col-md-6 col-xs-12 text-left">
+          <span @click="setGameDifficulty('easy')">easy </span>
+          <span @click="setGameDifficulty('normal')">normal </span>
+          <span @click="setGameDifficulty('hard')">hard</span>
+        </div>
+        <div class="game--stats col-lg-6 col-md-6 col-xs-12 text-right">
+          <small>
+            <span  title="word per minute" class="pr-2">
+              WPM {{wpm}} 
+            </span>
+            
+            <span  title="accuracy">
+            ACC {{acc}} 
+            </span>
+          </small>
+        </div>
+      </div>
     </div>
     
     <div class="game--container p-3">
@@ -20,7 +29,7 @@
         <div class="input-group">
           <input type="text" name="inputField" id="textinput" class="d-inline-flex form-control" @keydown="inputCheck">
           <div class="input-group-append">
-            <button class="btn btn-dark ml-4" type="button"  @click="reset($event)">Reset</button>
+            <button class="btn btn-dark ml-4" type="button"  @click="reset()">Reset</button>
           </div>
         </div>
       </div>
@@ -47,13 +56,11 @@ export default {
       startDate:0,
       acc:0,
       wpm:0,
-      correct:0,
+      correct:false,
     }
   }, 
   mounted(){
-    const inputField = document.querySelector('#textinput');
-    this.wordList = generateText();
-    inputField.focus();
+    this.reset();
   },
   computed:{
   },
@@ -67,40 +74,40 @@ export default {
         }
         if(e.key === ' '){
           e.preventDefault();
-          console.log(inputField.value,this.wordList[this.currentWord])
           if(inputField.value !=='') {
-
+              inputField.value.trim();
               if(this.currentWord < this.wordList.length -1){
-                  const correct = inputField.value == this.wordList[this.currentWord];
-                  if(correct){
-                    this.correctKeys += this.wordList[this.currentWord].length + 1; 
-                 }
-                textField.innerHTML = textField.innerHTML.substr(this.wordList[this.currentWord].length + 1);
+                const correct = inputField.value == this.wordList[this.currentWord];
+                if(correct){
+                    this.correctKeys += this.wordList[this.currentWord].length; 
+                }
+                this.currentWord++;
+              } else if(this.currentWord === this.wordList.length -1){
+                    const correct = inputField.value == this.wordList[this.currentWord];
+                    if(correct){
+                        this.correctKeys += this.wordList[this.currentWord].length ; 
+                    }
+                    const result = calculateResult(this.wordList,this.correctKeys,this.startDate);
+                    this.acc = result.acc;
+                    this.wpm = result.wpm;
+                    const gameOk = this.acc > 0 && this.wpm > 0;
+                    if(gameOk){
+                      this.$store.dispatch('addGameHistory',{
+                      acc:this.acc,
+                      wpm:this.wpm,
+                      difficulty:this.$store.getters.getGameDifficulity,
+                      date:new Date(this.startDate)
+                    });
+                    }
+                    this.wordList = [];
               }
-
-              if(this.currentWord  === this.wordList.length -1 ){
-                const result = calculateResult(this.wordList,this.correctKeys,this.startDate);
-                this.acc = result.acc;
-                this.wpm = result.wpm;
-                this.wordList = [];
-              }  
+              //console.log('value> ',this.correctKeys)
               inputField.value = '';
-              this.currentWord++;
-          }
-          
-        } else if (this.currentWord === this.wordList.length -1) {
-          if (inputField.value + e.key === this.wordList[this.currentWord] ) {
-            this.correctKeys += this.wordList[this.currentWord].length;
-            this.currentWord++;
-            const result = calculateResult(this.wordList,this.correctKeys,this.startDate);
-            this.acc = result.acc;
-            this.wpm = result.wpm;
-            inputField.value = '';
-            this.wordList = [];
-          }
-        }
+          } 
+        } 
     },
-    reset(e){
+    reset(gameDifficult){
+      const difficulty = gameDifficult ? gameDifficult : this.$store.getters.getGameDifficulity;
       const textField = document.getElementById('game--text');
       textField.innerHTML = '';
       this.wordList = [];
@@ -110,8 +117,14 @@ export default {
       this.acc=0;
       this.wpm=0;
       this.correct = null;
-      this.wordList = generateText();
+      this.wordList = generateText(difficulty);
       textField.innerHTML  = this.wordList.join(' ');
+      const inputField = document.querySelector('#textinput');
+      inputField.focus();
+    },
+    setGameDifficulty(difficulty){
+      this.$store.dispatch('setGameDifficulty',difficulty);
+      this.reset(difficulty);
     }
   }
 }

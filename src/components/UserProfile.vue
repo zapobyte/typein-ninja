@@ -1,7 +1,7 @@
 <template>
   <div class="user">
       <img :src="user.photoURL" class="user-avatar" />
-      {{ user.displayName }} -  LVL {{Math.floor(user.xp / 1000) }} 
+      {{ user.displayName }} -  LVL {{ user.lvl }} 
   </div>
 </template>
 

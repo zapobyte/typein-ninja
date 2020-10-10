@@ -32,7 +32,7 @@ export class GameAnimation{
                 this.animIdleCurr = 0;
               }
             if(this.animIdleCurr < (Object.keys(this.playerSheet).length)){
-              this.player.animationSpeed = 0.167;
+              this.player.animationSpeed = 1;
               this.player.textures = this.playerSheet[`idle${this.animIdleCurr + 1}`];
               this.player.play();
               this.animIdleCurr++;
@@ -43,13 +43,13 @@ export class GameAnimation{
     createPlayerChar(){
         this.player = new PIXI.AnimatedSprite(this.playerSheet.idle1);
      
-        this.player.animationSpeed = 0.167;
+        this.player.animationSpeed = 2;
         this.player.loop = false;
         this.player.x = this.app.view.width / 2;
         this.player.y = this.app.view.height / 2;
         
         this.app.stage.addChild(this.player);
-        this.player.scale.set(1.5);
+        this.player.scale.set(1.1);
         this.player.play();
         
     }
@@ -60,16 +60,16 @@ export class GameAnimation{
       let h = 25;
 
       this.playerSheet["idle1"] = [
-        new PIXI.Texture(ssheet, new PIXI.Rectangle(0 * w + 0 , 0, w, h))
+        new PIXI.Texture(ssheet, new PIXI.Rectangle(0 * w + 2 , 0, w, h))
       ];
 
       this.playerSheet["idle2"] = [
-        new PIXI.Texture(ssheet, new PIXI.Rectangle(1 * w + 7, 0,w,h))
+        new PIXI.Texture(ssheet, new PIXI.Rectangle(1 * w + 9, 0,w,h))
       ];
-      this.playerSheet["idle3"] = [
+     this.playerSheet["idle3"] = [
         new PIXI.Texture(ssheet, new PIXI.Rectangle(2 * w +15, 0,w,h))
       ];
-      this.playerSheet["idle4"] = [
+        this.playerSheet["idle4"] = [
         new PIXI.Texture(ssheet, new PIXI.Rectangle(3 * w +23, 0,w,h))
       ];
 
