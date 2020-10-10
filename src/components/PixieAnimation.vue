@@ -40,8 +40,13 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-.pixiejs{
+.pixijs{
   min-height:30vh;
   max-height:40vh;
+  width: 100%;
+  background:url('~@/assets/bg.png');
+  background-size:contain;  
+  background-repeat: no-repeat;
+  background-position: center;
 }
 </style>

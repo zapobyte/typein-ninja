@@ -7,7 +7,6 @@ export const calculateResult = (wordList,correctKeys,startDate) => {
     wordList.forEach(word => {
         totalKeys += word.length;
     });
-    //console.log('final',wordList,correctKeys,totalKeys)
     acc = Math.floor((correctKeys / totalKeys) * 100);
     let wpm = Math.floor(words / minute);
     return {acc:acc,wpm:wpm};
