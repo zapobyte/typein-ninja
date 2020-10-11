@@ -12,9 +12,11 @@ export class GameAnimation{
         this.app;
     }
     init(){
+        const textField = document.getElementById('gametext');
+
         this.app = new PIXI.Application({
-            width:200,
-            height:40,
+            width:860,
+            height:140,
             transparent:true
         });
         this.app.loader.add("ninja",spriteImgIdle);

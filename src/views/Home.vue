@@ -14,21 +14,10 @@ export default {
     GameText,
   },
   computed:{
-    appVersion(){
-      return this.$store.getters.getAppVersion;
-    },
-    isAuth(){
-      return this.$store.getters.isAuth;
-    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-/* .home{
-  @media screen and (min-width:980px) {
-      width:55%;
-  }
-  width:100%;
-} */
+
 </style>

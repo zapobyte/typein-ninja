@@ -4,8 +4,11 @@ import router from './router'
 import store from './store'
 import "nes.css/css/nes.min.css";
 import VueAnalytics from 'vue-analytics';
-require('dotenv').config();
-
+const result = require('dotenv').config();
+if (result.error) {
+  console.log(result.error)
+}
+ 
 Vue.config.productionTip = false
 //and then use it in main.js
 Vue.use(VueAnalytics, {

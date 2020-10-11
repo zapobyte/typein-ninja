@@ -1,9 +1,9 @@
 <template>
-  <div class="game ml-auto mr-auto row align-items-end" id="gametext">
+  <div class="game ml-auto mr-auto row align-items-end">
   
     <div class="game--container p-3">
-      <div class="game--text   text-left pb-3" >
-        <div id="game--text" class="small nes-balloon from-left nes-pointer">
+      <div class="game--text  text-left pb-3" >
+        <div id="gametext" class="small nes-balloon from-left nes-pointer">
         </div>
         <PixieAnimation />
       </div>
@@ -96,7 +96,7 @@ export default {
   methods:{
     inputCheck(e){
       let inputField = document.getElementById('textinput');
-      let textField = document.getElementById('game--text');
+      let textField = document.getElementById('gametext');
       let children = textField.childNodes;
       if(this.currentWord === 0 && inputField.value === ''){
           this.startDate = Date.now();
@@ -143,7 +143,7 @@ export default {
     },
     reset(gameDifficult){
       const difficulty = gameDifficult ? gameDifficult : this.$store.getters.getGameDifficulity;
-      const textField = document.getElementById('game--text');
+      const textField = document.getElementById('gametext');
       textField.innerHTML = '';
       this.wordList = [];
       this.correctKeys=0;
