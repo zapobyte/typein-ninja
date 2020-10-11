@@ -3,14 +3,14 @@ import store from '../store';
 
 export const firebaseInit = () => {
     firebase.initializeApp({
-        apiKey: "AIzaSyAJ2xVBp-w5XJJro0DdhGG0MCpOoDIXXPo",
-        authDomain: "typein-ninja.firebaseapp.com",
-        databaseURL: "https://typein-ninja.firebaseio.com",
-        projectId: "typein-ninja",
-        storageBucket: "typein-ninja.appspot.com",
-        messagingSenderId: "629164543246",
-        appId: "1:629164543246:web:4a5b9693072b1804abdb5f",
-        measurementId: "G-7P68PCN9RT"
+        apiKey: process.env.API_KEY,
+        authDomain: process.env.AUTH_DOMAIN,
+        databaseURL: process.env.DB_URL,
+        projectId: process.env.PROJECT_ID,
+        storageBucket: process.env.STORAGE_BUCKET,
+        messagingSenderId: process.env.MSG_ID,
+        appId: process.env.APP_ID,
+        measurementId: process.env.M_ID
     });
 
     firebase.auth().onAuthStateChanged(async user => {    
