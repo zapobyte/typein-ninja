@@ -1,8 +1,7 @@
 <template>
-  <div class="home">
+  <div class="home ml-auto mr-auto mt-0 align-self-start">
     <PixieAnimation />
     <GameText />
-    <UserProfile  v-if="isAuth"/>
   </div>
 </template>
 
@@ -10,14 +9,12 @@
 // @ is an alias to /src
 import GameText from '@/components/GameText.vue'
 import PixieAnimation from '@/components/PixieAnimation.vue';
-import UserProfile from '@/components/UserProfile.vue';
 
 export default {
   name: 'Home',
   components: {
     GameText,
-    PixieAnimation,
-    UserProfile
+    PixieAnimation
   },
   computed:{
     appVersion(){
@@ -32,10 +29,8 @@ export default {
 
 <style lang="scss" scoped>
 .home{
-  margin:auto;
-  @media screen and (min-width:970px) {
-      width:60%;
-
+  @media screen and (min-width:980px) {
+      width:70%;
   }
   width:100%;
 }

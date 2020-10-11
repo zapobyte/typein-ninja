@@ -1,38 +1,49 @@
 <template>
-  <div class="game m-auto row align-items-end" id="gametext">
+  <div class="game ml-auto mr-auto row align-items-end" id="gametext">
     <div class="col-12">
-    <div class="game--content row pb-3 ">
-        <div class="game--difficulty col-lg-6 col-md-6 col-xs-12 text-left">
-          <span @click="setGameDifficulty('easy')" :class="$store.getters.getGameDifficulity =='easy' ? 'game--difficulty--active' : '' "><small>easy </small></span>
-          <span @click="setGameDifficulty('normal')" :class="$store.getters.getGameDifficulity =='normal' ? 'game--difficulty--active' : '' "><small>normal </small></span>
-          <span @click="setGameDifficulty('hard')" :class="$store.getters.getGameDifficulity =='hard' ? 'game--difficulty--active' : '' "><small>hard </small></span>
+    <div class="game--content row align-items-center">
+        <div class="game--difficulty col-7 col-xs-12text-left">
+          <a href="#" class="nes-badge" @click="setGameDifficulty('easy')">
+            <span :class="$store.getters.getGameDifficulity =='easy' ? 'is-success' : 'is-error' ">easy</span>
+          </a> 
+          <a href="#" class="nes-badge " @click="setGameDifficulty('normal')">
+            <span :class="$store.getters.getGameDifficulity =='normal' ? 'is-success' : 'is-error' ">normal</span>
+          </a> 
+          <a href="#" class="nes-badge " @click="setGameDifficulty('hard')">
+            <span :class="$store.getters.getGameDifficulity =='hard' ? 'is-success' : 'is-error' ">hard</span>
+          </a> 
+         
         </div>
-        <div class="game--stats col-lg-6 col-md-6 col-xs-12 text-right">
-            <span  title="word per minute" class="pr-2">
-              <small>
-                WPM {{wpm}} 
-              </small>
-
+        <div class="game--stats col-5 col-xs-12 text-right">
+            <span  title="word per minute">
+             <a href="#" class="nes-badge is-splited">
+                <span class="is-dark"> WPM</span>
+                <span class="is-error"> {{wpm}}</span>
+              </a>
             </span>
             
             <span  title="accuracy">
-              <small>
-                ACC {{acc}}          
-              </small>
+              <a href="#" class="nes-badge is-splited">
+                <span class="is-dark"> ACC</span>
+                <span class="is-error"> {{acc}}</span>
+              </a>
             </span>
         </div>
       </div>
     </div>
     
     <div class="game--container p-3">
-      <div class="game--text text-left pb-3" id="game--text"></div>
-      <div class="game--body ">
-        <div class="input-group">
-          <input type="text" name="inputField" id="textinput" class="d-inline-flex form-control" @keydown="inputCheck">
-          <div class="input-group-append">
-            <button class="btn btn-dark ml-3" type="button"  @click="reset()">Reset</button>
+      <div class="game--text nes-balloon from-left nes-pointer text-left pb-3" id="game--text"></div>
+      <div class="game--body mt-2">
+        <div class="row">
+          <div class="col-xs-12 col-md-10">
+            <input type="text" name="inputField" id="textinput" class="nes-input d-inline-flex " @keydown="inputCheck">
           </div>
-        </div>
+          <div class="col-xs-12 col-md-2 m-auto">
+            <button class="nes-btn m-auto " type="button"  @click="reset()">Reset</button>
+          </div>
+          
+          </div>
       </div>
     </div>
   </div>
@@ -84,14 +95,14 @@ export default {
               const correct = inputField.value == this.wordList[this.currentWord];
               if(correct){
                   this.correctKeys += this.wordList[this.currentWord].length; 
-                  children[this.currentWord].classList.add('text-warning');
+                  children[this.currentWord].classList.add('text-success');
               }
               this.currentWord++;
             } else if(this.currentWord === this.wordList.length -1){
                   const correct = inputField.value == this.wordList[this.currentWord];
                   if(correct){
                     this.correctKeys += this.wordList[this.currentWord].length;
-                    children[this.currentWord].classList.add('text-warning'); 
+                    children[this.currentWord].classList.add('text-success'); 
                   }
                   const result = calculateResult(this.wordList,this.correctKeys,this.startDate);
                   this.acc = result.acc;
@@ -143,27 +154,30 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+.nes-badge{
+  font-size:0.7rem;
+  padding:0;
+  margin:0.5rem;
+
+}
+ .nes-badge.is-splited{
+    padding:0;
+  margin:0.5rem;
+     font-size:0.7rem !important;
+
+ }
 .game{
   width:100%;
   &--text{
-    color:white;
+    color:#222;
     min-width:100%;
   }
-  &--container{
-    background: rgba(0,0,0,0.4);
-    border-radius:0.5rem;
-  }
+
   &--difficulty{
-    &--active{
-      content:"";
-      height:1px;
-      width:100%;
-      border-bottom:1px solid #222;
-    }
+
   }
 }
 #textinput:focus{
-  border-color:#222;
-  box-shadow: 0 0 0 0.2rem rgba(0,0,0,.25);
+  border-color:#f2f2f2;
 }
 </style>

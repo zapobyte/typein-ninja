@@ -4,7 +4,7 @@
             <div class="footer col-12"></div>
            <div class="col-12 text-right">
             <a href="https://www.buymeacoffee.com/zapobyte" target="_blank">
-            buy me a coffee</a>  <p class="copywrite m-0 d-inline-block"> <i class="far fa-copyright"></i> typein.ninja</p>
+             <i class="nes-icon coin is-small mr-1"></i>buy me a coffee</a>  <p class="copywrite m-0 d-inline-block"> <i class="far fa-copyright"></i> typein.ninja</p>
            </div>
        </div>
  
@@ -21,6 +21,7 @@ export default {
     font-size:0.8rem !important;
 }
 .footer{
+
     height:32px;
     background-image:url('~@/assets/tileborder.png');
     background-position: top;

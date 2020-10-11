@@ -1,12 +1,12 @@
 <template>
-  <div id="app" class="min-vh-100 d-flex">
-    <div class="container d-flex flex-column align-items-center">
-      <header class="header">
+  <div id="app" class="min-vh-100 container-fluid">
+    <section class="no-gutters vh-100 row m-auto align-items-start">
+      <header class="header align-self-start container" >
        <Navbar />
       </header>
-      <router-view class="flex-grow-1"/>
-      <BottomFooter />
-    </div>
+      <router-view class="align-self-start container"/>
+      <BottomFooter class="align-self-end" />
+    </section>
   </div>
 </template>
 
@@ -18,18 +18,16 @@
 }
 
 html,body {
-font-family: 'Noto Sans JP', sans-serif;
+  font-family: 'Press Start 2P', cursive;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: white;
-  background:rgb(55,37,56);
+  color: white !important;
+  background:rgb(55,37,56) !important;
   font-size:18px;
 }
 
 .header{
-  display:block;
-  width:100%;
   & nav ul li i{
     min-width:1.5rem;
   }

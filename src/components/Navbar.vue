@@ -1,6 +1,6 @@
 <template>
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container-fluid">
+    <nav class="navbar  navbar-dark">
+        <div class="container">
         <a class="navbar-brand" href="#">typein.ninja</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -9,7 +9,7 @@
             <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                <i class="fas fa-trophy"></i> 
+                <i class="nes-icon trophy is-small"></i>
                 <span class="">Scoreboard</span>
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -17,25 +17,25 @@
                 <li><a class="dropdown-item" href="#">All users</a></li>
                 </ul>
             </li>
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown ">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                <i class="fas fa-user-circle"></i>
-                <span class="">User</span>
+                <i class="nes-icon is-small heart"></i>
+                <small class="small">User</small>
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li class="dropdown-item" v-if="isAuth" @click="goToProfile">
+                <li class="dropdown-item small" v-if="isAuth" @click="goToProfile">
                     <i class="fas fa-user"></i> 
-                    <span class="">Profile</span> 
+                    <small class="small">Profile</small> 
                 </li>
                 <div class="dropdown-divider"  v-if="isAuth"></div>
-                <li class="dropdown-item" v-if="isAuth" @click="logout">
+                <li class="dropdown-item small" v-if="isAuth" @click="logout">
                     <i class="fas fa-sign-out-alt"></i>
                     <span class=""> Logout</span>
                 </li>
                 <li class="dropdown-item" v-if="!isAuth">
-                    <button type="button" class="btn" @click="login">
-                    <i class="fab fa-google"></i> 
-                    <span>Signin with Google</span>
+                    <button type="button" class="btn btn-sm" @click="login">
+                    <i class="nes-icon google is-small"></i>
+                    <small>Signin with Google</small>
                     </button>
                 </li>
                 </ul>
