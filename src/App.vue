@@ -5,9 +5,7 @@
        <Navbar />
       </header>
       <router-view class="flex-grow-1"/>
-      <footer class="footer p-2">
-        <small class="small">copyright <i class="far fa-copyright"></i> typein.ninja</small>
-      </footer>
+      <BottomFooter />
     </div>
   </div>
 </template>
@@ -35,7 +33,9 @@ font-family: 'Noto Sans JP', sans-serif;
     min-width:1.5rem;
   }
 }
-
+.small{
+  font-size:85%;
+}
 </style>
 
 <script>
@@ -44,11 +44,14 @@ import {
   googleSignIn,
   logout
 } from '@/functions/firebase.js';
-import Navbar from '@/components/Navbar'
+import Navbar from '@/components/Navbar';
+import BottomFooter from '@/components/BottomFooter';
+
 export default {
   name:'App',
   components:{
-    Navbar
+    Navbar,
+    BottomFooter
   },
   data(){
     return {
@@ -69,6 +72,8 @@ export default {
 </script>
 <style lang="scss" >
 body{
-  background:#f1f1f1;
+  background:url('~@/assets/c.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 </style>

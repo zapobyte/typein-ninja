@@ -84,14 +84,14 @@ export default {
               const correct = inputField.value == this.wordList[this.currentWord];
               if(correct){
                   this.correctKeys += this.wordList[this.currentWord].length; 
-                  children[this.currentWord].classList.add('text-success');
+                  children[this.currentWord].classList.add('text-warning');
               }
               this.currentWord++;
             } else if(this.currentWord === this.wordList.length -1){
                   const correct = inputField.value == this.wordList[this.currentWord];
                   if(correct){
                     this.correctKeys += this.wordList[this.currentWord].length;
-                    children[this.currentWord].classList.add('text-success'); 
+                    children[this.currentWord].classList.add('text-warning'); 
                   }
                   const result = calculateResult(this.wordList,this.correctKeys,this.startDate);
                   this.acc = result.acc;
@@ -150,7 +150,7 @@ export default {
     min-width:100%;
   }
   &--container{
-    background: rgba(0,0,0,0.3);
+    background: rgba(0,0,0,0.4);
     border-radius:0.5rem;
   }
   &--difficulty{
@@ -162,5 +162,8 @@ export default {
     }
   }
 }
-
+#textinput:focus{
+  border-color:#222;
+  box-shadow: 0 0 0 0.2rem rgba(0,0,0,.25);
+}
 </style>
