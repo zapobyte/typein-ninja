@@ -30,7 +30,7 @@ export default {
 <style lang="scss" scoped>
 .home{
   @media screen and (min-width:980px) {
-      width:70%;
+      width:60%;
   }
   width:100%;
 }

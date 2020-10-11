@@ -1,8 +1,8 @@
 <template>
     <nav class="navbar  navbar-dark">
         <div class="container">
-        <a class="navbar-brand" href="#">typein.ninja</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <router-link to="/" class="navbar-brand" >typein.ninja</router-link>
+        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -23,9 +23,9 @@
                 <small class="small">User</small>
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li class="dropdown-item small" v-if="isAuth" @click="goToProfile">
-                    <i class="fas fa-user"></i> 
-                    <small class="small">Profile</small> 
+                <li class="dropdown-item small" v-if="isAuth">
+                    <router-link to="profile"><i class="fas fa-user"></i> 
+                    <small class="small">Profile</small></router-link> 
                 </li>
                 <div class="dropdown-divider"  v-if="isAuth"></div>
                 <li class="dropdown-item small" v-if="isAuth" @click="logout">
@@ -70,10 +70,13 @@ export default {
     },
     login(){
       googleSignIn();
-    },
-    goToProfile(){
-      
     }
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.navbar-brand{
+  font-size:1rem !important;
+}
+</style>

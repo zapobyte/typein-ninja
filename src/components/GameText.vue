@@ -1,6 +1,20 @@
 <template>
   <div class="game ml-auto mr-auto row align-items-end" id="gametext">
-    <div class="col-12">
+  
+    <div class="game--container p-3">
+      <div class="game--text nes-balloon from-left nes-pointer text-left pb-3" id="game--text"></div>
+      <div class="game--body mb-2">
+        <div class="row">
+          <div class="col-xs-12 col-md-10">
+            <input type="text" name="inputField" id="textinput" class="nes-input d-inline-flex " @keydown="inputCheck">
+          </div>
+          <div class="col-xs-12 col-md-2 text-right align-self-center">
+            <button class="nes-btn m-auto " type="button"  @click="reset()">Reset</button>
+          </div>
+          
+          </div>
+      </div>
+        <div class="col-12">
     <div class="game--content row align-items-center">
         <div class="game--difficulty col-7 col-xs-12text-left">
           <a href="#" class="nes-badge" @click="setGameDifficulty('easy')">
@@ -32,19 +46,6 @@
       </div>
     </div>
     
-    <div class="game--container p-3">
-      <div class="game--text nes-balloon from-left nes-pointer text-left pb-3" id="game--text"></div>
-      <div class="game--body mt-2">
-        <div class="row">
-          <div class="col-xs-12 col-md-10">
-            <input type="text" name="inputField" id="textinput" class="nes-input d-inline-flex " @keydown="inputCheck">
-          </div>
-          <div class="col-xs-12 col-md-2 m-auto">
-            <button class="nes-btn m-auto " type="button"  @click="reset()">Reset</button>
-          </div>
-          
-          </div>
-      </div>
     </div>
   </div>
 </template>
