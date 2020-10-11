@@ -1,16 +1,13 @@
 <template>
-    <footer class="footer p-2">
-        <nav class="navbar m-o p-0 navbar-expand-lg text-center navbar-light">
-          <ul class="navbar-nav m-0 p-0 text-center m-auto">
-              <li class="nav-item m-0 p-0">
-                  <router-link class="nav-link" to="/">home</router-link>
-              </li>
-              <li class="nav-item m-0 p-0">
-                  <router-link class="nav-link" to="/about">about</router-link>
-              </li>
-          </ul>
-        </nav>
-        <small class="small"> <i class="far fa-copyright"></i> typein.ninja</small>
+    <footer class=" pr-2 pl-2 pb-2 w-100">
+       <div class="row align-items-end">
+            <div class="footer col-12"></div>
+           <div class="col-12 text-right">
+            <a href="https://www.buymeacoffee.com/zapobyte" target="_blank">
+            buy me a coffee</a>  <p class="copywrite m-0 d-inline-block"> <i class="far fa-copyright"></i> typein.ninja</p>
+           </div>
+       </div>
+ 
       </footer>
 </template>
 
@@ -19,3 +16,15 @@ export default {
     name:'BottomFooter'
 }
 </script>
+<style lang="scss" scoped>
+.copywrite{
+    font-size:0.8rem !important;
+}
+.footer{
+    height:32px;
+    background-image:url('~@/assets/tileborder.png');
+    background-position: top;
+    background-size:contain;
+    background-repeat: repeat-x ;
+}
+</style>

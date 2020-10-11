@@ -22,7 +22,8 @@ font-family: 'Noto Sans JP', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: white;
+  background:rgb(55,37,56);
   font-size:18px;
 }
 
@@ -33,9 +34,7 @@ font-family: 'Noto Sans JP', sans-serif;
     min-width:1.5rem;
   }
 }
-.small{
-  font-size:85%;
-}
+
 </style>
 
 <script>
@@ -70,10 +69,3 @@ export default {
   }
 }
 </script>
-<style lang="scss" >
-body{
-  background:url('~@/assets/c.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-</style>
