@@ -20,13 +20,13 @@
       </div>
       <div class="col-12 pt-3">
         <div class="game--content row align-items-center">
-            <div class="game--difficulty justify-center col-7 col-xs-12 text-left">
-              <details>
-                  <summary class="text-uppercase">Difficulty
-                  <a href="#" class=" text-lowercase nes-badge text-right ml-auto">
+            <div class="game--difficulty col-7 col-xs-12 text-left">
+              <details class="alitn-items-center">
+                <summary class="text-uppercase align-items-center">Difficulty
+                  <a href="#" class=" text-lowercase nes-badge text-left mr-auto">
                   <span :class="$store.getters.getGameDifficulity ? 'is-success' : 'is-error' ">{{$store.getters.getGameDifficulity}}</span>
-                </a> 
-                    </summary>
+                  </a> 
+                </summary>
                   <a href="#" class="nes-badge" @click="setGameDifficulty('easy')">
                   <span :class="$store.getters.getGameDifficulity =='easy' ? 'is-success' : 'is-error' ">easy</span>
                 </a> 

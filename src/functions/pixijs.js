@@ -14,7 +14,7 @@ export class GameAnimation{
     init(){
         this.app = new PIXI.Application({
             width:200,
-            height:100,
+            height:40,
             transparent:true
         });
         this.app.loader.add("ninja",spriteImgIdle);
