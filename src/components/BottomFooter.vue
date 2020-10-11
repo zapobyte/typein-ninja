@@ -33,7 +33,7 @@ export default {
     font-size:0.8rem !important;
 }
 .fixed-bottom{
-    @media screen and (max-width:990px){
+    @media screen and (max-width:960px){
         position:relative !important;
     }
 }

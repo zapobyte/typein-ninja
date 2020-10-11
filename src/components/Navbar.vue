@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
       <router-link to="/" class="navbar-brand" >typein.ninja</router-link>
       <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -7,29 +7,29 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
-          <li class="nav-item dropdown  ml-auto">
+          <li class="nav-item dropdown ">
               <a class="nav-link dropdown-toggle text-right" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
               <i class="nes-icon trophy is-small"></i>
-              <span class="pl-2">Scoreboard</span>
+              <span class="pl-2">scoreboard</span>
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Top 100</a></li>
-              <li><a class="dropdown-item" href="#">All users</a></li>
+              <li><a class="dropdown-item" href="#">top 100</a></li>
+              <li><a class="dropdown-item" href="#">all users</a></li>
               </ul>
           </li>
-          <li class="nav-item dropdown ml-auto">
+          <li class="nav-item dropdown ">
               <a class="nav-link dropdown-toggle text-right" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
               <i class="nes-icon is-small heart"></i>
-              <small class="small pl-2">User</small>
+              <small class="small pl-2">{{ $store.getters.isAuth ? `${user.displayName}`:'user'}}</small>
               </a>
               <ul class="dropdown-menu " aria-labelledby="navbarDropdown">
               <li class="dropdown-item small" v-if="isAuth">
-                  <router-link to="profile"></i> 
-                   Profile</router-link> 
+                  <router-link to="profile">
+                  profile</router-link> 
               </li>
               <div class="dropdown-divider"  v-if="isAuth"></div>
               <li class="dropdown-item small" v-if="isAuth" @click="logout">
-                  <span class=""> Logout</span>
+                  <span class=""> logout</span>
               </li>
               <li class="dropdown-item" v-if="!isAuth">
                   <button type="button" class="btn btn-sm" @click="login">
@@ -61,6 +61,9 @@ export default {
   computed:{
     isAuth(){
       return this.$store.getters.isAuth;
+    },
+    user(){
+      return this.$store.getters.getAuthUser;
     }
   },
   methods:{
