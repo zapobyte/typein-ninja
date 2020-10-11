@@ -45,8 +45,8 @@ export class GameAnimation{
      
         this.player.animationSpeed = 2;
         this.player.loop = false;
-        this.player.x = this.app.view.width / 2;
-        this.player.y = this.app.view.height / 2;
+        this.player.x = 0;
+        this.player.y = 0;
         
         this.app.stage.addChild(this.player);
         this.player.scale.set(1.1);

@@ -1,12 +1,8 @@
 <template>
-  <div id="app" class="min-vh-100 container-fluid">
-    <section class="no-gutters vh-100 row m-auto align-items-start">
-      <header class="header align-self-start container" >
-       <Navbar />
-      </header>
-      <router-view class="align-self-start container"/>
-      <BottomFooter class="align-self-end" />
-    </section>
+  <div id="app" class="min-vh-100  container">
+    <Navbar />
+    <router-view class="mt-4" />
+    <BottomFooter />
   </div>
 </template>
 
@@ -24,7 +20,7 @@ html,body {
   text-align: center;
   color: white !important;
   background:rgb(55,37,56) !important;
-  font-size:18px;
+  font-size:14px;
 }
 
 .header{

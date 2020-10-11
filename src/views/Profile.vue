@@ -1,7 +1,7 @@
 <template>
-  <div class="profile ">
+  <section class="container profile">
     <UserProfile />
-  </div>
+  </section>
 </template>
 <script>
 import UserProfile from '@/components/UserProfile';

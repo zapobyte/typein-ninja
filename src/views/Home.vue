@@ -1,6 +1,5 @@
 <template>
-  <div class="home ml-auto mr-auto mt-0 align-self-start">
-    <PixieAnimation />
+  <div class="text-center">
     <GameText />
   </div>
 </template>
@@ -8,13 +7,11 @@
 <script>
 // @ is an alias to /src
 import GameText from '@/components/GameText.vue'
-import PixieAnimation from '@/components/PixieAnimation.vue';
 
 export default {
   name: 'Home',
   components: {
     GameText,
-    PixieAnimation
   },
   computed:{
     appVersion(){
@@ -28,10 +25,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.home{
+/* .home{
   @media screen and (min-width:980px) {
-      width:60%;
+      width:55%;
   }
   width:100%;
-}
+} */
 </style>

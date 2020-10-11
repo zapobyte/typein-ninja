@@ -2,56 +2,68 @@
   <div class="game ml-auto mr-auto row align-items-end" id="gametext">
   
     <div class="game--container p-3">
-      <div class="game--text nes-balloon from-left nes-pointer text-left pb-3" id="game--text"></div>
+      <div class="game--text   text-left pb-3" >
+        <div id="game--text" class="small nes-balloon from-left nes-pointer">
+        </div>
+        <PixieAnimation />
+      </div>
       <div class="game--body mb-2">
         <div class="row">
           <div class="col-xs-12 col-md-10">
             <input type="text" name="inputField" id="textinput" class="nes-input d-inline-flex " @keydown="inputCheck">
           </div>
           <div class="col-xs-12 col-md-2 text-right align-self-center">
-            <button class="nes-btn m-auto " type="button"  @click="reset()">Reset</button>
+            <button class="nes-btn m-auto " type="button"  @click="reset()">reset</button>
           </div>
           
           </div>
       </div>
-        <div class="col-12">
-    <div class="game--content row align-items-center">
-        <div class="game--difficulty col-7 col-xs-12text-left">
-          <a href="#" class="nes-badge" @click="setGameDifficulty('easy')">
-            <span :class="$store.getters.getGameDifficulity =='easy' ? 'is-success' : 'is-error' ">easy</span>
-          </a> 
-          <a href="#" class="nes-badge " @click="setGameDifficulty('normal')">
-            <span :class="$store.getters.getGameDifficulity =='normal' ? 'is-success' : 'is-error' ">normal</span>
-          </a> 
-          <a href="#" class="nes-badge " @click="setGameDifficulty('hard')">
-            <span :class="$store.getters.getGameDifficulity =='hard' ? 'is-success' : 'is-error' ">hard</span>
-          </a> 
-         
-        </div>
-        <div class="game--stats col-5 col-xs-12 text-right">
-            <span  title="word per minute">
-             <a href="#" class="nes-badge is-splited">
-                <span class="is-dark"> WPM</span>
-                <span class="is-error"> {{wpm}}</span>
-              </a>
-            </span>
-            
-            <span  title="accuracy">
-              <a href="#" class="nes-badge is-splited">
-                <span class="is-dark"> ACC</span>
-                <span class="is-error"> {{acc}}</span>
-              </a>
-            </span>
+      <div class="col-12 pt-3">
+        <div class="game--content row align-items-center">
+            <div class="game--difficulty justify-center col-7 col-xs-12 text-left">
+              <details>
+                  <summary class="text-uppercase">Difficulty
+                  <a href="#" class=" text-lowercase nes-badge text-right ml-auto">
+                  <span :class="$store.getters.getGameDifficulity ? 'is-success' : 'is-error' ">{{$store.getters.getGameDifficulity}}</span>
+                </a> 
+                    </summary>
+                  <a href="#" class="nes-badge" @click="setGameDifficulty('easy')">
+                  <span :class="$store.getters.getGameDifficulity =='easy' ? 'is-success' : 'is-error' ">easy</span>
+                </a> 
+                <a href="#" class="nes-badge " @click="setGameDifficulty('normal')">
+                  <span :class="$store.getters.getGameDifficulity =='normal' ? 'is-success' : 'is-error' ">normal</span>
+                </a> 
+                <a href="#" class="nes-badge " @click="setGameDifficulty('hard')">
+                  <span :class="$store.getters.getGameDifficulity =='hard' ? 'is-success' : 'is-error' ">hard</span>
+                </a> 
+              </details>
+            </div>
+            <div class="game--stats col-5 col-xs-12 text-right">
+                <span  title="word per minute">
+                <a href="#" class="nes-badge is-splited">
+                    <span class="is-dark"> WPM</span>
+                    <span class="is-error"> {{wpm}}</span>
+                  </a>
+                </span>
+                
+                <span  title="accuracy">
+                  <a href="#" class="nes-badge is-splited">
+                    <span class="is-dark"> ACC</span>
+                    <span class="is-error"> {{acc}}</span>
+                  </a>
+                </span>
+            </div>
         </div>
       </div>
     </div>
     
-    </div>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
+import PixieAnimation from '@/components/PixieAnimation.vue';
+
 import { 
   calculateResult,
   generateText,
@@ -60,7 +72,8 @@ import {
 
 export default {
   name: 'GameText',
-  components:{
+   components:{
+      PixieAnimation
   },
   data(){
     return {
@@ -119,6 +132,7 @@ export default {
                   }
                   this.wordList = [];
                   textField.innerHTML = '';
+                  textField.style.display="none"
             }
             inputField.value = '';
         } 
@@ -142,6 +156,7 @@ export default {
         textField.innerHTML+=`<span>${word} </span>`;
       })
       this.wordList = words;
+      textField.style.display="block";
       const inputField = document.querySelector('#textinput');
       inputField.focus();
     },
@@ -155,6 +170,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+details{
+  summary{
+      outline:none;
+  }
+}
 .nes-badge{
   font-size:0.7rem;
   padding:0;
@@ -162,21 +182,20 @@ export default {
 
 }
  .nes-badge.is-splited{
-    padding:0;
+  padding:0;
   margin:0.5rem;
-     font-size:0.7rem !important;
+  font-size:0.7rem !important;
 
  }
 .game{
-  width:100%;
+  @media screen and (min-width: 980px) {
+    width:70%;
+  }
   &--text{
     color:#222;
     min-width:100%;
   }
 
-  &--difficulty{
-
-  }
 }
 #textinput:focus{
   border-color:#f2f2f2;
