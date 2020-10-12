@@ -9,12 +9,6 @@
 </template>
 
 <style lang="scss">
-
-@font-face {
-  font-family: 'NotoSans';
-  src: url('./assets/fonts/yumin.ttf');
-}
-
 html,body {
   font-family: 'Press Start 2P', cursive;
   -webkit-font-smoothing: antialiased;

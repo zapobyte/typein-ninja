@@ -1,7 +1,6 @@
 /* const fs = require('fs');
 const packageJson = fs.readFileSync('./package.json');
 const version = JSON.parse(packageJson).version || 0; */
-console.log(JSON.stringify(require('./package.json').version))
 module.exports = {
     lintOnSave:false,
 /*     chainWebpack: config => {
