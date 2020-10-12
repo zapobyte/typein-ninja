@@ -19,7 +19,8 @@
           </li>
           <li class="nav-item dropdown ">
               <a class="nav-link dropdown-toggle text-right" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-              <i class="nes-icon is-small heart"></i>
+              <i class="nes-icon is-small heart" v-if="$store.getters.isAuth"></i>
+              <i class="nes-icon is-small heart is-half" v-else></i>
               <small class="small pl-2">{{ $store.getters.isAuth ? `${user.displayName}`:'user'}}</small>
               </a>
               <ul class="dropdown-menu " aria-labelledby="navbarDropdown">

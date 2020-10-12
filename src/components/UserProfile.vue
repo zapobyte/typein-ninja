@@ -31,7 +31,7 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss" scoped>
+<style scoped lang="scss">
 .user{
     &-avatar{
         max-width:48px;

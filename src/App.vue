@@ -22,20 +22,14 @@ html,body {
   background:rgb(55,37,56) !important;
   font-size:14px;
 }
-
-.header{
-  & nav ul li i{
-    min-width:1.5rem;
-  }
+a{
+  text-decoration: none !important;
 }
-
 </style>
 
 <script>
 import { 
   firebaseInit,
-  googleSignIn,
-  logout
 } from '@/functions/firebase.js';
 import Navbar from '@/components/Navbar';
 import BottomFooter from '@/components/BottomFooter';
@@ -52,9 +46,6 @@ export default {
     }
   },
   computed:{
-    isAuth(){
-      return this.$store.getters.isAuth;
-    }
   },
   created(){
     firebaseInit();

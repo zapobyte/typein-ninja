@@ -1,22 +1,17 @@
 <template>
-    <footer class=" pr-3 pl-3 pb-3 w-100 fixed-bottom">
-        <div class="row align-items-end">
-            <div class="footer">
-                <div class="left-tile">
-                </div>
-                <div class="mid-tile">
-                </div>
-                <div class="right-tile">
-                </div>
-            </div>
-            <div class="col-12 text-right">
-                <section class="container">
-
-                <a href="https://www.buymeacoffee.com/zapobyte" target="_blank">
-                <i class="nes-icon coin is-small mr-1"></i><small>buy me a coffee</small></a>  <span class="copywrite m-0 "> &copy;<a href="https://typein.ninja">typein.ninja</a></span>
-                </section>
-            </div>
+    <footer class="pr-3 pl-3 pb-3 w-100 fixed-bottom">
+        <div class="footer--tile">
+            <div class="footer--tile__mid-tile"></div>
         </div>
+        <section class="container text-right">
+            <a href="https://ko-fi.com/zapobyte" class="coinJump" target="_blank">
+            <i class="nes-icon coin is-small mr-1"></i>
+            <small>buy me a coffee</small>
+            </a>
+            <span class="copywrite m-0 "> &copy;
+                <a href="https://typein.ninja">typein.ninja</a>
+            </span>
+        </section>
     </footer>
 </template>
 
@@ -28,7 +23,16 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-
+@keyframes coinJump {
+0%   {bottom:0px;}
+  50%  {bottom:5px;}
+  100% { bottom:0px;}
+}
+.coinJump:hover > i{
+    animation-name: coinJump;
+    position: relative;
+    animation-duration: 0.5s;
+}
 .copywrite{
     font-size:0.8rem !important;
 }
@@ -37,9 +41,8 @@ export default {
         position:relative !important;
     }
 }
-.footer{
-   
-    & .mid-tile{
+.footer--tile{
+    &__mid-tile{
         height:32px;
         width:100%;
         background-image:url('~@/assets/tileborder.png');
@@ -47,6 +50,5 @@ export default {
         background-size:contain;
         background-repeat: repeat-x;
     }
-
 }
 </style>

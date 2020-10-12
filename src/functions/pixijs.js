@@ -20,7 +20,7 @@ export class GameAnimation{
             transparent:true
         });
         this.app.loader.add("ninja",spriteImgIdle);
-        return app;
+        return this.app;
     }
     onKeyDown(e){
       console.log(e.keyCode)

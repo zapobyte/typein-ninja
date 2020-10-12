@@ -3,9 +3,8 @@
   
     <div class="game--container p-3">
       <div class="game--text  text-left pb-3" >
-        <div id="gametext" class="small nes-balloon from-left nes-pointer">
-        </div>
-        <PixieAnimation />
+        <div id="gametext" class="small nes-balloon from-left nes-pointer"></div>
+        <GameAnimation />
       </div>
       <div class="game--body mb-2">
         <div class="row">
@@ -62,7 +61,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import PixieAnimation from '@/components/PixieAnimation.vue';
+import GameAnimation from '@/components/GameAnimation.vue';
 
 import { 
   calculateResult,
@@ -72,7 +71,7 @@ import {
 export default {
   name: 'GameText',
    components:{
-      PixieAnimation
+      GameAnimation
   },
   data(){
     return {

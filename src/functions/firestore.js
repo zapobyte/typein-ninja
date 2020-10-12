@@ -1,9 +1,9 @@
 import * as firebase from 'firebase';
 import store from '../store'
-let db;
+
 // users functions
 export const createFsUser = async (user) =>{
-    db = firebase.firestore();
+    let db = firebase.firestore();
     try{
         const dbUser = await db.collection('users').doc(user.uid).set({
             displayName: user.displayName,
@@ -20,33 +20,34 @@ export const createFsUser = async (user) =>{
 }
 
 export const updateUser = async (data) =>{
-    db = firebase.firestore();
+    let db = firebase.firestore();
     const currentUser = firebase.auth().currentUser;
-    try{
-        const dbUser = await db.collection('users').doc(currentUser.uid).update({
+    const updateDate = {
         xp:data.xp,
         lvl:data.lvl
-    });
+    }
+    try{
+        const dbUser = await db.collection('users').doc(currentUser.uid).update(updateDate);
     return dbUser;
     }catch(error){
         console.error(error.message);
         throw new error;
     }
 }
-export const getFsUser = async (user) => {
-    db = firebase.firestore();
+export const getFsSnapshotUser = async (user) => {
+    let db = firebase.firestore();
     return new Promise((resolve,reject)=>{
-   return  db.collection("users").doc(user.uid)
-        .onSnapshot((function(doc){
-            console.log(doc.data())
-            resolve(doc.data());            
-        }))
+        return  db.collection("users").doc(user.uid)
+                .onSnapshot((function(doc){
+                    console.log(doc.data())
+                    resolve(doc.data());            
+            }))
     }) 
 }
 
 export const checkFsUser = async (user)=>{
-    db = firebase.firestore();
-    const dbUser = await getFsUser(user);
+    let db = firebase.firestore();
+    const dbUser = await getFsSnapshotUser(user);
     if(!dbUser){
         await createFsUser(user);
     }
@@ -59,6 +60,7 @@ export const checkFsUser = async (user)=>{
 }
 
 export const createGameHistory = async (data) => {
+    let db = firebase.firestore(); 
     await db.collection("gameHistory").doc()
     .set(data);
 }

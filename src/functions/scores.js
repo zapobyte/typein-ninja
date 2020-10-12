@@ -6,8 +6,8 @@ export const getUserScore=(uid)=>{
 
 export const addUserScore= async (user)=>{
     const difficulity = ''
-    const user = await firebase.collection("users").doc(user.uid);
-    user.update({
+    const dbUser = await firebase.collection("users").doc(user.uid);
+    dbUser.update({
         xp:xp,
         lvl:lvl
     })

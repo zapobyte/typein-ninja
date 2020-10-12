@@ -7,7 +7,7 @@
 import {GameAnimation} from '@/functions/pixijs';
 
 export default {
-  name: 'PixieAnimation',
+  name: 'GameAnimation',
   props: {
     msg: String
   },
