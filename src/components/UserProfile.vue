@@ -14,14 +14,23 @@
         <p>LVL {{ user.lvl }}</p>
       </div>
     </div>
-    <progress class="nes-progress mt-3" value="90" max="100"></progress>
-
+    <progress class="nes-progress mt-3" :value="percent" max="100"></progress>
   </div>
 </template>
 
 <script>
 export default {
     name: 'UserProfile',
+    data(){
+        return {
+            percent:0
+        }
+    },
+    mounted(){
+        const currentUser = this.$store.getters.getAuthUser ;
+        const currentXp = currentUser.xp;
+
+    },
     computed:{
         user(){
             return this.$store.getters.getAuthUser

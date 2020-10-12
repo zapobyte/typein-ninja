@@ -1,8 +1,10 @@
 <template>
-  <div id="app" class="min-vh-100  container">
-    <Navbar />
-    <router-view />
-    <BottomFooter />
+  <div id="app" class="min-vh-100 container">
+    <div class="row min-vh-100">
+      <Navbar class="col-12 align-self-start"/>
+      <router-view class="col-12 align-self-start"/>
+      <BottomFooter class="col-12 align-self-end" />
+    </div>
   </div>
 </template>
 

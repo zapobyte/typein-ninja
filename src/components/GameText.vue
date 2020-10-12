@@ -18,9 +18,9 @@
           </div>
       </div>
       <div class="col-12 pt-3">
-        <div class="game--content row align-items-center">
+        <div class="game--content row align-items-start">
             <div class="game--difficulty col-7 col-xs-12 text-left">
-              <details class="alitn-items-center">
+              <details>
                 <summary class="text-uppercase align-items-center">Difficulty
                   <a href="#" class=" text-lowercase nes-badge text-left mr-auto">
                   <span :class="$store.getters.getGameDifficulity ? 'is-success' : 'is-error' ">{{$store.getters.getGameDifficulity}}</span>
@@ -108,6 +108,8 @@ export default {
               if(correct){
                   this.correctKeys += this.wordList[this.currentWord].length; 
                   children[this.currentWord].classList.add('text-success');
+              } else {
+                children[this.currentWord].classList.add('text-danger');
               }
               this.currentWord++;
             } else if(this.currentWord === this.wordList.length -1){
@@ -115,6 +117,8 @@ export default {
                   if(correct){
                     this.correctKeys += this.wordList[this.currentWord].length;
                     children[this.currentWord].classList.add('text-success'); 
+                  } else {
+                    children[this.currentWord].classList.add('text-danger');
                   }
                   const result = calculateResult(this.wordList,this.correctKeys,this.startDate);
                   this.acc = result.acc;
@@ -122,15 +126,17 @@ export default {
                   const gameOk = this.acc > 0 && this.wpm > 0;
                   if(gameOk &&  this.isAuth){
                     this.$store.dispatch('addGameHistory',{
-                    acc:this.acc,
-                    wpm:this.wpm,
-                    difficulty:this.$store.getters.getGameDifficulity,
-                    date:new Date(this.startDate)
-                  });
+                      acc:this.acc,
+                      wpm:this.wpm,
+                      difficulty:this.$store.getters.getGameDifficulity,
+                      date:new Date(this.startDate)
+                    });
+                    setTimeout((()=>{
+                      this.wordList = [];
+                      textField.innerHTML = '';
+                      textField.style.display="none";
+                    }),500);
                   }
-                  this.wordList = [];
-                  textField.innerHTML = '';
-                  textField.style.display="none"
             }
             inputField.value = '';
         } 
