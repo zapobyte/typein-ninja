@@ -4,7 +4,7 @@ const version = JSON.parse(packageJson).version || 0; */
 console.log(JSON.stringify(require('./package.json').version))
 module.exports = {
     lintOnSave:false,
-    chainWebpack: config => {
+/*     chainWebpack: config => {
         config
           .plugin('define')
             .tap(args => {
@@ -12,5 +12,5 @@ module.exports = {
               args[0]['process.env']['VERSION'] = v
               return args
             })
-      }
+      } */
 }

@@ -15,8 +15,8 @@ export class GameAnimation{
         const textField = document.getElementById('gametext');
 
         this.app = new PIXI.Application({
-            width:860,
-            height:140,
+            width:400,
+            height:80,
             transparent:true
         });
         this.app.loader.add("ninja",spriteImgIdle);
@@ -38,7 +38,6 @@ export class GameAnimation{
               this.player.textures = this.playerSheet[`idle${this.animIdleCurr + 1}`];
               this.player.play();
               this.animIdleCurr++;
-        
             }
         }
     }

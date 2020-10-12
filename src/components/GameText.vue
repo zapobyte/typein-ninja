@@ -67,8 +67,7 @@ import PixieAnimation from '@/components/PixieAnimation.vue';
 import { 
   calculateResult,
   generateText,
-  classAdding
-} from '@/functions/type';
+} from '@/functions/typeText';
 
 export default {
   name: 'GameText',

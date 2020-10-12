@@ -1,5 +1,5 @@
 <template>
-  <div class="text-center">
+  <div class="home text-center">
     <GameText />
   </div>
 </template>
@@ -19,5 +19,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.home{
+  margin-top:10vh;
+}
 </style>
