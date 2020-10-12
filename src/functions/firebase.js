@@ -10,7 +10,6 @@ export const firebaseInit = () => {
         storageBucket: process.env.VUE_APP_STORAGE_BUCKET,
         messagingSenderId: process.env.VUE_APP_MSG_ID,
         appId: process.env.VUE_APP_APP_ID,
-        measurementId: process.env.VUE_APP_ANALYTICS_ID
     });
 
     firebase.auth().onAuthStateChanged(async user => {    
