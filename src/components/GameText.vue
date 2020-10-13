@@ -125,12 +125,13 @@ export default {
                       difficulty:this.$store.getters.getGameDifficulity,
                       date:new Date(this.startDate)
                     });
-                    setTimeout((()=>{
-                      this.wordList = [];
-                      textField.innerHTML = '';
-                      textField.style.display="none";
-                    }),500);
+                 
                   }
+                setTimeout((()=>{
+                  this.wordList = [];
+                  textField.innerHTML = '';
+                  textField.style.display="none";
+                }),500);
             }
             inputField.value = '';
         } 

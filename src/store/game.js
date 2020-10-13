@@ -19,13 +19,16 @@ const mutations = {
   
 const actions = {
       async loadGame({commit,dispatch},user){
-          try {
-            const dbUser = await getFsSnapshotUser(user);
-            dispatch('setUser',dbUser);
-          } catch (error) {
-              console.log(error)
-          }
-
+        if(user){
+            try {
+                const dbUser = await getFsSnapshotUser(user);
+                console.log('ss',dbUser)
+                dispatch('setUser', dbUser);
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        
       },
   };
   

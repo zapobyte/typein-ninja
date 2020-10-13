@@ -11,7 +11,6 @@ html,body {
   font-family: 'Press Start 2P', cursive;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: white !important;
   background:rgb(55,37,56) !important;
   font-size:14px;

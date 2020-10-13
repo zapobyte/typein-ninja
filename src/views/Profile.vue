@@ -14,12 +14,15 @@ export default {
     },
     data(){
       return {
-        best:{}
+        best:{
+          wpm:0,
+          acm:0
+        }
       }
     },
     async mounted(){
       const bestGame = await getBestUserGame(this.userAuth.uid);
-    this.best = bestGame;
+      this.best= bestGame;
     },
     computed:{
 
