@@ -59,9 +59,4 @@ export const checkFsUser = async (user)=>{
     });
 }
 
-export const createGameHistory = async (data) => {
-    let db = firebase.firestore(); 
-    await db.collection("gameHistory").doc()
-    .set(data);
-}
 

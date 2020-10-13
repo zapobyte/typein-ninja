@@ -1,5 +1,5 @@
 <template>
-  <section class="container profile">
+  <section class=" profile">
     <UserProfile />
   </section>
 </template>

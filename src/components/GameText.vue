@@ -1,11 +1,8 @@
 <template>
-  <div class="game ml-auto mr-auto row align-items-end">
   
-    <div class="game--container p-3">
-      <div class="game--text  text-left pb-3" >
-        <div id="gametext" class="small nes-balloon from-left nes-pointer"></div>
-        <GameAnimation />
-      </div>
+    <div class="game--container m-auto">
+      <div id="gametext" class="small text-dark   nes-balloon from-left nes-pointer"></div>
+      <GameAnimation />
       <div class="game--body mb-2">
         <div class="row">
           <div class="col-xs-12 col-md-10">
@@ -14,8 +11,7 @@
           <div class="col-xs-12 col-md-2 text-right align-self-center">
             <button class="nes-btn m-auto " type="button"  @click="reset()">reset</button>
           </div>
-          
-          </div>
+        </div>
       </div>
       <div class="col-12 pt-3">
         <div class="game--content row align-items-start">
@@ -56,7 +52,6 @@
       </div>
     </div>
     
-  </div>
 </template>
 
 <script>
@@ -88,7 +83,6 @@ export default {
   },
   computed:{
     ...mapGetters(['isAuth']),
-
   },
 
   methods:{
@@ -97,7 +91,7 @@ export default {
       let textField = document.getElementById('gametext');
       let children = textField.childNodes;
       if(this.currentWord === 0 && inputField.value === ''){
-          this.startDate = Date.now();
+        this.startDate = Date.now();
       }
       if(e.key === ' '){
         e.preventDefault();
@@ -141,9 +135,6 @@ export default {
             inputField.value = '';
         } 
       }
-    },
-    replaceAt(string, index, replace) {
-        string.substring(0, index) + replace + string.substring(index + 1);
     },
     reset(gameDifficult){
       const difficulty = gameDifficult ? gameDifficult : this.$store.getters.getGameDifficulity;
@@ -191,7 +182,7 @@ details{
   font-size:0.7rem !important;
 
  }
-.game{
+.game--container{
   @media screen and (min-width: 980px) {
     width:70%;
   }

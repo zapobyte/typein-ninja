@@ -12,15 +12,14 @@ export const firebaseInit = () => {
         appId: process.env.VUE_APP_APP_ID,
     });
 
-    firebase.auth().onAuthStateChanged(async user => {    
-        if(user !== null){
+    firebase.auth().onAuthStateChanged(async user => {  
+        if(user){
             const token = user.refreshToken;
-            store.dispatch('checkFsUser',user);
+            store.dispatch('loadGame',user);
             store.dispatch('authenticate',token);
         } else {
             logout();
         }
-      
     })
 }
 
@@ -48,5 +47,6 @@ export const googleSignIn = ()=>{
 export const logout = () => {
     store.dispatch('authenticate',false);
     store.dispatch('setUser',{});
+    localStorage.setItem('token','');
     firebase.auth().signOut();
 }

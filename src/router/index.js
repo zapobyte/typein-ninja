@@ -24,5 +24,11 @@ const routes = [
 const router = new VueRouter({
   routes
 })
-
+router.beforeEach((to,from,next)=>{
+  const token = localStorage.getItem('token');
+  if(to.name== null || token.length == 0 && to.name=="Profile"){
+    next("/");
+  }
+  next();
+})
 export default router

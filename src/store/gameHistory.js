@@ -1,6 +1,7 @@
 import {
     createGameHistory
-} from '@/functions/firestore'
+} from '@/functions/gameHistory';
+
 import store from '@/store/index';
 
 const state = {

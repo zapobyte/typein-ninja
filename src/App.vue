@@ -1,10 +1,8 @@
 <template>
   <div id="app" class="min-vh-100 container">
-    <div class="row min-vh-100">
-      <Navbar class="col-12 align-self-start"/>
-      <router-view class="col-12 align-self-start"/>
-      <BottomFooter class="col-12 align-self-end" />
-    </div>
+    <Navbar />
+    <router-view />
+    <BottomFooter />
   </div>
 </template>
 
@@ -17,6 +15,10 @@ html,body {
   color: white !important;
   background:rgb(55,37,56) !important;
   font-size:14px;
+}
+
+#app{
+  position: relative;
 }
 a{
   text-decoration: none !important;

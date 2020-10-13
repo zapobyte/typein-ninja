@@ -1,5 +1,5 @@
 <template>
-  <main class="home text-center">
+  <main class="home">
     <GameText />
   </main>
 </template>
@@ -19,5 +19,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.home{
+  margin-top:5vh;
+  padding-bottom:132px;
+}
 </style>
