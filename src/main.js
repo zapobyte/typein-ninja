@@ -11,7 +11,7 @@ defineIonPhaser(window);
 Vue.config.productionTip = false
 //and then use it in main.js
 Vue.use(VueAnalytics, {
-    id: process.env.ANALYTICS_ID,
+    id: process.env.VUE_APP_ANALYTICS_ID,
     router
 });
 
