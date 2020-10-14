@@ -8,7 +8,7 @@ export const getBestUserGame= async (uid)=>{
     const bestGame = docs.sort((a,b)=>{
         return a.acc == 100 && b.wpm - a.wpm;
     })
-   return bestGame[0]
+   return bestGame[0];
 }
 
 export const createGameHistory = async (data) => {

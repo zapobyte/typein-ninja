@@ -1,5 +1,5 @@
 <template>
-  <section class=" profile">
+  <section class="pt-4 profile">
     <UserProfile :user="userAuth" :best="best"/>
   </section>
 </template>
@@ -16,16 +16,18 @@ export default {
       return {
         best:{
           wpm:0,
-          acm:0
+          acc:0
         }
       }
     },
     async mounted(){
-      const bestGame = await getBestUserGame(this.userAuth.uid);
-      this.best= bestGame;
+         const user = this.userAuth.uid;
+         if(user){
+          const bestGame = await getBestUserGame(user);
+          this.best= bestGame ? bestGame  : this.bestGame;
+         }   
     },
     computed:{
-
       userAuth(){
         return this.$store.getters.getAuthUser
       }

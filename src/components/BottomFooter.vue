@@ -38,7 +38,7 @@ export default {
     height:92px;
     background-image:url('~@/assets/bottom.png');
     background-position: bottom;
-    background-size:cover;
+    background-size:100% 100%;
     background-repeat: no-repeat;
     &--content{
         padding-top:40px;

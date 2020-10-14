@@ -28,27 +28,32 @@ export const updateUser = async (data) =>{
     }
     try{
         const dbUser = await db.collection('users').doc(currentUser.uid).update(updateDate);
-    return dbUser;
+        return dbUser;
     }catch(error){
         console.error(error.message);
         throw new error;
     }
 }
-export const getFsSnapshotUser = async (user) => {
+export const getUser = async (user) => {
     let db = firebase.firestore();
-    return new Promise((resolve,reject)=>{
-        return  db.collection("users").doc(user.uid)
-                .onSnapshot((function(doc){
-                    console.log(doc.data())
-                    resolve(doc.data());            
-            }))
+    return new Promise(async (resolve,reject)=>{
+        const newUser =  await db.collection("users").doc(user.uid)
+                .get();
+        resolve(newUser.data());
     }) 
+}
+
+export const getUsers = async () => {
+    let db = firebase.firestore();
+    const usersDoc =  await db.collection("users").limit(100).get();
+    const users = usersDoc.docs.map(user=>user.data())
+    return users;
 }
 
 export const checkFsUser = async (user)=>{
     let db = firebase.firestore();
-    const dbUser = await getFsSnapshotUser(user);
-    if(!dbUser){
+    const dbUser = await getUser(user);
+    if(!dbUser){   
         await createFsUser(user);
     }
     db.collection("users").doc(user.uid)

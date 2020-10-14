@@ -12,7 +12,7 @@ const getters = {
 };
   
 const mutations = {
-    setDifficulty(state,value){
+    setGameDifficulty(state,value){
         state.gameDifficulty= value;
     },
 };  
@@ -21,15 +21,15 @@ const actions = {
       async loadGame({commit,dispatch},user){
         if(user){
             try {
-                const dbUser = await getFsSnapshotUser(user);
-                console.log('ss',dbUser)
-                dispatch('setUser', dbUser);
+                dispatch('checkFsUser', user);
             } catch (error) {
                 console.log(error)
             }
         }
-        
       },
+      async setGameDifficulty({commit},gameDifficulty){
+            commit('setGameDifficulty',gameDifficulty)
+        }
   };
   
 export default {

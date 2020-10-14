@@ -1,5 +1,5 @@
 <template>
-  <div class="nes-container col-xs-12 col-lg-6 is-white bg-light text-dark with-title  p-3">
+  <div class="nes-container col-12 is-white bg-light text-dark with-title  p-3">
     <p class="title  bg-light">Stats</p>
     <div class="row  align-items-center">
       <div class="col-auto align-self-start">
@@ -8,27 +8,31 @@
         <div class="col">
             <div class="row align-items-start">
                 <div class="col-12 ">
-                    <div class="row no-gutters">
-                        <p class="text-left m-0 col-xs-12 col-auto">{{ user.displayName }}</p>
-                         <p class="text-right m-0 col-xs-12 col-auto ml-auto"> LVL {{ user.lvl }}</p>
+                    <div class="row no-gutters ">
+                        <div class="text-left col-xs-12 col-md-6">
+                            <p class="text-left ml-auto">
+                            {{ user ? user.displayName : '' }}
+                            </p>
+                            <p class="text-left ml-auto">
+                            <i class="nes-icon  star"></i> LVL {{ user ? user.lvl : '' }}
+                            </p>
+                            <progress class="progress--bar" :value="percent" max="100"></progress>
+                        </div>
+                        <div class="text-right col-xs-12 col-md-6">
+                                <i class="nes-icon trophy "></i>
+                                <a href="#" class="nes-badge  is-small is-splited mr-3">
+                                    <span class="is-dark ">wpm</span>
+                                    <span class="is-success">  {{best.wpm}}</span>
+                                </a>
+                                <i class="nes-icon trophy "></i>
+                                <a href="#" class="nes-badge  is-small is-splited">
+                                    <span class="is-dark ">acc</span>
+                                    <span class="is-success">  {{best.acc}}</span>
+                                </a>
+                        </div>
                     </div>
                 </div>
-                <div class="col-12">
-                    <progress class="progress--bar" :value="percent" max="100"></progress>
-                </div>
-                <div class="col-auto text-right mt-3">
-                <p class="m-0">
-                    <a href="#" class="nes-badge  is-small is-splited mr-3">
-                        <span class="is-dark ">wpm</span>
-                        <span class="is-success">  {{best.wpm}}</span>
-                    </a>
-    
-                    <a href="#" class="nes-badge  is-small is-splited">
-                        <span class="is-dark ">acc</span>
-                        <span class="is-success">  {{best.acc}}</span>
-                    </a>
-                </p>
-                </div>
+              
             </div>
     
         </div>
@@ -46,6 +50,7 @@ export default {
     },
     data(){
         return {
+            
         }
     },
     async mounted(){
@@ -54,10 +59,13 @@ export default {
     computed:{
         percent(){
             const xp = this.$props.user.xp;
-            const stringXp = xp.toString();
-            const fourDigits =  stringXp.length >3 ? stringXp.substring(0,3) :stringXp.substring(0,stringXp.length);
-            const xpPercent = Number(fourDigits) / 10;
-            return xpPercent;
+            if(xp){
+                const stringXp = xp.toString();
+                const fourDigits =  stringXp.length >3 ? stringXp.substring(0,3) :stringXp.substring(0,stringXp.length);
+                const xpPercent = Number(fourDigits) / 10;
+                return xpPercent;
+            }
+           
         }
     }
 }
