@@ -2,6 +2,7 @@
 import firebase from 'firebase';
 
 export const getBestUserGame= async (uid)=>{
+    console.log('sort user',uid)
     let db = firebase.firestore(); 
     const games = await db.collection("gameHistory").where("uid","==",uid).get();
     const docs = games.docs.map(doc=> doc.data())

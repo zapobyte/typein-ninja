@@ -6,11 +6,12 @@ const state = {
     user:{},
     users:[],
     token:'',
+
   };
   
 const getters = {
     isAuth(state){
-        return state.token.length > 0 ? true : false;
+        return state.token && state.token.length > 0 ? true : false;
     },
     getAuthUser:(state) => {
         return state.user;
@@ -31,6 +32,12 @@ const getters = {
 const mutations = {
     setUserXp(state,value){
         state.user.xp = value;
+    },
+    addBestScore(state,value){
+        state.user = {
+            ...state.user,
+            value
+        }
     },
     setUserLvl(state,value){
         state.user.lvl = value;
@@ -67,7 +74,9 @@ const actions = {
       async addUserXp({commit},data){
         commit('setUserXp',data)
       },
-
+      async setBestScore({commit},data){
+        commit('addBestScore',data)
+      },
   };
   
 export default {

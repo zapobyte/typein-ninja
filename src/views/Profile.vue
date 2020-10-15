@@ -14,22 +14,21 @@ export default {
     },
     data(){
       return {
-        best:{
-          wpm:0,
-          acc:0
-        }
+
       }
     },
     async mounted(){
-         const user = this.userAuth.uid;
-         if(user){
-          const bestGame = await getBestUserGame(user);
-          this.best= bestGame ? bestGame  : this.bestGame;
-         }   
     },
     computed:{
       userAuth(){
         return this.$store.getters.getAuthUser
+      },
+      best(){
+        const {wpm,acc} = this.$store.getters.getAuthUser;
+        return {
+          wpm,
+          acc
+        }
       }
     }
 }

@@ -2,6 +2,7 @@ import * as firebase from 'firebase';
 import store from '../store';
 
 export const firebaseInit = () => {
+    store.dispatch('setLoading',true)
     firebase.initializeApp({
         apiKey: process.env.VUE_APP_API_KEY,
         authDomain: process.env.VUE_APP_AUTH_DOMAIN,

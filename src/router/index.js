@@ -34,7 +34,7 @@ const router = new VueRouter({
 })
 router.beforeEach((to,from,next)=>{
   const token = localStorage.getItem('token');
-  if(to.name== null || token.length == 0 && to.name=="Profile"){
+  if(to.name== null || token && token.length == 0 && to.name=="Profile"){
     next("/");
   }
   next();

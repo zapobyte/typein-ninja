@@ -1,7 +1,8 @@
 <template>
   <div id="app" class="min-vh-100 container">
     <Navbar />
-    <router-view />
+    <router-view  v-if="!loading"/>
+    <div class="loading" v-else>LOADING</div>
     <BottomFooter />
   </div>
 </template>
@@ -39,15 +40,15 @@ export default {
   },
   data(){
     return {
-
     }
   },
   computed:{
-    user(){
-      return this.$store.getters.getAuthUser
+    loading(){
+      return this.$store.getters.getLoading
     }
   },
   created(){
+    console.log(this.loading)
     firebaseInit();
   },
   methods:{

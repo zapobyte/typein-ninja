@@ -76,7 +76,11 @@ export default {
     },
     methods:{
       goToProfile(e){
-        alert('A profile for user id '+e.target.id)
+        console.log(e.target)
+        this.$router.push({
+          name:'Profile',
+          params: { id: e.target.id }
+        })
       }
     }
 }

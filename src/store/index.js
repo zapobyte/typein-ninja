@@ -9,6 +9,6 @@ export default new Vuex.Store({
   modules: {
     user:user,
     game,
-    gameHistory:gameHistory
+    gameHistory:gameHistory,
   }
 });

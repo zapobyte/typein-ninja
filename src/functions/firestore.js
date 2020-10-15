@@ -1,6 +1,6 @@
 import * as firebase from 'firebase';
 import store from '../store'
-
+import { getBestUserGame } from '@/functions/gameHistory';
 // users functions
 export const createFsUser = async (user) =>{
     let db = firebase.firestore();
@@ -56,11 +56,17 @@ export const checkFsUser = async (user)=>{
     if(!dbUser){   
         await createFsUser(user);
     }
-    db.collection("users").doc(user.uid)
-    .onSnapshot(function(doc) {
+    return db.collection("users").doc(user.uid)
+    .onSnapshot( async function(doc) {
         const source = doc.metadata.hasPendingWrites ? "Local" : "Server";
-        console.log(source, " data: ", doc.data());
-        store.dispatch('setUser',doc.data());
+        console.log('source',source)
+        const bestGame = await getBestUserGame(doc.data().uid);
+        const data = {
+            ...doc.data(),
+            ...bestGame
+        }
+        console.log(data)
+        store.dispatch('setUser',data);
     });
 }
 

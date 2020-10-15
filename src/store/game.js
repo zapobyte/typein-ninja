@@ -1,6 +1,4 @@
-import {
-    getFsSnapshotUser
-} from '@/functions/firestore'
+
 const state = {
     gameDifficulty:'easy'
   };
@@ -22,6 +20,7 @@ const actions = {
         if(user){
             try {
                 dispatch('checkFsUser', user);
+                dispatch('setLoading',false);
             } catch (error) {
                 console.log(error)
             }
