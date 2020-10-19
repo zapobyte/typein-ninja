@@ -1,7 +1,7 @@
 import {
     checkFsUser,
     updateUser as updateUserFs
-} from '@/functions/firestore'
+} from '@/functions/user'
 const state = {
     user:{},
     users:[],
@@ -32,12 +32,6 @@ const getters = {
 const mutations = {
     setUserXp(state,value){
         state.user.xp = value;
-    },
-    addBestScore(state,value){
-        state.user = {
-            ...state.user,
-            value
-        }
     },
     setUserLvl(state,value){
         state.user.lvl = value;
@@ -73,10 +67,7 @@ const actions = {
       },
       async addUserXp({commit},data){
         commit('setUserXp',data)
-      },
-      async setBestScore({commit},data){
-        commit('addBestScore',data)
-      },
+      }
   };
   
 export default {

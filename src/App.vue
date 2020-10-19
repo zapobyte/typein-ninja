@@ -1,9 +1,12 @@
 <template>
-  <div id="app" class="min-vh-100 container">
+  <div id="app" class="min-vh-100 container"  v-if="!loading"> 
     <Navbar />
-    <router-view  v-if="!loading"/>
-    <div class="loading" v-else>LOADING</div>
+    <router-view />
     <BottomFooter />
+  </div>
+  <div class="loading" v-else>
+    <p>LOADING</p>
+    <img src="~@/assets/loading.gif" class="img-fluid" />
   </div>
 </template>
 
@@ -22,6 +25,17 @@ html,body {
 }
 a{
   text-decoration: none !important;
+}
+.loading{
+  text-align: center;
+  width:auto;
+  height:300px;
+  position:absolute;
+  margin:auto;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
 }
 </style>
 
@@ -48,7 +62,7 @@ export default {
     }
   },
   created(){
-    console.log(this.loading)
+    console.log(this.$store.getters.getLoading)
     firebaseInit();
   },
   methods:{

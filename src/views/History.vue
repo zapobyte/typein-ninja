@@ -6,7 +6,7 @@
     </div>
 
     <div class="nes-table-responsive text-dark">
-    <table class="nes-table is-bordered is-centered">
+    <table class="nes-table is-bordered m-0 mt-4  text-center is-center w-100">
       <thead>
         <tr>
           <th>AVATAR</th>
@@ -15,9 +15,7 @@
           <th>BEST ACC</th>
           <th>BEST WPM</th>
           <th>DIFFICULTY</th>
-<!--           <th>TIME</th>
- -->        
-          <td></td>
+          <th></th>        
         </tr>
       </thead>
       <tbody>
@@ -28,12 +26,10 @@
           <td>{{ user.acc}}</td>
           <td>{{ user.wpm}}</td>
           <td>{{ user.difficulty}}</td>
-<!--           <td>{{ search.date}}</td>
- -->      
           <td>
-            <button type="button" class="nes-btn is-primary" :id="user.uid" @click="goToProfile">Profile</button>
+            <button type="button" class="nes-btn" :id="user.uid" @click="goToProfile">Profile</button>
           </td>  
-          </tr>  
+        </tr>  
       </tbody>
   </table>
 </div>
@@ -42,7 +38,7 @@
 </template>
 <script>
 import UserProfile from '@/components/UserProfile';
-import { getUsers } from '@/functions/firestore';
+import { getUsers,getUser } from '@/functions/user';
 import { getBestUserGame } from '@/functions/gameHistory';
 
 export default {
@@ -57,8 +53,9 @@ export default {
       }
     },
    async mounted(){
-      const users = await getUsers();
-      users.forEach(async (user)=>{
+     try {
+       const users = await getUsers();
+        users.forEach(async (user)=>{
         const bestGame = await getBestUserGame(user.uid);
         const data = {
           ...bestGame,
@@ -66,6 +63,10 @@ export default {
         }
         this.searchList.push(data)
       })
+     } catch (error) {
+       console.log(error)
+     }
+      
     },
     computed:{
       users(){
@@ -75,18 +76,19 @@ export default {
       }
     },
     methods:{
-      goToProfile(e){
-        console.log(e.target)
-        this.$router.push({
-          name:'Profile',
-          params: { id: e.target.id }
-        })
+      async goToProfile(e){
+        try {
+            const user = this.searchList.filter(user => user.uid == e.target.id);
+            this.$router.push({
+              name:'Profile', 
+              params: { user: user[0] }
+            })
+        } catch (error) {
+          console.log(error)
+        }
       }
     }
 }
 </script>
 <style lang="scss" scoped>
-.games-list{
-  
-}
 </style>

@@ -1,16 +1,24 @@
 <template>
   <section class="pt-4 profile">
-    <UserProfile :user="userAuth" :best="best"/>
+    <UserProfile :user="user" />
   </section>
 </template>
 <script>
 import UserProfile from '@/components/UserProfile';
-import { getBestUserGame } from "@/functions/gameHistory"
+import store from '@/store/index';
 
 export default {
     name:'Profile',
     components:{
         UserProfile
+    },
+    props:{
+      user:{
+        type: Object,
+        default:()=>{
+            return store.getters.getAuthUser
+        }
+      }
     },
     data(){
       return {
@@ -19,21 +27,7 @@ export default {
     },
     async mounted(){
     },
-    computed:{
-      userAuth(){
-        return this.$store.getters.getAuthUser
-      },
-      best(){
-        const {wpm,acc} = this.$store.getters.getAuthUser;
-        return {
-          wpm,
-          acc
-        }
-      }
-    }
 }
 </script>
 <style lang="scss" scoped>
-.profile{
-}
 </style>

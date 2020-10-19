@@ -21,7 +21,7 @@
                 </a>
                 <ul class="dropdown-menu " aria-labelledby="navbarDropdown">
                 <li class="dropdown-item " v-if="isAuth">
-                    <router-link to="profile">
+                    <router-link :to="{name:'Profile',params:{user:$store.getters.getAuthUser }}">
                     profile</router-link> 
                 </li>
                 <div class="dropdown-divider"  v-if="isAuth"></div>
@@ -65,7 +65,6 @@ export default {
   methods:{
     logout(){
         logout();
-        window.location.reload();
     },
     login(){
       googleSignIn();
