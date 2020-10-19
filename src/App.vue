@@ -62,7 +62,6 @@ export default {
     }
   },
   created(){
-    console.log(this.$store.getters.getLoading)
     firebaseInit();
   },
   methods:{

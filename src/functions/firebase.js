@@ -2,7 +2,6 @@ import * as firebase from 'firebase';
 import store from '../store';
 
 export const firebaseInit = () => {
-    store.dispatch('setLoading',true)
     firebase.initializeApp({
         apiKey: process.env.VUE_APP_API_KEY,
         authDomain: process.env.VUE_APP_AUTH_DOMAIN,
@@ -13,7 +12,8 @@ export const firebaseInit = () => {
         appId: process.env.VUE_APP_APP_ID,
     });
 
-    firebase.auth().onAuthStateChanged(async user => {  
+    firebase.auth().onAuthStateChanged(async user => { 
+        store.dispatch('setLoading',true)
         if(user){
             const token = user.refreshToken;
             store.dispatch('loadGame',user);
@@ -49,5 +49,6 @@ export const logout = () => {
     store.dispatch('authenticate',false);
     store.dispatch('setUser',{});
     localStorage.setItem('token','');
+    store.dispatch('setLoading',false)
     firebase.auth().signOut();
 }

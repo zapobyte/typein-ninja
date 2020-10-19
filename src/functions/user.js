@@ -1,6 +1,7 @@
 import { getBestUserGame } from '@/functions/gameHistory';
 import store from '../store'
 import firebase from 'firebase';
+
 export const createFsUser = async (user) =>{
     let db = firebase.firestore();
     try{
@@ -68,7 +69,6 @@ export const verifyFirebaseUser = async (user)=>{
         return db.collection("users").doc(user.uid)
         .onSnapshot( async function(doc) {
             const source = doc.metadata.hasPendingWrites ? "Local" : "Server";
-            console.log('source',source,doc.data())
             const bestGame = await getBestUserGame(doc.data().uid);
             const data = {
                 ...doc.data(),
@@ -84,24 +84,29 @@ export const verifyFirebaseUser = async (user)=>{
 
 
 export const checkFsUser = async (user)=>{
-    store.dispatch('setLoading',true);
     let db = firebase.firestore();
-    const dbUser = await getUser(user);
-    if(!dbUser){   
-        await createFsUser(user);
-    }
-    return db.collection("users").doc(user.uid)
-    .onSnapshot( async function(doc) {
-        const source = doc.metadata.hasPendingWrites ? "Local" : "Server";
-        console.log('source',source)
-        const bestGame = await getBestUserGame(doc.data().uid);
-        const data = {
-            ...doc.data(),
-            ...bestGame
+    try {
+        const dbUser = await getUser(user);
+        if(!dbUser){   
+            await createFsUser(user);
         }
-        store.dispatch('setUser',data);
-        store.dispatch('setLoading',false);
-    });
+        return db.collection("users").doc(user.uid)
+        .onSnapshot( async function(doc) {
+            const source = doc.metadata.hasPendingWrites ? "Local" : "Server";
+            const bestGame = await getBestUserGame(doc.data().uid);
+            const data = {
+                ...doc.data(),
+                ...bestGame
+            }
+            store.dispatch('setUser',data);
+            store.dispatch('setLoading',false);
+        });
+    } catch (error) {
+        console.log(error);
+        throw new error;
+
+    }
+ 
 }
 
 

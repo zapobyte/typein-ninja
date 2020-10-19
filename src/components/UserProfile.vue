@@ -53,14 +53,14 @@ export default {
     },  
     computed:{
         percent(){
-   /*          const xp = this.$props.user.xp;
+         const xp = this.$props.user.xp;
             if(xp){
                 const stringXp = xp.toString();
                 const fourDigits =  stringXp.length >3 ? stringXp.substring(0,3) :stringXp.substring(0,stringXp.length);
                 const xpPercent = Number(fourDigits) / 10;
                 return xpPercent;
             }
-            */
+       
         }
     }
 }
