@@ -33,7 +33,7 @@
     "sass-loader": "^8.0.2",
     "vue-template-compiler": "^2.6.11"
   },
-  "description": "## Project setup ``` npm install ```",
+  "description": "typein.ninja is a typing test for speed and accuracy with gamify elements.",
   "main": ".eslintrc.js",
   "repository": {
     "type": "git",
