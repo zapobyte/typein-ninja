@@ -112,7 +112,6 @@ export const deleteCurrentUser = () =>{
     const user = firebase.auth().currentUser;
     let db = firebase.firestore();
     db.collection("users").doc(user.uid).delete().then( async function() {
-        console.log("Document successfully deleted!");
         const games = await db.collection("gameHistory").where("uid","==",user.uid).get();
         games.forEach(async (game)=>{
             await game.ref.delete();
@@ -121,6 +120,7 @@ export const deleteCurrentUser = () =>{
            window.location.href="/";
         }).catch(function(error) {
         // An error happened.
+            console.log(error)
         });
     }).catch(function(error) {
         console.error("Error removing document: ", error);
