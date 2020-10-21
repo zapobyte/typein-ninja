@@ -10,6 +10,14 @@
       <div class="ninja"  v-else>
         <img src="@/assets/gameAssets/spritesheets/slash-Sheet.png" class="ninja--player ninja--player__attack pixelated" alt="ninja player"/>
       </div>
+      <div class="bg">
+          <div class="bg--terrain__dummy"></div>
+          <div class="bg--terrain__building"></div>
+          <div class="bg--terrain__tree"></div>
+          <div  class="bg--terrain__lend" alt="background"/>
+          <div  class="bg--terrain__body" alt="background"/>
+          <div  class="bg--terrain__rend" alt="background"/>
+      </div>
   </div>
 </template>
 
@@ -37,12 +45,68 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-
 .animation--container{
-  min-height:100px;
+  min-height:10vh;
 }
-
+.bg{
+  width:100%;
+  position:relative;
+  &--terrain{
+    &__body{
+    display:inline-flex;
+    height:24px;
+    width:calc(100% - 64px);
+    background: url('~@/assets/gameAssets/body.png');
+    background-size:contain;
+    }
+    &__tree{
+      right:66px;
+      top:-86px;
+      position:absolute;
+      display:inline-flex;
+      height:86px;
+      width:52px;
+      background: url('~@/assets/gameAssets/tree.png');
+      background-size:cover;
+    }
+    &__dummy{
+      left:28px;
+      top:-52px;
+      position:absolute;
+      display:inline-flex;
+      height:52px;
+      width:32px;
+      background: url('~@/assets/gameAssets/dummy.png');
+      background-size:cover;
+    }
+    &__building{
+      right:16px;
+      top:-86px;
+      position:absolute;
+      display:inline-flex;
+      height:86px;
+      width:52px;
+      background: url('~@/assets/gameAssets/building.png');
+      background-size:cover;
+    }
+    &__lend{
+      display:inline-flex;
+      height:24px;
+      width:24px;
+      background: url('~@/assets/gameAssets/left-end.png');
+      background-size:contain;
+    }
+    &__rend{
+      display:inline-flex;
+      height:24px;
+      width:24px;
+      background: url('~@/assets/gameAssets/right-end.png');
+      background-size:contain;
+    }
+  }
+}
 .ninja{
+  margin-left:0.5rem;
   width:32px;
   height:52px;
   overflow:hidden;

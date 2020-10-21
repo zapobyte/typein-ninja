@@ -17,16 +17,20 @@
                 <a class="nav-link dropdown-toggle text-right" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
                   <i class="nes-icon is-small heart" v-if="$store.getters.isAuth"></i>
                   <i class="nes-icon is-small heart is-half" v-else></i>
-                  <small class="small pl-2">{{ $store.getters.isAuth ? `${user.displayName}`:'user'}}</small>
+                  <small class="small pl-2">{{ $store.getters.isAuth ? `${user.displayName}`:'account'}}</small>
                 </a>
                 <ul class="dropdown-menu " aria-labelledby="navbarDropdown">
                 <li class="dropdown-item " v-if="isAuth">
-                    <router-link :to="{name:'Profile',params:{user:$store.getters.getAuthUser }}">
-                    profile</router-link> 
+                    <div @click="toProfile($event)">
+                    profile</div> 
                 </li>
                 <div class="dropdown-divider"  v-if="isAuth"></div>
                 <li class="dropdown-item " v-if="isAuth" @click="logout">
                     <span class=""> logout</span>
+                </li>
+                 <div class="dropdown-divider"></div>
+                 <li class="dropdown-item" v-if="isAuth" @click="deleteAccount">
+                    <span class="text-danger"> delete account</span>
                 </li>
                 <li class="dropdown-item" v-if="!isAuth">
                     <button type="button" class="nes-btn" @click="login">
@@ -46,7 +50,10 @@
 import { 
   googleSignIn,
   logout
-} from '@/functions/firebase.js';
+} from '@/functions/firebase';
+import {
+  deleteCurrentUser
+} from '@/functions/user';
 export default {
   name:'Navbar',
   data(){
@@ -65,11 +72,29 @@ export default {
   methods:{
     logout(){
         logout();
+        window.location.replace('/')
     },
     login(){
       googleSignIn();
+    },
+    toProfile(e){
+      if(this.$route.name.toLowerCase() == "profile"){
+        window.location.reload();
+      } else {
+        const userProfile = this.user;
+        this.$router.push({name:'Profile',params:{user:userProfile}});
+      }
+    },
+    deleteAccount(){
+      const confirmation = confirm("Do you really wanna delete your account?");
+      if(confirmation){
+        deleteCurrentUser();
+      } else {
+        return;
+      }
     }
-  }
+  },
+
 }
 </script>
 

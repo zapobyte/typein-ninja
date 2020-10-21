@@ -1,57 +1,51 @@
 <template>
-  
-    <div class="game--container m-auto">
-      <div id="gametext" class="small text-dark   nes-balloon from-left nes-pointer"></div>
-      <GameAnimation :gameDone="gameDone"/>
-      <div class="game--body mb-2">
-        <div class="row">
-          <div class="col-xs-12 col-md-10">
-            <input type="text" name="inputField" id="textinput" class="nes-input d-inline-flex " @keydown="inputCheck">
-          </div>
-          <div class="col-xs-12 col-md-2 text-right align-self-center">
-            <button class="nes-btn m-auto " type="button"  @click="reset()">reset</button>
-          </div>
-        </div>
+<div class="game--container m-auto">
+  <div id="gametext" class="small text-dark nes-balloon from-left nes-pointer"></div>
+  <GameAnimation :gameDone="gameDone"/>
+  <div class="game--body">
+    <div class="row">
+      <div class="game--difficulty mt-3 col-md-7 col-xs-12 text-left">
+          <details>
+            <summary class="text-uppercase align-items-center">Difficulty
+            <a href="#" class=" text-lowercase nes-badge text-left mr-auto">
+              <span :class="$store.getters.getGameDifficulity ? 'is-success' : 'is-error' ">{{$store.getters.getGameDifficulity}}</span>
+            </a> 
+            </summary>
+            <a href="#" class="nes-badge" @click="setGameDifficulty('easy')">
+              <span :class="$store.getters.getGameDifficulity =='easy' ? 'is-success' : 'is-error' ">easy</span>
+            </a> 
+            <a href="#" class="nes-badge " @click="setGameDifficulty('normal')">
+              <span :class="$store.getters.getGameDifficulity =='normal' ? 'is-success' : 'is-error' ">normal</span>
+            </a> 
+            <a href="#" class="nes-badge " @click="setGameDifficulty('hard')">
+              <span :class="$store.getters.getGameDifficulity =='hard' ? 'is-success' : 'is-error' ">hard</span>
+            </a> 
+        </details>
       </div>
-      <div class="col-12 pt-3">
-        <div class="game--content row align-items-start">
-            <div class="game--difficulty col-7 col-xs-12 text-left">
-              <details>
-                <summary class="text-uppercase align-items-center">Difficulty
-                  <a href="#" class=" text-lowercase nes-badge text-left mr-auto">
-                  <span :class="$store.getters.getGameDifficulity ? 'is-success' : 'is-error' ">{{$store.getters.getGameDifficulity}}</span>
-                  </a> 
-                </summary>
-                  <a href="#" class="nes-badge" @click="setGameDifficulty('easy')">
-                  <span :class="$store.getters.getGameDifficulity =='easy' ? 'is-success' : 'is-error' ">easy</span>
-                </a> 
-                <a href="#" class="nes-badge " @click="setGameDifficulty('normal')">
-                  <span :class="$store.getters.getGameDifficulity =='normal' ? 'is-success' : 'is-error' ">normal</span>
-                </a> 
-                <a href="#" class="nes-badge " @click="setGameDifficulty('hard')">
-                  <span :class="$store.getters.getGameDifficulity =='hard' ? 'is-success' : 'is-error' ">hard</span>
-                </a> 
-              </details>
-            </div>
-            <div class="game--stats col-5 col-xs-12 text-right">
-                <span  title="word per minute">
-                <a href="#" class="nes-badge is-splited">
-                    <span class="is-dark"> WPM</span>
-                    <span class="is-error"> {{wpm}}</span>
-                  </a>
-                </span>
-                
-                <span  title="accuracy">
-                  <a href="#" class="nes-badge is-splited">
-                    <span class="is-dark"> ACC</span>
-                    <span class="is-error"> {{acc}}</span>
-                  </a>
-                </span>
-            </div>
-        </div>
+      <div class="game--stats col-md-5 mt-3 col-xs-12 mb-3 text-right">
+          <span  title="word per minute">
+            <a href="#" class="nes-badge is-splited">
+              <span class="is-dark"> WPM</span>
+              <span class="is-error"> {{wpm}}</span>
+            </a>
+          </span>
+          
+          <span  title="accuracy">
+            <a href="#" class="nes-badge is-splited">
+              <span class="is-dark"> ACC</span>
+              <span class="is-error"> {{acc}}</span>
+            </a>
+          </span>
+      </div>
+      <div class="col-xs-12 col-md-10">
+        <input type="text" name="inputField" id="textinput" class="nes-input d-inline-flex " @keydown="inputCheck">
+      </div>
+      <div class="col-xs-12 col-md-2 text-right align-self-center">
+        <button class="nes-btn m-auto " type="button"  @click="reset()">reset</button>
       </div>
     </div>
-    
+  </div>
+</div> 
 </template>
 
 <script>
@@ -129,13 +123,13 @@ export default {
                 }
                 setTimeout((()=>{
                   this.wordList = [];
-                  textField.innerHTML = '';
-                  textField.style.display="none";
+                  textField.innerHTML = '...';
                 }),500);
                 this.gameDone=true;
                 setTimeout(()=>{
+                  textField.innerHTML = 'Good job on finishing another training. Your experience has increase. Keep on practicing!';
                   this.gameDone = false;
-                },4000);
+                },5000);
             }
             inputField.value = '';
         } 
@@ -157,7 +151,6 @@ export default {
       })
       this.wordList = words;
       this.gameDone=false;
-      textField.style.display="block";
       const inputField = document.querySelector('#textinput');
       inputField.focus();
     },
@@ -171,6 +164,12 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+.game--text{
+  margin-bottom:3rem;
+}
+.game--container{
+  margin-top:10vh !important;
+}
 details{
   summary{
       outline:none;

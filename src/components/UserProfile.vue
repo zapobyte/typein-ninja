@@ -1,6 +1,6 @@
 <template>
-  <div class="nes-container col-12 is-white bg-light text-dark with-title  p-3">
-    <p class="title  bg-light">Stats</p>
+  <div class="nes-container col-12 is-white text-dark with-title bg-white p-3">
+    <p class="title ">Stats</p>
     <div class="row  align-items-center">
       <div class="col-auto align-self-start">
         <img class="nes-avatar is-large" alt="Gravatar image example" :src="user.photoURL"  style="image-rendering: pixelated;">
@@ -51,6 +51,9 @@ export default {
     data(){
         return {}
     },  
+    mounted(){
+        console.log(this.$props)
+    },
     computed:{
         percent(){
          const xp = this.$props.user.xp;
@@ -80,5 +83,7 @@ export default {
     color:#222;
     background-color:#222;
 }
-
+.bg-white{
+    background:white;
+}
 </style>

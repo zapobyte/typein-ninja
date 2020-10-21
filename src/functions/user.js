@@ -92,7 +92,6 @@ export const checkFsUser = async (user)=>{
         }
         return db.collection("users").doc(user.uid)
         .onSnapshot( async function(doc) {
-            const source = doc.metadata.hasPendingWrites ? "Local" : "Server";
             const bestGame = await getBestUserGame(doc.data().uid);
             const data = {
                 ...doc.data(),
@@ -109,4 +108,22 @@ export const checkFsUser = async (user)=>{
  
 }
 
+export const deleteCurrentUser = () =>{
+    const user = firebase.auth().currentUser;
+    let db = firebase.firestore();
+    db.collection("users").doc(user.uid).delete().then( async function() {
+        console.log("Document successfully deleted!");
+        const games = await db.collection("gameHistory").where("uid","==",user.uid).get();
+        games.forEach(async (game)=>{
+            await game.ref.delete();
+        })
+        user.delete().then(function() {
+           window.location.href="/";
+        }).catch(function(error) {
+        // An error happened.
+        });
+    }).catch(function(error) {
+        console.error("Error removing document: ", error);
+    });
 
+}

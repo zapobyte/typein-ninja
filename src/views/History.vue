@@ -9,30 +9,32 @@
     <table class="nes-table is-bordered m-0 mt-4  text-center is-center w-100">
       <thead>
         <tr>
-          <th>AVATAR</th>
+          <th></th>
           <th>NAME</th>
           <th>LVL</th>
-          <th>BEST ACC</th>
-          <th>BEST WPM</th>
+          <th  style="width:110px">BEST ACC</th>
+          <th   style="width:110px">BEST WPM</th>
           <th>DIFFICULTY</th>
+          <th>Date</th>
           <th></th>        
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="user in users" :key="user.uid"  >
-          <td ><img :src="user.photoURL" class="nes-avatar"/></td>
-          <td>{{ user.displayName}}</td>
-          <td>{{ user.lvl}}</td>
-          <td>{{ user.acc}}</td>
-          <td>{{ user.wpm}}</td>
-          <td>{{ user.difficulty}}</td>
-          <td>
-            <button type="button" class="nes-btn" :id="user.uid" @click="goToProfile">Profile</button>
-          </td>  
-        </tr>  
-      </tbody>
-  </table>
-</div>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="user in users" :key="user.uid"  >
+            <td ><img :src="user.photoURL" class="img-fluid"/></td>
+            <td>{{ user.displayName}}</td>
+            <td>{{ user.lvl}}</td>
+            <td>{{ user.acc}}</td>
+            <td>{{ user.wpm}}</td>
+            <td>{{ user.difficulty}}</td>
+            <td>{{ new Date(user.date.seconds * 1000).toString().split('(')[0] }}</td>
+            <td>
+              <button type="button" class="nes-btn" :id="user.uid" @click="goToProfile">Profile</button>
+            </td>  
+          </tr>  
+        </tbody>
+      </table>
+    </div>
   </section>
   
 </template>
@@ -54,14 +56,17 @@ export default {
     },
    async mounted(){
      try {
-       const users = await getUsers();
+        const users = await getUsers();
         users.forEach(async (user)=>{
         const bestGame = await getBestUserGame(user.uid);
+        if(bestGame.date.seconds){
         const data = {
           ...bestGame,
           ...user
         }
         this.searchList.push(data)
+        }
+
       })
      } catch (error) {
        console.log(error)
