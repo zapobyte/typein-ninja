@@ -1,8 +1,10 @@
 # typein-ninja
 
+![ninja](http://typein.ninja/favico.ico);
+
 typein.ninja - Test your typing skills. Train your typing accuracy and speed with a new gameify version.
 
-Features:
+**Features**:
 - 3 difficulty levels: `easy`,`normal`,`hard`.
 - get experience on each test completed and grow your ninja to be the best
 - search other players
