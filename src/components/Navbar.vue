@@ -7,7 +7,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto ">
             <li class="nav-item  ">
-                <router-link class="nav-link text-right" to="/history" aria-expanded="false">
+                <router-link class="nav-link text-right" to="/scoreboard" aria-expanded="false">
                 <i class="nes-icon trophy is-small"></i>
                 <span class="pl-2">scoreboard</span>
                 </router-link>
@@ -24,11 +24,10 @@
                     <div @click="toProfile($event)">
                     profile</div> 
                 </li>
-                <div class="dropdown-divider"  v-if="isAuth"></div>
                 <li class="dropdown-item " v-if="isAuth" @click="logout">
                     <span class=""> logout</span>
                 </li>
-                 <div class="dropdown-divider"></div>
+                 <div class="dropdown-divider"  v-if="isAuth"></div>
                  <li class="dropdown-item" v-if="isAuth" @click="deleteAccount">
                     <span class="text-danger"> delete account</span>
                 </li>

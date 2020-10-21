@@ -5,23 +5,23 @@
       <input type="text" id="search" class="nes-input" v-model="search">
     </div>
 
-    <div class="nes-table-responsive text-dark">
+    <div class="nes-table-responsive text-dark game--list">
     <table class="nes-table is-bordered m-0 mt-4  text-center is-center w-100">
       <thead>
         <tr>
-          <th></th>
+          <th style="width:110px"></th>
           <th>NAME</th>
           <th>LVL</th>
-          <th  style="width:110px">BEST ACC</th>
-          <th   style="width:110px">BEST WPM</th>
+          <th style="width:110px">BEST ACC</th>
+          <th style="width:110px">BEST WPM</th>
           <th>DIFFICULTY</th>
-          <th>Date</th>
-          <th></th>        
+          <th >Date</th>
+          <th ></th>        
           </tr>
         </thead>
         <tbody>
           <tr v-for="user in users" :key="user.uid"  >
-            <td ><img :src="user.photoURL" class="img-fluid"/></td>
+            <td><img :src="user.photoURL" class="nes-avatar"/></td>
             <td>{{ user.displayName}}</td>
             <td>{{ user.lvl}}</td>
             <td>{{ user.acc}}</td>
@@ -96,4 +96,13 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.game--list{
+    height: 75vh;
+    overflow: auto;
+}
+.nes-avatar{
+  width:86px;
+  height:86px;
+  image-rendering: pixelated;
+}
 </style>

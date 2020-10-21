@@ -4,7 +4,7 @@
   <GameAnimation :gameDone="gameDone"/>
   <div class="game--body">
     <div class="row">
-      <div class="game--difficulty mt-3 col-md-7 col-xs-12 text-left">
+      <div class="game--difficulty mt-3 col-md-7 col-xs-12 text-left pb-3">
           <details>
             <summary class="text-uppercase align-items-center">Difficulty
             <a href="#" class=" text-lowercase nes-badge text-left mr-auto">
@@ -127,7 +127,7 @@ export default {
                 }),500);
                 this.gameDone=true;
                 setTimeout(()=>{
-                  textField.innerHTML = 'Good job on finishing another training. Your experience has increase. Keep on practicing!';
+                  textField.innerHTML = 'Good job on finishing another training. Your experience has increased. Keep on practicing!';
                   this.gameDone = false;
                 },5000);
             }
