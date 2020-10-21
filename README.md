@@ -1,4 +1,4 @@
-# ![ninja](http://typein.ninja/favico.ico)typein-ninja
+# ![ninja](http://typein.ninja/ninja.gif)typein-ninja
 
 [typein.ninja](http://typein.ninja) - Test your typing skills. Train your typing accuracy and speed with a new gameify web app and become like a master ninja on a keyboard.
 
