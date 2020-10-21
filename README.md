@@ -1,8 +1,6 @@
 # ![ninja](http://typein.ninja/favico.ico)typein-ninja
 
-
-
-typein.ninja - Test your typing skills. Train your typing accuracy and speed with a new gameify version.
+[typein.ninja](http://typein.ninja) - Test your typing skills. Train your typing accuracy and speed with a new gameify web app and become like a master ninja on a keyboard.
 
 **Features**:
 - 3 difficulty levels: `easy`,`normal`,`hard`.
@@ -20,10 +18,11 @@ typein.ninja - Test your typing skills. Train your typing accuracy and speed wit
 
 and many more. view `package.json` file for all other packages used.
 
-### Project roadmap
+### About the project
 
-All that is being worked on can be view in [issues](https://github.com/zapobyte/typein-ninja/issues) and [project](https://github.com/zapobyte/typein-ninja/projects). If you wish to help please open a [Pull Requset](https://github.com/zapobyte/typein-ninja/pulls) or issue.
+Since the project is open source all that is being worked on can be view in [issues](https://github.com/zapobyte/typein-ninja/issues) and [project](https://github.com/zapobyte/typein-ninja/projects). If you wish to help please open a [Pull Requset](https://github.com/zapobyte/typein-ninja/pulls) or issue.
 
+Thank you and hope you enjoy this project.
 
 ## Project setup
 Since this is a serverless app the backend is firebase managed. To run the application a [Google Firebase](https://firebase.google.com/) account is needed.
