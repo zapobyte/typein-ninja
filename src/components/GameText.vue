@@ -2,7 +2,7 @@
   
     <div class="game--container m-auto">
       <div id="gametext" class="small text-dark   nes-balloon from-left nes-pointer"></div>
-      <GameAnimation />
+      <GameAnimation :gameDone="gameDone"/>
       <div class="game--body mb-2">
         <div class="row">
           <div class="col-xs-12 col-md-10">
@@ -76,6 +76,7 @@ export default {
       startDate:0,
       acc:0,
       wpm:0,
+      gameDone:false,
     }
   }, 
   mounted(){
@@ -107,31 +108,34 @@ export default {
               }
               this.currentWord++;
             } else if(this.currentWord === this.wordList.length -1){
-                  const correct = inputField.value == this.wordList[this.currentWord];
-                  if(correct){
-                    this.correctKeys += this.wordList[this.currentWord].length;
-                    children[this.currentWord].classList.add('text-success'); 
-                  } else {
-                    children[this.currentWord].classList.add('text-danger');
-                  }
-                  const result = calculateResult(this.wordList,this.correctKeys,this.startDate);
-                  this.acc = result.acc;
-                  this.wpm = result.wpm;
-                  const gameOk = this.acc > 0 && this.wpm > 0;
-                  if(gameOk &&  this.isAuth){
-                    this.$store.dispatch('addGameHistory',{
-                      acc:this.acc,
-                      wpm:this.wpm,
-                      difficulty:this.$store.getters.getGameDifficulity,
-                      date:new Date(this.startDate)
-                    });
-                 
-                  }
+                const correct = inputField.value == this.wordList[this.currentWord];
+                if(correct){
+                  this.correctKeys += this.wordList[this.currentWord].length;
+                  children[this.currentWord].classList.add('text-success'); 
+                } else {
+                  children[this.currentWord].classList.add('text-danger');
+                }
+                const result = calculateResult(this.wordList,this.correctKeys,this.startDate);
+                this.acc = result.acc;
+                this.wpm = result.wpm;
+                const gameOk = this.acc > 0 && this.wpm > 0;
+                if(gameOk &&  this.isAuth){
+                  this.$store.dispatch('addGameHistory',{
+                    acc:this.acc,
+                    wpm:this.wpm,
+                    difficulty:this.$store.getters.getGameDifficulity,
+                    date:new Date(this.startDate)
+                  });
+                }
                 setTimeout((()=>{
                   this.wordList = [];
                   textField.innerHTML = '';
                   textField.style.display="none";
                 }),500);
+                this.gameDone=true;
+                setTimeout(()=>{
+                  this.gameDone = false;
+                },4000);
             }
             inputField.value = '';
         } 
@@ -152,6 +156,7 @@ export default {
         textField.innerHTML+=`<span>${word} </span>`;
       })
       this.wordList = words;
+      this.gameDone=false;
       textField.style.display="block";
       const inputField = document.querySelector('#textinput');
       inputField.focus();
