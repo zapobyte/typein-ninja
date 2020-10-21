@@ -1,6 +1,6 @@
-# typein-ninja
+# ![ninja](http://typein.ninja/favico.ico)typein-ninja
 
-![ninja](http://typein.ninja/favico.ico);
+
 
 typein.ninja - Test your typing skills. Train your typing accuracy and speed with a new gameify version.
 
@@ -14,7 +14,7 @@ typein.ninja - Test your typing skills. Train your typing accuracy and speed wit
 
 ## Used to make this project
 - [NodeJS](https://nodejs.org) - NodeJS
-- [VueJS][https://vuejs.org/] - Frontend Framework
+- [VueJS](https://vuejs.org/) - Frontend Framework
 - [ness.css](https://nostalgic-css.github.io/NES.css/) - NES.css is NES-style (8bit-like) CSS Framework.
 - [Ninja Asset Pack](https://finalgatestudios.itch.io/ninja-asset-pack) - original assets used in the project
 
