@@ -127,7 +127,7 @@ export default {
                 }),500);
                 this.gameDone=true;
                 setTimeout(()=>{
-                  textField.innerHTML = 'Good job on finishing another training. Your experience has increased. Keep on practicing!';
+                  textField.innerHTML = this.isAuth ? 'Good job on finishing another training. Your experience has increased. Keep on practicing!' : "Good job on finishing another training. Keep on practicing.";
                   this.gameDone = false;
                 },5000);
             }
