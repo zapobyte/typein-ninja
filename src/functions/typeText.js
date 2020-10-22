@@ -1,4 +1,6 @@
 import wordsJSON from '@/assets/words.json';
+import store from "@/store/index";
+
 export const calculateResult = (wordList,correctKeys,startDate) => {
     let words, minute, acc;
     words = correctKeys / 5;    
@@ -15,18 +17,8 @@ export const calculateResult = (wordList,correctKeys,startDate) => {
 export const generateText = (gameDifficulty) =>{
     let count = 0;
     let bookOfKnowledge = [];
-    switch(gameDifficulty){
-        case 'easy':
-            count = 10;
-            break
-        case 'normal':
-            count = 25;
-            break;
-        case 'hard':
-            count = 50;
-            break;
-    }
-
+    const difficulties = store.getters.getDifficulities;
+    count = difficulties[gameDifficulty].count;
     for(let i=0;i<count;i++){
         const randomWord = Math.floor(Math.random() * wordsJSON.length);
         bookOfKnowledge.push(wordsJSON[randomWord].toLowerCase());

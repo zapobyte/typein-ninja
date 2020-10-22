@@ -5,8 +5,6 @@ import store from './store'
 import "nes.css/css/nes.min.css";
 import VueAnalytics from 'vue-analytics';
 require('dotenv').config();
-import { defineCustomElements as defineIonPhaser } from '@ion-phaser/core/loader';
-defineIonPhaser(window);
 
 Vue.config.productionTip = false
 //and then use it in main.js

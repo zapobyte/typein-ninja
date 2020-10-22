@@ -55,18 +55,8 @@ const state = {
             uid:user.uid
         }
         createGameHistory(newGameEntry);
-        let xp = 0;
-        switch(value.difficulty){
-            case 'easy':
-                xp = 100;
-                break;
-            case 'normal':
-                xp = 175;
-                break;
-            case 'hard':
-                xp = 250;
-                break;
-        }
+        const difficulties = context.getters.getDifficulities;
+        let xp = difficulties[value.difficulty].xp;
         let newXp = Number(user.xp) + xp;
         let newLvl = Math.floor(newXp / 1000);
         const data = {

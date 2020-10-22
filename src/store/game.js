@@ -1,13 +1,30 @@
 
 const state = {
     gameDifficulty:'easy',
+    difficulty:{
+        easy:{
+            xp:75,
+            count:10
+        },
+        normal:{
+            xp:100,
+            count:25
+        },
+        hard:{
+            xp:125,
+            count:50
+        }
+    },
     loading:false,
   };
   
 const getters = {
+    getDifficulities(state){
+        return state.difficulty;
+    },
     getGameDifficulity(state){
         return state.gameDifficulty;
-      },
+    },
     getLoading(state){
         return state.loading;
     }

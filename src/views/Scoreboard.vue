@@ -11,7 +11,7 @@
         <tr>
           <th style="width:110px"></th>
           <th>NAME</th>
-          <th>LVL</th>
+          <th  style="width:110px">LVL</th>
           <th style="width:110px">BEST ACC</th>
           <th style="width:110px">BEST WPM</th>
           <th>DIFFICULTY</th>
