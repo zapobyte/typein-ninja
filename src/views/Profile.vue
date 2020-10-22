@@ -16,7 +16,6 @@ export default {
         UserProfile,
         GameHistory
     },
-
     data(){
       return {
         user:{}

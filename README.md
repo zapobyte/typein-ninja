@@ -9,6 +9,11 @@
 - view yours and others best score
 - view your game history
 
+:video_game: **How to Play**:
+If you want to save your progress and get higher in level and benefit from all the features that the app has you would have to login with a google account via Google Signin.
+To play the user has to start typing in the text input field and as soon as the first key is struck the test has started.
+Each new word is counted when pressing `space`. To reset a game press the `reset` button at any time.
+To change the difficulty click the difficulty and select a new one.
 
 ## Used to make this project
 - [NodeJS](https://nodejs.org) - NodeJS
