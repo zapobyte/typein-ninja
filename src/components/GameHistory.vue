@@ -1,7 +1,6 @@
 <template>
   <section class="pt-4 game--history">
     <div>
-        <i class="nes-logo ml-2 is-small d-inline-flex"></i>
         <span>HISTORY</span>
     </div>
     <div class="nes-table-responsive text-dark  game--list">
