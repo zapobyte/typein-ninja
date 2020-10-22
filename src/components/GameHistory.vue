@@ -1,6 +1,9 @@
 <template>
   <section class="pt-4 game--history">
-    <p>GAMES HISTORY</p>
+    <div>
+        <i class="nes-logo ml-2 is-small d-inline-flex"></i>
+        <span>HISTORY</span>
+    </div>
     <div class="nes-table-responsive text-dark  game--list">
     <table class="nes-table is-bordered is-centered w-100 text-center">
         <thead>
@@ -63,5 +66,10 @@ export default {
 }
 .w-100{
     width:calc(100% - 10px) !important;
+}
+.is-small{
+    transform: scale(0.8);
+    margin:auto;
+    align-self: center;
 }
 </style>
