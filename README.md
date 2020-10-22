@@ -22,7 +22,11 @@ and many more. view `package.json` file for all other packages used.
 
 Since the project is open source all that is being worked on can be view in [issues](https://github.com/zapobyte/typein-ninja/issues) and [project](https://github.com/zapobyte/typein-ninja/projects). If you wish to help please open a [Pull Requset](https://github.com/zapobyte/typein-ninja/pulls) or issue.
 
-Thank you and hope you enjoy this project.
+
+If you like and enjoy this, consider buying a coffee. Would be much appreciated <a href='https://ko-fi.com/Y8Y62AE28' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://cdn.ko-fi.com/cdn/kofi5.png?v=2' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>.
+
+:heart: Thank you and hope you enjoy this project.
+
 
 ## Project setup
 Since this is a serverless app the backend is firebase managed. To run the application a [Google Firebase](https://firebase.google.com/) account is needed.
