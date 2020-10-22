@@ -25,6 +25,10 @@ html,body {
 }
 a{
   text-decoration: none !important;
+  transition: 0.1s all ease-in;
+  :hover{
+    transition: 0.1s all ease-in;
+  }
 }
 .loading{
   text-align: center;

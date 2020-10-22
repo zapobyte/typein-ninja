@@ -38,7 +38,7 @@
           </span>
       </div>
       <div class="col-xs-12 col-md-10">
-        <input type="text" name="inputField" id="textinput" class="nes-input d-inline-flex " @keydown="inputCheck">
+        <input type="text" name="inputField" id="textinput" class="nes-input d-inline-flex " @keydown="inputCheck" :placeholder="inputPlaceholder">
       </div>
       <div class="col-xs-12 col-md-2 text-right align-self-center">
         <button class="nes-btn m-auto " type="button"  @click="reset()">reset</button>
@@ -52,7 +52,7 @@
 import { mapGetters } from 'vuex';
 import GameAnimation from '@/components/GameAnimation.vue';
 
-import { 
+import {  
   calculateResult,
   generateText,
 } from '@/functions/typeText';
@@ -71,6 +71,7 @@ export default {
       acc:0,
       wpm:0,
       gameDone:false,
+      inputPlaceholder:"Start typing to initiate the test..."
     }
   }, 
   mounted(){
@@ -86,6 +87,7 @@ export default {
       let textField = document.getElementById('gametext');
       let children = textField.childNodes;
       if(this.currentWord === 0 && inputField.value === ''){
+        this.inputPlaceholder = "";
         this.startDate = Date.now();
       }
       if(e.key === ' '){
@@ -127,7 +129,7 @@ export default {
                 }),500);
                 this.gameDone=true;
                 setTimeout(()=>{
-                  textField.innerHTML = 'Good job on finishing another training. Your experience has increased. Keep on practicing!';
+                  textField.innerHTML = this.isAuth ? 'Good job on finishing another training. Your experience has increased. Keep on practicing!' : "Good job on finishing another training. Keep on practicing.";
                   this.gameDone = false;
                 },5000);
             }
@@ -164,6 +166,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+.nes-input{
+  &::placeholder {
+    font-size:0.9rem;
+  }
+}
 .game--text{
   margin-bottom:3rem;
 }
@@ -181,12 +188,11 @@ details{
   margin:0.5rem;
 
 }
- .nes-badge.is-splited{
+.nes-badge.is-splited{
   padding:0;
   margin:0.5rem;
   font-size:0.7rem !important;
-
- }
+}
 .game--container{
   @media screen and (min-width: 980px) {
     width:70%;
@@ -195,7 +201,6 @@ details{
     color:#222;
     min-width:100%;
   }
-
 }
 #textinput:focus{
   border-color:#f2f2f2;

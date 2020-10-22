@@ -6,8 +6,8 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto ">
-            <li class="nav-item  ">
-                <router-link class="nav-link text-right" to="/scoreboard" aria-expanded="false">
+            <li class="nav-item">
+                <router-link class="nav-link text-right" :class="$route.name == 'Scoreboard' ? 'active' : ''" to="/scoreboard" aria-expanded="false">
                 <i class="nes-icon trophy is-small"></i>
                 <span class="pl-2">scoreboard</span>
                 </router-link>
@@ -17,26 +17,26 @@
                 <a class="nav-link dropdown-toggle text-right" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
                   <i class="nes-icon is-small heart" v-if="$store.getters.isAuth"></i>
                   <i class="nes-icon is-small heart is-half" v-else></i>
-                  <small class="small pl-2">{{ $store.getters.isAuth ? `${user.displayName}`:'account'}}</small>
+                  <small class="small pl-2" :class="$route.name == 'Profile' ? 'text-white' : ''">{{ $store.getters.isAuth ? `${user.displayName}`:'account'}}</small>
                 </a>
                 <ul class="dropdown-menu " aria-labelledby="navbarDropdown">
-                <li class="dropdown-item " v-if="isAuth">
-                    <div @click="toProfile($event)">
-                    profile</div> 
-                </li>
-                <li class="dropdown-item " v-if="isAuth" @click="logout">
-                    <span class=""> logout</span>
-                </li>
-                 <div class="dropdown-divider"  v-if="isAuth"></div>
-                 <li class="dropdown-item" v-if="isAuth" @click="deleteAccount">
-                    <span class="text-danger"> delete account</span>
-                </li>
-                <li class="dropdown-item" v-if="!isAuth">
-                    <button type="button" class="nes-btn" @click="login">
-                    <i class="nes-icon google is-small"></i>
-                    Signin with Google
-                    </button>
-                </li>
+                  <li class="dropdown-item " v-if="isAuth">
+                      <div @click="toProfile($event)">
+                      profile</div> 
+                  </li>
+                  <li class="dropdown-item " v-if="isAuth" @click="logout">
+                      <span class=""> logout</span>
+                  </li>
+                  <div class="dropdown-divider"  v-if="isAuth"></div>
+                  <li class="dropdown-item" v-if="isAuth" @click="deleteAccount">
+                      <span class="text-danger"> delete account</span>
+                  </li>
+                  <li class="dropdown-item" v-if="!isAuth">
+                      <button type="button" class="nes-btn" @click="login">
+                      <i class="nes-icon google is-small"></i>
+                      Signin with Google
+                      </button>
+                  </li>
                 </ul>
             </li>
           </ul>
@@ -104,4 +104,5 @@ export default {
   }
   border:0;
 }
+
 </style>

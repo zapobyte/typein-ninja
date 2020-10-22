@@ -1,6 +1,6 @@
 # ![ninja](http://typein.ninja/ninja.gif)typein-ninja
 
-[typein.ninja](http://typein.ninja) - Test your typing skills. Train your typing accuracy and speed with a new gameify web app and become like a master ninja on a keyboard.
+[typein.ninja](http://typein.ninja) - Test your typing skills. Train your typing accuracy and speed with a new gamify web app and become like a master ninja on a keyboard.
 
 **Features**:
 - 3 difficulty levels: `easy`,`normal`,`hard`.
@@ -20,24 +20,20 @@ and many more. view `package.json` file for all other packages used.
 
 ### About the project
 
-The project is open source all that is being worked on can be view in [issues](https://github.com/zapobyte/typein-ninja/issues) and [project](https://github.com/zapobyte/typein-ninja/projects). If you wish to help please open a [Pull Requset](https://github.com/zapobyte/typein-ninja/pulls) or issue.
+The project is open source and all that is being worked on can be view in [issues](https://github.com/zapobyte/typein-ninja/issues) and [project](https://github.com/zapobyte/typein-ninja/projects). If you wish to help please open a [Pull Requset](https://github.com/zapobyte/typein-ninja/pulls) or issue.
 
 
 If you like and enjoy this,might consider buying a coffee. Would be much appreciated <a href='https://ko-fi.com/Y8Y62AE28' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://cdn.ko-fi.com/cdn/kofi5.png?v=2' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>.
 
-:heart: Thank you for droping by.
+:heart: Thank you for dropping by.
 
 
 ## Project setup
-Since this is a serverless app the backend is firebase managed. To run the application a [Google Firebase](https://firebase.google.com/) account is needed.
-
-Firebase integration that needs configuration :
-- google cloud firestore
-- google analytics
+This is a serverless app the backend is firebase managed. To run the application a [Google Firebase](https://firebase.google.com/) account is needed.
 
 The config is setup using env variables which are found in `.env` file. A sample config looks like:
 ```
-VUE_APP_API_KEY=A
+VUE_APP_API_KEY=
 VUE_APP_AUTH_DOMAIN=
 VUE_APP_DB_URL=
 VUE_APP_PROJECT_ID=
