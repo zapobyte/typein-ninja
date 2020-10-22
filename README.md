@@ -26,6 +26,11 @@ Thank you and hope you enjoy this project.
 
 ## Project setup
 Since this is a serverless app the backend is firebase managed. To run the application a [Google Firebase](https://firebase.google.com/) account is needed.
+
+Firebase integration that needs configuration :
+- google cloud firestore
+- google analytics
+
 The config is setup using env variables which are found in `.env` file. A sample config looks like:
 ```
 VUE_APP_API_KEY=A
