@@ -20,12 +20,12 @@ and many more. view `package.json` file for all other packages used.
 
 ### About the project
 
-Since the project is open source all that is being worked on can be view in [issues](https://github.com/zapobyte/typein-ninja/issues) and [project](https://github.com/zapobyte/typein-ninja/projects). If you wish to help please open a [Pull Requset](https://github.com/zapobyte/typein-ninja/pulls) or issue.
+The project is open source all that is being worked on can be view in [issues](https://github.com/zapobyte/typein-ninja/issues) and [project](https://github.com/zapobyte/typein-ninja/projects). If you wish to help please open a [Pull Requset](https://github.com/zapobyte/typein-ninja/pulls) or issue.
 
 
-If you like and enjoy this, consider buying a coffee. Would be much appreciated <a href='https://ko-fi.com/Y8Y62AE28' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://cdn.ko-fi.com/cdn/kofi5.png?v=2' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>.
+If you like and enjoy this,might consider buying a coffee. Would be much appreciated <a href='https://ko-fi.com/Y8Y62AE28' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://cdn.ko-fi.com/cdn/kofi5.png?v=2' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>.
 
-:heart: Thank you and hope you enjoy this project.
+:heart: Thank you for droping by.
 
 
 ## Project setup
