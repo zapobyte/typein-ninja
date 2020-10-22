@@ -38,7 +38,7 @@
           </span>
       </div>
       <div class="col-xs-12 col-md-10">
-        <input type="text" name="inputField" id="textinput" class="nes-input d-inline-flex " @keydown="inputCheck">
+        <input type="text" name="inputField" id="textinput" class="nes-input d-inline-flex " @keydown="inputCheck" placeholder="Start typeing to initate the test...">
       </div>
       <div class="col-xs-12 col-md-2 text-right align-self-center">
         <button class="nes-btn m-auto " type="button"  @click="reset()">reset</button>
