@@ -29,7 +29,7 @@
                   </li>
                   <div class="dropdown-divider"  v-if="isAuth"></div>
                   <li class="dropdown-item" v-if="isAuth" @click="deleteAccount">
-                      <span class="text-danger"> delete account</span>
+                      <span class="text-danger">   <i class="nes-icon close is-small"></i> delete account</span>
                   </li>
                   <li class="dropdown-item" v-if="!isAuth">
                       <button type="button" class="nes-btn" @click="login">
@@ -77,12 +77,7 @@ export default {
       googleSignIn();
     },
     toProfile(e){
-      if(this.$route.name.toLowerCase() == "profile"){
-        window.location.reload();
-      } else {
-        const userProfile = this.user;
-        this.$router.push({name:'Profile',params:{user:userProfile}});
-      }
+        this.$router.push({path:`/profile/${this.user.uid}`});
     },
     deleteAccount(){
       const confirmation = confirm("Do you really wanna delete your account?");

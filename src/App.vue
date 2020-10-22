@@ -30,6 +30,9 @@ a{
     transition: 0.1s all ease-in;
   }
 }
+.nes-avatar{
+    border:2px solid #222;
+}
 .loading{
   text-align: center;
   width:auto;

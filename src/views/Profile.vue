@@ -1,34 +1,36 @@
 <template>
   <section class="pt-4 profile">
     <UserProfile :user="user" />
-    <GameHistory v-if="userAuth.uid == $props.user.uid"/>
+    <GameHistory v-if="userAuth.uid == user.uid"/>
   </section>
 </template>
 <script>
 import UserProfile from '@/components/UserProfile';
 import store from '@/store/index';
 import GameHistory from '@/components/GameHistory';
-
+import {getUser} from '@/functions/user';
+import {getBestUserGame} from "@/functions/gameHistory";
 export default {
     name:'Profile',
     components:{
         UserProfile,
         GameHistory
     },
-    props:{
-      user:{
-        type: Object,
-        default:()=>{
-            return store.getters.getAuthUser
-        }
-      }
-    },
+
     data(){
       return {
-
+        user:{}
       }
     },
-    mounted(){
+    async mounted(){
+      let dbUser;
+      const uid = this.$route.params.uid == this.$store.getters.getAuthUser.uid ?this.$store.getters.getAuthUser.uid : this.$route.params.uid ;
+      dbUser = await getUser(uid);
+      const bestGame = await getBestUserGame(uid)
+      this.user = {
+        ...dbUser,
+        ...bestGame
+      }
     },
     computed:{
       userAuth(){

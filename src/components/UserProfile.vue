@@ -10,13 +10,15 @@
                 <div class="col-12 ">
                     <div class="row no-gutters ">
                         <div class="text-left col-xs-12 col-md-6">
-                            <p class="text-left ml-auto">
+                            <p class="m-0 p-1 text-left ml-auto">
                                 {{ user ? user.displayName : '' }}
                             </p>
-                            <p class="text-left ml-auto">
-                                <i class="nes-icon  star"></i> LVL {{ user ? user.lvl : '' }}
+                            <p class="m-0 p-1 text-left ml-auto">
+                                <small><i class="nes-icon is-small star"></i> LVL {{ user ? user.lvl : '' }}</small>
                             </p>
-                            <progress class="progress--bar" :value="percent" max="100"></progress>
+                            <div class="progress" v-if="user.uid == this.userAuth.uid">
+                                <div class="progress-bar" role="progressbar" :style="'width:' + percent + '%'" aria-valuenow="percent" :aria-valuemin="percent" aria-valuemax="100" >{{percent}}%</div>
+                            </div>
                         </div>
                         <div class="text-right col-xs-12 col-md-6">
                             <i class="nes-icon trophy "></i>
@@ -52,9 +54,11 @@ export default {
         return {}
     },  
     mounted(){
-        console.log(this.$props)
     },
     computed:{
+        userAuth(){
+            return this.$store.getters.getAuthUser;
+        },
         percent(){
          const xp = this.$props.user.xp;
             if(xp){
@@ -77,13 +81,11 @@ export default {
         max-height:48px;
     }
 }
-.progress--bar{
-    width:100%;
-    height:3px;
-    color:#222;
-    background-color:#222;
+.progress-bar{
+    background:#f2c409 !important;
 }
 .bg-white{
     background:white;
 }
+
 </style>

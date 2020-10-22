@@ -85,8 +85,7 @@ export default {
         try {
             const user = this.searchList.filter(user => user.uid == e.target.id);
             this.$router.push({
-              name:'Profile', 
-              params: { user: user[0] }
+              path:`/profile/${user[0].uid}`
             })
         } catch (error) {
           console.log(error)
