@@ -1,63 +1,64 @@
 <template>
-  <div id="app" class="min-vh-100 d-flex">
-    <div class="container d-flex flex-column align-items-center">
-      <header class="header">
-       <Navbar />
-      </header>
-      <router-view class="flex-grow-1"/>
-      <footer class="footer p-2">
-        <small class="small">copyright <i class="far fa-copyright"></i> typein.ninja</small>
-      </footer>
-    </div>
+  <div id="app" class="min-vh-100 container"  v-if="!loading"> 
+    <Navbar />
+    <router-view />
+    <BottomFooter />
+  </div>
+  <div class="loading" v-else>
+    <p>LOADING</p>
+    <img src="~@/assets/loading.gif" class="img-fluid" />
   </div>
 </template>
 
 <style lang="scss">
-
-@font-face {
-  font-family: 'NotoSans';
-  src: url('./assets/fonts/yumin.ttf');
-}
-
 html,body {
-font-family: 'Noto Sans JP', sans-serif;
+  font-family: 'Press Start 2P', cursive;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: white !important;
+  background:rgb(55,37,56) !important;
+  font-size:14px;
+}
+
+#app{
+  position: relative;
+}
+a{
+  text-decoration: none !important;
+}
+.loading{
   text-align: center;
-  color: #2c3e50;
-  font-size:18px;
+  width:auto;
+  height:300px;
+  position:absolute;
+  margin:auto;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
 }
-
-.header{
-  display:block;
-  width:100%;
-  & nav ul li i{
-    min-width:1.5rem;
-  }
-}
-
 </style>
 
 <script>
 import { 
   firebaseInit,
-  googleSignIn,
-  logout
 } from '@/functions/firebase.js';
-import Navbar from '@/components/Navbar'
+import Navbar from '@/components/Navbar';
+import BottomFooter from '@/components/BottomFooter';
+
 export default {
   name:'App',
   components:{
-    Navbar
+    Navbar,
+    BottomFooter
   },
   data(){
     return {
-
     }
   },
   computed:{
-    isAuth(){
-      return this.$store.getters.isAuth;
+    loading(){
+      return this.$store.getters.getLoading
     }
   },
   created(){
@@ -67,8 +68,3 @@ export default {
   }
 }
 </script>
-<style lang="scss" >
-body{
-  background:#f1f1f1;
-}
-</style>

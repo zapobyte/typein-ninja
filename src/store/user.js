@@ -1,20 +1,17 @@
 import {
     checkFsUser,
     updateUser as updateUserFs
-} from '@/functions/firestore'
+} from '@/functions/user'
 const state = {
     user:{},
     users:[],
     token:'',
-    gameDifficulty:'easy'
+
   };
   
 const getters = {
-    getGameDifficulity(state){
-        return state.gameDifficulty;
-      },
     isAuth(state){
-        return state.token.length > 0 ? true : false;
+        return state.token && state.token.length > 0 ? true : false;
     },
     getAuthUser:(state) => {
         return state.user;
@@ -48,9 +45,7 @@ const mutations = {
     setUsers(state,value){
         state.users= value;
     },
-    setDifficulty(state,value){
-        state.gameDifficulty= value;
-    },
+
 };
   
 const actions = {
@@ -60,6 +55,7 @@ const actions = {
       },
       authenticate({commit}, token){
         commit('setToken',token);
+        localStorage.setItem('token',token)
       },
       async updateUser({commit},data){
             await updateUserFs(data);
@@ -71,10 +67,7 @@ const actions = {
       },
       async addUserXp({commit},data){
         commit('setUserXp',data)
-      },
-      async setGameDifficulty({commit},data){
-        commit('setDifficulty',data)
-      },
+      }
   };
   
 export default {

@@ -1,6 +1,7 @@
 import {
     createGameHistory
-} from '@/functions/firestore'
+} from '@/functions/gameHistory';
+
 import store from '@/store/index';
 
 const state = {
@@ -73,7 +74,7 @@ const state = {
             lvl:newLvl > 1 ? newLvl:1
         }
         store.dispatch('updateUser',data);
-        context.commit('setScore',value);
+        context.commit('setScore',data);
     }
   };
   
