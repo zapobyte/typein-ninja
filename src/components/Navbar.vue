@@ -80,7 +80,11 @@ export default {
     },
     toProfile(e){
       e.preventDefault();
-      window.location.href = `/profile/${this.user.uid}`;
+      if(this.user.uid == this.$route.params.uid || this.$route.name =="Profile"){
+        window.location.reload();
+      } else {
+        this.$router.push({path: `/profile/${this.user.uid}`})
+      }
     },
     deleteAccount(){
       const confirmation = confirm("Do you really wanna delete your account?");
