@@ -1,14 +1,8 @@
 <template>
   <div class="animation--container">
-  <!--   <ion-phaser
-      v-bind:game.prop='config'
-      v-bind:initialize.prop='initialize'
-      v-if="initialize"/> -->
-      <div class="ninja"  v-if="!gameDone">
-        <img src="@/assets/gameAssets/spritesheets/idle-Sheet.png" class="ninja--player ninja--player__idle pixelated" alt="ninja player"/>
-      </div>
-      <div class="ninja"  v-else>
-        <img src="@/assets/gameAssets/spritesheets/slash-Sheet.png" class="ninja--player ninja--player__attack pixelated" alt="ninja player"/>
+      <div class="ninja">
+        <img  v-if="!gameDone" src="@/assets/gameAssets/spritesheets/idle-Sheet.png" class="ninja--player ninja--player__idle pixelated" alt="ninja player"/>
+        <img  v-else src="@/assets/gameAssets/spritesheets/slash-Sheet.png" class="ninja--player ninja--player__attack pixelated" alt="ninja player"/>
       </div>
       <div class="bg">
           <div class="bg--terrain__dummy"></div>

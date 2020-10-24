@@ -40,15 +40,6 @@ const mutations = {
 };  
   
 const actions = {
-        async loadGame({commit,dispatch},user){
-            if(user){
-                try {
-                    dispatch('checkFsUser', user);
-                } catch (error) {
-                    console.log(error)
-                }
-            }
-        },
         async setGameDifficulty({commit},gameDifficulty){
             commit('setGameDifficulty',gameDifficulty)
         },

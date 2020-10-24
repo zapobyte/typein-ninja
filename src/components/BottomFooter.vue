@@ -1,16 +1,16 @@
 <template>
-    <footer class="w-100 footer">
-        <section class="container footer--content  mb-2 text-center">
-            <a href="https://ko-fi.com/zapobyte" class="coinJump" target="_blank">
+    <footer class="col-12 align-self-end text-center footer">
+        <a href="https://ko-fi.com/zapobyte" class="coinJump" target="_blank">
             <i class="nes-icon coin is-small mr-1"></i>
-                <small>buy me a coffee</small>
-            </a>
-            <small><a class="text-text-center pl-2" href="https://github.com/zapobyte/typein-ninja">
-                <i class="nes-icon is-small mr-1 github"></i>github
-            </a></small>
-            <p class="m-0 p-0"><small> &copy;<a href="https://typein.ninja" class=" pl-1">typein.ninja</a>
-            </small></p>
-        </section>
+            <small>buy me a coffee</small>
+        </a>
+        <a class="text-text-center pl-2" href="https://github.com/zapobyte/typein-ninja">
+            <small><i class="nes-icon is-small mr-1 github"></i>github</small>
+        </a>
+        <p>
+            <small>&copy;</small><a href="https://typein.ninja" class="text-right w-100 pl-1"><small>typein.ninja
+            </small></a>
+        </p>
     </footer>
 </template>
 
@@ -40,12 +40,6 @@ a{
     }
 }
 .footer{
-    position:absolute;
-    bottom:0;
     width:100%;
-    &--content{
-        padding-top:40px;
-        padding-right:15px;
-    }
 }
 </style>

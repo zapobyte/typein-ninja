@@ -1,8 +1,10 @@
 <template>
-  <div id="app" class="min-vh-100 container"  v-if="!loading"> 
-    <Navbar />
-    <router-view />
-    <BottomFooter />
+  <div id="app" class="container"  v-if="!loading"> 
+    <div class="row no-gutters flex-column align-items-start min-vh-100">
+      <Navbar />
+      <router-view class="router"/>
+      <BottomFooter />
+    </div>
   </div>
   <div class="loading" v-else>
     <p>LOADING</p>
@@ -19,9 +21,8 @@ html,body {
   background:rgb(55,37,56) !important;
   font-size:14px;
 }
-
-#app{
-  position: relative;
+small{
+  font-size:70% !important;
 }
 a{
   text-decoration: none !important;
@@ -30,9 +31,14 @@ a{
     transition: 0.1s all ease-in;
   }
 }
-.nes-avatar{
-    border:2px solid #222;
+
+.router{
+  flex:1;
 }
+.nes-avatar{
+  border:2px solid #222;
+}
+
 .loading{
   text-align: center;
   width:auto;

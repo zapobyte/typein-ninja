@@ -3,8 +3,8 @@
     <p class="title ">Stats</p>
     <div class="row  align-items-center">
       <div class="col-auto align-self-start">
-        <img class="nes-avatar is-large" alt="Gravatar image example" :src="user.photoURL"  style="image-rendering: pixelated;">
-        </div>
+        <img class="nes-avatar is-large" alt="Gravatar image example" :src="user.photoURL" style="image-rendering: pixelated;">
+    </div>
         <div class="col">
             <div class="row align-items-start">
                 <div class="col-12 ">
@@ -24,12 +24,18 @@
                             <i class="nes-icon trophy "></i>
                             <a href="#" class="nes-badge  is-small is-splited mr-3">
                                 <span class="is-dark ">wpm</span>
-                                <span class="is-success">  {{user.wpm}}</span>
+                                <span class="is-success">{{user.best ? user.best.wpm : '0'}}</span>
                             </a>
-                            <i class="nes-icon trophy "></i>
-                            <a href="#" class="nes-badge  is-small is-splited">
+                            <i class="nes-icon trophy"></i>
+                            <a href="#" class="nes-badge  is-small is-splited mr-3">
                                 <span class="is-dark ">acc</span>
-                                <span class="is-success">  {{user.acc}}</span>
+                                <span class="is-success">   {{user.best ? user.best.acc : '0'}}</span>
+                            </a>
+                            <a href="#" class="nes-badge  is-small is-splited">
+                                <span class="is-dark ">@</span>
+                                <span class="is-warning">
+                                    <small>{{user.best && user.best.difficulty.length > 1 ? user.best.difficulty : 'N/A'}}</small>
+                                </span>
                             </a>
                         </div>
                     </div>
@@ -67,7 +73,6 @@ export default {
                 const xpPercent = Number(fourDigits) / 10;
                 return xpPercent;
             }
-       
         }
     }
 }
@@ -77,8 +82,8 @@ export default {
 <style scoped lang="scss">
 .user{
     &-avatar{
-        max-width:48px;
-        max-height:48px;
+        width:64px !important;
+        height:64px !important;
     }
 }
 .progress-bar{

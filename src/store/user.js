@@ -1,13 +1,13 @@
 import {
-    checkFsUser,
+    getOrCreateFsUser,
+    updateUserBest,
     updateUser as updateUserFs
 } from '@/functions/user'
 const state = {
     user:{},
     users:[],
     token:'',
-
-  };
+};
   
 const getters = {
     isAuth(state){
@@ -49,25 +49,41 @@ const mutations = {
 };
   
 const actions = {
-    async setUser({commit},user)
-    {
+    async setUser({commit},user){
         commit('setUser',user);
-      },
-      authenticate({commit}, token){
-        commit('setToken',token);
-        localStorage.setItem('token',token)
-      },
-      async updateUser({commit},data){
+    },
+    async authenticate({commit},{user, token}){
+        if(!user){
+            return;
+        }
+        try {
+            await getOrCreateFsUser(user);
+            commit('setToken',token);
+            localStorage.setItem('token',token);
+        } catch (error) {
+            console.log(error);
+            return error.message;   
+        }
+    },
+    async updateUserBestGame(context,data){
+        try{
+            await updateUserBest(data);
+        } catch(error){
+            console.log(error);
+            return error.message;  
+        }
+    },
+    async updateUser(context,data){
+        try{
             await updateUserFs(data);
-      },
-      async checkFsUser({
-        commit
-      },user){
-        await checkFsUser(user);
-      },
-      async addUserXp({commit},data){
+        } catch(error){
+            console.log(error);
+            return error.message;  
+        }
+    },
+    async addUserXp({commit},data){
         commit('setUserXp',data)
-      }
+    }
   };
   
 export default {

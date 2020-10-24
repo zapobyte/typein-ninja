@@ -23,12 +23,12 @@ export default {
     },
     async mounted(){
       let dbUser;
-      const uid = this.$route.params.uid == this.$store.getters.getAuthUser.uid ?this.$store.getters.getAuthUser.uid : this.$route.params.uid ;
-      dbUser = await getUser(uid);
-      const bestGame = await getBestUserGame(uid)
-      this.user = {
-        ...dbUser,
-        ...bestGame
+      const uid = this.$route.params.uid;
+      try {
+        dbUser = await getUser(uid);
+        this.user = dbUser;
+      } catch (error) {
+        console.log(error)
       }
     },
     computed:{
