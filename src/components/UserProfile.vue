@@ -1,7 +1,7 @@
 <template>
 <section>
   <div class="nes-container col-12 is-white text-dark with-title bg-white mb-3">
-    <p class="title ">Stats</p>
+    <p class="title ">Profile</p>
     <div class="row  align-items-center">
       <div class="col-auto align-self-start">
         <img class="nes-avatar is-large" alt="Gravatar image example" :src="user.photoURL" style="image-rendering: pixelated;">
@@ -50,7 +50,7 @@
                     <li>WPM: {{game.wpm}} </li>
                     <li>Accuracy: {{game.acc}} </li>
                     <li>Difficulty: {{game.difficulty}} </li>
-                    <li>Date: {{new Date(game.date.nanoseconds *1000).toString().split('(')[0]}} </li>
+                    <li>Date: {{new Date(game.date.seconds * 1000).toString().split('(')[0]}} </li>
                 </ul>
             </details>
         </div>

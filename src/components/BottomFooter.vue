@@ -1,5 +1,5 @@
 <template>
-    <footer class="col-12 pb-2 align-self-end text-center footer">
+    <footer class="col-12 pb-2 pt-2 align-self-end text-center footer">
             <div class="col-12 text-center pb-1" title="github">
                 <a class="text-text-center mr-3" href="https://github.com/zapobyte/typein-ninja">
                     <small>
