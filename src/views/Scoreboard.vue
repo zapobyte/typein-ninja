@@ -1,12 +1,12 @@
 <template>
-  <section class="games-list container pt-4">
-    <div class="nes-field">
-      <label for="name_field">Search user</label>
-      <input type="text" id="search" class="nes-input" v-model="search">
-    </div>
+  <section class="games-list container mt-4">
+  <div class="nes-field">
+    <label for="name_field">Search user</label>
+    <input type="text" id="search" class="nes-input" v-model="search">
+  </div>
 
-    <div class="nes-table-responsive text-dark game--list">
-    <table class="nes-table is-bordered m-0 mt-4  text-center is-center w-100">
+  <div class="nes-table-responsive text-dark game--list">
+    <table class="nes-table is-bordered m-0 mt-4 text-center is-center w-100">
       <thead>
         <tr>
           <th style="width:110px"></th>
@@ -16,26 +16,22 @@
           <th style="width:110px">BEST WPM</th>
           <th>DIFFICULTY</th>
           <th >Date</th>
-          <th ></th>        
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="user in users" :key="user.uid"  >
-            <td><img :src="user.photoURL" class="nes-avatar"/></td>
-            <td>{{ user.displayName}}</td>
-            <td>{{ user.lvl}}</td>
-            <td>{{ user.acc}}</td>
-            <td>{{ user.wpm}}</td>
-            <td>{{ user.difficulty}}</td>
-            <td>{{ new Date(user.date.seconds * 1000).toString().split('(')[0] }}</td>
-            <td>
-              <button type="button" class="nes-btn" :id="user.uid" @click="goToProfile">Profile</button>
-            </td>  
-          </tr>  
-        </tbody>
-      </table>
-    </div>
-  </section>
+        </tr>
+      </thead>
+      <tbody>
+        <tr  title="Go to user profile" v-for="user in users" :key="user.uid"  @click="goToProfile" :id="user.uid" class="nes-table--row">
+          <td><img :src="user.photoURL" class="nes-avatar"/></td>
+          <td>{{ user.displayName}}</td>
+          <td>{{ user.lvl}}</td>
+          <td>{{ user.best.acc}}</td>
+          <td>{{ user.best.wpm}}</td>
+          <td>{{ user.best.difficulty}}</td>
+          <td>{{ new Date( user.date.seconds * 1000).toString().split('(')[0] }}</td>
+        </tr>  
+      </tbody>
+    </table>
+  </div>
+</section>
   
 </template>
 <script>
@@ -58,15 +54,14 @@ export default {
      try {
         const users = await getUsers();
         users.forEach(async (user)=>{
-        const bestGame = await getBestUserGame(user.uid);
-        if(bestGame.date.seconds){
-        const data = {
-          ...bestGame,
-          ...user
+          const bestGame = await getBestUserGame(user.uid);
+          if(bestGame){
+            const data = {
+              ...bestGame,
+              ...user
+          }
+          this.searchList.push(data)
         }
-        this.searchList.push(data)
-        }
-
       })
      } catch (error) {
        console.log(error)
@@ -82,11 +77,12 @@ export default {
     },
     methods:{
       async goToProfile(e){
+        e.preventDefault()
         try {
-            const user = this.searchList.filter(user => user.uid == e.target.id);
+            const id = e.target.parentElement.id;
+            const user = this.searchList.find(user => user.uid == id );
             this.$router.push({
-              name:'Profile', 
-              params: { user: user[0] }
+              path:`/profile/${user.uid}`
             })
         } catch (error) {
           console.log(error)
@@ -97,12 +93,22 @@ export default {
 </script>
 <style lang="scss" scoped>
 .game--list{
-    height: 75vh;
-    overflow: auto;
+  max-height: 80vh;
+  overflow: auto;
 }
 .nes-avatar{
-  width:86px;
-  height:86px;
+  width:64px !important;
+  height:64px !important;
   image-rendering: pixelated;
 }
+.nes-table--row{
+  transition: 0.3s all ease;
+  &:hover{
+    background:#212529;
+    color:white;
+    border-color: white !important;
+    transition: 0.15s all ease;
+  }
+}
+
 </style>

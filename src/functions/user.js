@@ -5,12 +5,15 @@ import firebase from 'firebase';
 export const createFsUser = async (user) =>{
     let db = firebase.firestore();
     try{
+        const bestGame = await getBestUserGame(user.uid);
+        const best = bestGame ? bestGame : { wpm:0, acc:0,difficulty:'' };
         const dbUser = await db.collection('users').doc(user.uid).set({
             displayName: user.displayName,
             photoURL:user.photoURL,
             xp:0,
             uid:user.uid,
             lvl:1,
+            best
         });
         return dbUser;
     }catch(error){
@@ -18,7 +21,24 @@ export const createFsUser = async (user) =>{
         throw new error;
     }
 }
-
+export const updateUserBest = async (data) =>{
+    let db = firebase.firestore();
+    const currentUser = firebase.auth().currentUser;
+    const updateDate = {
+        wpm:data.wpm,
+        acc:data.acc,
+        difficulty:data.difficulty
+    }
+    try{
+        const dbUser = await db.collection('users').doc(currentUser.uid).set({
+            best:updateDate
+        },{merge:true});
+        return dbUser;
+    }catch(error){
+        console.error(error.message);
+        throw new error;
+    }
+}
 export const updateUser = async (data) =>{
     let db = firebase.firestore();
     const currentUser = firebase.auth().currentUser;
@@ -59,7 +79,7 @@ export const getUsers = async () => {
     }
 }
 
-export const verifyFirebaseUser = async (user)=>{
+export const getOrCreateFsUser = async (user)=>{
     let db = firebase.firestore();
     try {
         const dbUser = await getUser(user);
@@ -68,44 +88,13 @@ export const verifyFirebaseUser = async (user)=>{
         }
         return db.collection("users").doc(user.uid)
         .onSnapshot( async function(doc) {
-            const source = doc.metadata.hasPendingWrites ? "Local" : "Server";
-            const bestGame = await getBestUserGame(doc.data().uid);
-            const data = {
-                ...doc.data(),
-                ...bestGame
-            }
+            const data = doc.data();
             return store.dispatch('setUser',data);
         });
     } catch (error) {
         console.error(error.message);
         throw new error;
     }
-}
-
-
-export const checkFsUser = async (user)=>{
-    let db = firebase.firestore();
-    try {
-        const dbUser = await getUser(user);
-        if(!dbUser){   
-            await createFsUser(user);
-        }
-        return db.collection("users").doc(user.uid)
-        .onSnapshot( async function(doc) {
-            const bestGame = await getBestUserGame(doc.data().uid);
-            const data = {
-                ...doc.data(),
-                ...bestGame
-            }
-            store.dispatch('setUser',data);
-            store.dispatch('setLoading',false);
-        });
-    } catch (error) {
-        console.log(error);
-        throw new error;
-
-    }
- 
 }
 
 export const deleteCurrentUser = () =>{

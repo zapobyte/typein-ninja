@@ -1,6 +1,6 @@
 # ![ninja](http://typein.ninja/ninja.gif)typein-ninja
 
-[typein.ninja](http://typein.ninja) - Test your typing skills. Train your typing accuracy and speed with a new gamify web app and become like a master ninja on a keyboard.
+[typein.ninja](http://typein.ninja) -  A free online typing speed and accuracy game test website. Test and train your typing accuracy and speed with a new gamify website and become a master keyboard ninja..
 
 **Features**:
 - 3 difficulty levels: `easy`,`normal`,`hard`.
@@ -9,6 +9,11 @@
 - view yours and others best score
 - view your game history
 
+:video_game: **How to Play**:
+If you want to save your progress and get higher in level and benefit from all the features that the app has you would have to login with a google account via Google Signin.
+To play the user has to start typing in the text input field and as soon as the first key is struck the test has started.
+Each new word is counted when pressing `space`. To reset a game press the `reset` button at any time.
+To change the difficulty click the difficulty and select a new one.
 
 ## Used to make this project
 - [NodeJS](https://nodejs.org) - NodeJS

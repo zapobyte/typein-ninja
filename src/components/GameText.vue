@@ -41,7 +41,7 @@
         <input type="text" name="inputField" id="textinput" class="nes-input d-inline-flex " @keydown="inputCheck" :placeholder="inputPlaceholder">
       </div>
       <div class="col-xs-12 col-md-2 text-right align-self-center">
-        <button class="nes-btn m-auto " type="button"  @click="reset()">reset</button>
+        <button class="nes-btn m-auto " type="button"  @click="reset()" :disabled="gameDone">reset</button>
       </div>
     </div>
   </div>
@@ -78,9 +78,8 @@ export default {
     this.reset();
   },
   computed:{
-    ...mapGetters(['isAuth']),
+    ...mapGetters(['isAuth','getAuthUser']),
   },
-
   methods:{
     inputCheck(e){
       let inputField = document.getElementById('textinput');
@@ -122,6 +121,13 @@ export default {
                     difficulty:this.$store.getters.getGameDifficulity,
                     date:new Date(this.startDate)
                   });
+                  if(this.acc >= this.getAuthUser.best.acc && this.wpm > this.getAuthUser.best.wpm){
+                    this.$store.dispatch('updateUserBestGame',{
+                      wpm:this.wpm,
+                      acc:this.acc,
+                      difficulty:this.$store.getters.getGameDifficulity
+                    })
+                  }
                 }
                 setTimeout((()=>{
                   this.wordList = [];
@@ -131,7 +137,7 @@ export default {
                 setTimeout(()=>{
                   textField.innerHTML = this.isAuth ? 'Good job on finishing another training. Your experience has increased. Keep on practicing!' : "Good job on finishing another training. Keep on practicing.";
                   this.gameDone = false;
-                },5000);
+                },3000);
             }
             inputField.value = '';
         } 
@@ -175,7 +181,6 @@ export default {
   margin-bottom:3rem;
 }
 .game--container{
-  margin-top:10vh !important;
 }
 details{
   summary{

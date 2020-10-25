@@ -13,12 +13,15 @@ export const firebaseInit = () => {
     });
 
     firebase.auth().onAuthStateChanged(async user => { 
-        store.dispatch('setLoading',true)
+        store.dispatch('setLoading',true);
         if(user){
             const token = user.refreshToken;
-            store.dispatch('loadGame',user);
-            store.dispatch('authenticate',token);
+            store.dispatch('authenticate',{user,token});
+            setTimeout(()=>{
+                store.dispatch('setLoading',false);
+            },500);
         } else {
+            store.dispatch('setLoading',false);
             logout();
         }
     })
