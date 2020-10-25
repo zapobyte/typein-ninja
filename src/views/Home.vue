@@ -1,5 +1,5 @@
 <template>
-  <main class="col-12 h-100 pt-4" >
+  <main class="col-12 h-100 mt-4" >
     <GameText />
   </main>
 </template>

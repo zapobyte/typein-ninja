@@ -31,13 +31,14 @@
                       <span class="text-danger">   <i class="nes-icon close is-small"></i> delete account</span>
                   </li>
                   <li class="dropdown-item" v-if="!isAuth">
-                      <button type="button" class="nes-btn" @click="login">
-                        <i class="nes-icon google is-small"></i>
-                        Signin with Google
+                      <button type="button" class="nes-btn  is-small" @click="login">
+                        <i class="nes-icon google is-small mr-1"></i>
+                        <small>Signin with Google</small>
                       </button>
                       <p><small>
-                      *by logging or signup you agree<br>
-                      with our <router-link to="">Terms and Conditions</router-link>.</small>
+                      *by login you agree with  <br>
+                      our <router-link to="/terms-condition">Terms and Conditions</router-link>
+                      <br> and <router-link to="/privacy-policy">Privacy Policy</router-link>.</small>
                       </p>
                   </li>
                 </ul>
@@ -68,8 +69,9 @@ export default {
     },
     user(){
       return this.$store.getters.getAuthUser;
-    }
+    },
   },
+
   methods:{
     logout(){
       logout();
@@ -80,11 +82,7 @@ export default {
     },
     toProfile(e){
       e.preventDefault();
-      if(this.user.uid == this.$route.params.uid || this.$route.name =="Profile"){
-        window.location.reload();
-      } else {
-        this.$router.push({path: `/profile/${this.user.uid}`})
-      }
+      this.$router.push({path: `/profile/${this.user.uid}`})
     },
     deleteAccount(){
       const confirmation = confirm("Do you really wanna delete your account?");
@@ -106,5 +104,8 @@ export default {
   }
   border:0;
 }
-
+.dropdown-item{
+  padding-top:0.8rem;
+  padding-bottom:0.8rem;
+}
 </style>

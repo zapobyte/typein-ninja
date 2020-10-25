@@ -1,5 +1,5 @@
 <template>
-  <section class="games-list container pt-4">
+  <section class="games-list container mt-4">
   <div class="nes-field">
     <label for="name_field">Search user</label>
     <input type="text" id="search" class="nes-input" v-model="search">

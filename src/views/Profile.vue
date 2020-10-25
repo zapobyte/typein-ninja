@@ -1,5 +1,5 @@
 <template>
-  <section class="pt-4 profile">
+  <section class="mt-4 profile">
     <UserProfile :user="user" />
     <GameHistory v-if="userAuth.uid == user.uid"/>
   </section>

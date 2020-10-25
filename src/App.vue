@@ -2,7 +2,7 @@
   <div id="app" class="container"  v-if="!loading"> 
     <div class="row no-gutters flex-column align-items-start min-vh-100">
       <Navbar />
-      <router-view class="router"/>
+      <router-view class="router" :key="$route.params.uid ? $route.params.uid :'0' "/>
       <BottomFooter />
     </div>
   </div>
