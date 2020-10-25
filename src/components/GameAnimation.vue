@@ -5,7 +5,7 @@
         <img  v-else src="@/assets/gameAssets/spritesheets/slash-Sheet.png" class="ninja--player ninja--player__attack pixelated" alt="ninja player"/>
       </div>
       <div class="bg">
-          <div class="bg--terrain__dummy"></div>
+          <div class="bg--terrain__dummy" :class="gameDone ? 'bg--terrain__dummy__attack':''"></div>
           <div class="bg--terrain__building"></div>
           <div class="bg--terrain__tree"></div>
           <div  class="bg--terrain__lend" alt="background"/>
@@ -72,6 +72,9 @@ export default {
       width:32px;
       background: url('~@/assets/gameAssets/dummy.png');
       background-size:cover;
+      &__attack{
+        animation: dummyAnimation 0.5s steps(5) infinite;
+      }
     }
     &__building{
       right:16px;
@@ -124,6 +127,20 @@ export default {
   }
   to {
     transform: translate3d(-100%,0,0);
+  }
+}
+@keyframes dummyAnimation {
+  0%{
+    transform:rotate(0deg);
+  }
+  35%{
+    transform:rotate(-1deg);
+  }
+  75%{
+    transform:rotate(1deg);
+  }
+  100%{
+    transform:rotate(0deg);
   }
 }
 </style>
