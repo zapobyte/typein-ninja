@@ -19,7 +19,6 @@
                  <small style="padding-right:0.5rem">&copy;</small><a href="https://typein.ninja" class="text-right w-100"><small>typein.ninja
                 </small></a>
             </div>
-        </iv>
     </footer>
 </template>
 
