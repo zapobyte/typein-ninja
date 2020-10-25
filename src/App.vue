@@ -26,9 +26,9 @@ small{
 }
 a{
   text-decoration: none !important;
-  transition: 0.1s all ease-in;
+  transition: 0.15s all ease-in;
   :hover{
-    transition: 0.1s all ease-in;
+    transition: 0.15s all ease-in;
   }
 }
 
@@ -50,6 +50,7 @@ a{
   right:0;
   bottom:0;
 }
+
 </style>
 
 <script>

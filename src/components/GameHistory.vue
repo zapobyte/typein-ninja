@@ -64,7 +64,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .game--list{
-    max-height: 80%;
+    max-height: 80vh;
     overflow: auto;
 }
 </style>
