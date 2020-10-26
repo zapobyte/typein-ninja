@@ -19,7 +19,7 @@
                 <td>{{ game.wpm}}</td>
                 <td>{{ game.acc}}</td>
                 <td>{{ game.difficulty}}</td>
-                <td>{{ new Date(game.date.seconds * 1000).toString().split('(')[0] }}</td>
+                <td>{{ toDate(game.date.seconds) }}</td>
             </tr>
             </tbody>
         </table>
@@ -30,6 +30,9 @@
 import {
     getAllGames
 } from '@/functions/gameHistory';
+import {
+    toDate
+} from '@/functions/utility';
 import store from '@/store/index';
 
 export default {
@@ -59,7 +62,11 @@ export default {
             }
         }
     },
-    
+    methods:{
+        toDate(seconds){
+            return toDate(seconds);
+        },
+    }
 }
 </script>
 <style lang="scss" scoped>
