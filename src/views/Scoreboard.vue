@@ -26,7 +26,7 @@
           <td>{{ user.best.acc}}</td>
           <td>{{ user.best.wpm}}</td>
           <td>{{ user.best.difficulty}}</td>
-          <td>{{ new Date( user.date.seconds * 1000).toString().split('(')[0] }}</td>
+          <td>{{ toDate(user.date.seconds) }}</td>
         </tr>  
       </tbody>
     </table>
@@ -38,57 +38,62 @@
 import UserProfile from '@/components/UserProfile';
 import { getUsers,getUser } from '@/functions/user';
 import { getBestUserGame } from '@/functions/gameHistory';
+import {
+    toDate
+} from '@/functions/utility';
 
 export default {
-    name:'Profile',
-    components:{
-        UserProfile
-    },
-    data(){
-      return{
-        search:'',
-        searchList:[]
-      }
-    },
-   async mounted(){
-     try {
-        const users = await getUsers();
-        users.forEach(async (user)=>{
-          const bestGame = await getBestUserGame(user.uid);
-          if(bestGame){
-            const data = {
-              ...bestGame,
-              ...user
-          }
-          this.searchList.push(data)
+  name:'Profile',
+  components:{
+      UserProfile
+  },
+  data(){
+    return{
+      search:'',
+      searchList:[]
+    }
+  },
+  async mounted(){
+    try {
+      const users = await getUsers();
+      users.forEach(async (user)=>{
+        const bestGame = await getBestUserGame(user.uid);
+        if(bestGame){
+          const data = {
+            ...bestGame,
+            ...user
         }
+        this.searchList.push(data)
+      }
+    })
+    } catch (error) {
+      console.log(error)
+    }
+  },
+  computed:{
+    users(){
+      return this.searchList.filter(user => {
+        return user.displayName.toLowerCase().includes(this.search.toLowerCase())
       })
-     } catch (error) {
-       console.log(error)
-     }
-      
     },
-    computed:{
-      users(){
-        return this.searchList.filter(user => {
-          return user.displayName.toLowerCase().includes(this.search.toLowerCase())
-        })
-      }
+  },
+  methods:{
+    toDate(seconds){
+      return toDate(seconds);
     },
-    methods:{
-      async goToProfile(e){
-        e.preventDefault()
-        try {
-            const id = e.target.parentElement.id;
-            const user = this.searchList.find(user => user.uid == id );
-            this.$router.push({
-              path:`/profile/${user.uid}`
-            })
-        } catch (error) {
-          console.log(error)
-        }
+    async goToProfile(e){
+      e.preventDefault()
+      try {
+          const id = e.target.parentElement.id;
+          const user = this.searchList.find(user => user.uid == id );
+          this.$router.push({
+            path:`/profile/${user.uid}`
+          })
+      } catch (error) {
+        console.log(error)
       }
     }
+  }
 }
 </script>
 <style lang="scss" scoped>
