@@ -48,12 +48,14 @@
         <div class="col-xs-12 col-md-4" v-for="game in bests" :key="game.acc">
             <details>
                 <summary class="position-relative">{{game.difficulty}}</summary>
-                <ul class="nes-list is-circle align-items-start">
-                    <li>WPM: {{game.wpm}} </li>
-                    <li>Accuracy: {{game.acc}} </li>
-                    <li>Difficulty: {{game.difficulty}} </li>
-                    <li>Date: {{new Date(game.date.seconds * 1000).toString().split('(')[0]}} </li>
-                </ul>
+                <div class="nes-container is-rounded is-dark">
+                    <ul class="nes-list is-circle">
+                        <li>WPM: {{game.wpm}} </li>
+                        <li>Accuracy: {{game.acc}} </li>
+                        <li>Difficulty: {{game.difficulty}} </li>
+                        <li>Date: {{toDate(game.date.seconds)}} </li>
+                    </ul>
+                </div>
             </details>
         </div>
     </div>
@@ -65,6 +67,9 @@
 import store from '@/store/index';
 import {getBestUserGameByDiff} from '@/functions/gameHistory';
 import {updateUserDisplayName} from '@/functions/user';
+import {
+    toDate
+} from '@/functions/utility';
 
 export default {
     name: 'UserProfile',
@@ -138,6 +143,9 @@ export default {
         }
     },
     methods:{
+        toDate(seconds){
+            return toDate(seconds);
+        },
         async updateDisplayName(){
             if(this.isAuthUser){
                 const displayNameValueSelector = document.querySelector('#name_field');
