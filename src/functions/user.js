@@ -39,6 +39,20 @@ export const updateUserBest = async (data) =>{
         throw new error;
     }
 }
+export const updateUserDisplayName = async (displayName) => {
+    let db = firebase.firestore();
+    const currentUser = firebase.auth().currentUser;
+    const updateDate = {
+        displayName:displayName
+    }
+    try{
+        const dbUser = await db.collection('users').doc(currentUser.uid).update(updateDate);
+        return dbUser;
+    }catch(error){
+        console.error(error.message);
+        throw new error;
+    }
+}
 export const updateUser = async (data) =>{
     let db = firebase.firestore();
     const currentUser = firebase.auth().currentUser;
@@ -86,11 +100,12 @@ export const getOrCreateFsUser = async (user)=>{
         if(!dbUser){   
             await createFsUser(user);
         }
-        return db.collection("users").doc(user.uid)
+        const unsubscribe = db.collection("users").doc(user.uid)
         .onSnapshot( async function(doc) {
             const data = doc.data();
             return store.dispatch('setUser',data);
         });
+        store.dispatch('addSnapshot',unsubscribe);
     } catch (error) {
         console.error(error.message);
         throw new error;

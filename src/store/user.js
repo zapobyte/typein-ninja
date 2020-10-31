@@ -44,8 +44,7 @@ const mutations = {
     },
     setUsers(state,value){
         state.users= value;
-    },
-
+    }
 };
   
 const actions = {

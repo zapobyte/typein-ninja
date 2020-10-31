@@ -53,6 +53,9 @@ a{
 .bg__white{
     background:white;
 }
+.text__small{
+  font-size:80%;
+}
 </style>
 
 <script>

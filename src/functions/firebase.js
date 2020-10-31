@@ -49,6 +49,7 @@ export const googleSignIn = ()=>{
 }
 
 export const logout = () => {
+    store.dispatch('unsubscribeSnapshots');
     store.dispatch('authenticate',false);
     store.dispatch('setUser',{});
     localStorage.setItem('token','');
