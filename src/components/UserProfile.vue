@@ -47,7 +47,7 @@
     <div class="row">
         <div class="col-xs-12 col-md-4" v-for="game in bests" :key="game.acc">
             <details>
-                <summary class="position-relative"> {{game.difficulty}}</summary>
+                <summary class="position-relative">{{game.difficulty}}</summary>
                 <div class="nes-container is-rounded is-dark">
                     <ul class="nes-list is-circle">
                         <li>WPM: {{game.wpm}} </li>
