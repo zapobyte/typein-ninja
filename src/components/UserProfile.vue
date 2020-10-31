@@ -11,15 +11,17 @@
                 <div class="col-12 ">
                     <div class="row no-gutters ">
                         <div class="text-left col-xs-12 col-md-6">
-                            <p class="m-0 p-1 text-left ml-auto">
-                                {{ user ? user.displayName : '' }}
-                            </p>
-                            <p class="m-0 p-1 text-left ml-auto">
-                                <small><i class="nes-icon is-small star"></i> LVL {{ user ? user.lvl : '' }}</small>
-                            </p>
-                            <div class="progress" v-if="user.uid == this.userAuth.uid">
-                                <div class="progress-bar" role="progressbar" :style="'width:' + percent + '%'" aria-valuenow="percent" :aria-valuemin="percent" aria-valuemax="100" >{{percent}}%</div>
+                            <div class="row align-items-center">
+                                <div class="col-8">
+                                    <input type="text" id="name_field" :class="uploaded ? 'text__small  nes-input is-success':'text__small  nes-input'"  :value="userDisplayName" @blur="updateDisplayName" :disabled="!isAuthUser"/></div>
+                                <div class="col-4 text-right"><i class="nes-icon is-small star"></i> LVL {{ user ? user.lvl : '' }}
+                                </div>
+                            <div class="col-12 pt-2">
+                                <div class="progress" v-if="user.uid == this.userAuth.uid">
+                                    <div class="progress-bar" role="progressbar" :style="'width:' + percent + '%'" aria-valuenow="percent" :aria-valuemin="percent" aria-valuemax="100" >{{percent}}%</div>
+                                </div>
                             </div>
+                        </div>   
                         </div>
                         <div class="text-right col-xs-12 col-md-6" title="best score">
                             <i class="nes-icon trophy"></i>
@@ -62,6 +64,7 @@
 <script>
 import store from '@/store/index';
 import {getBestUserGameByDiff} from '@/functions/gameHistory';
+import {updateUserDisplayName} from '@/functions/user';
 
 export default {
     name: 'UserProfile',
@@ -72,11 +75,13 @@ export default {
     },
     data(){
         return {
-            bests:[]
+            bests:[],
+            uploaded:false,
         }
     },  
     async mounted(){
-        try {
+        if(this.$props.user.uid){
+            try {
             const uid = this.$props.user.uid;
             if(uid){
                 for(const difficulty of Object.keys(this.$store.getters.getDifficulities)){
@@ -86,10 +91,13 @@ export default {
                     }
                 }
             }
-            
-        } catch (error) {
-            console.log(error)
+
+            this.userDisplayName = this.$props.user.displayName;
+            } catch (error) {
+                console.log(error)
+            }
         }
+        
     },
     async updated(){
         if(this.bests.length == 0){
@@ -110,6 +118,12 @@ export default {
         }
     },
     computed:{
+        isAuthUser(){
+            return this.$props.user.uid == this.$store.getters.getAuthUser.uid;
+        },
+        userDisplayName(){
+            return this.$props.user.uid == this.$store.getters.getAuthUser.uid ? this.$store.getters.getAuthUser.displayName : this.$props.user.displayName;
+        },
         userAuth(){
             return this.$store.getters.getAuthUser;
         },
@@ -120,6 +134,25 @@ export default {
                 const fourDigits =  stringXp.length >3 ? stringXp.substring(0,3) :stringXp.substring(0,stringXp.length);
                 const xpPercent = Number(fourDigits) / 10;
                 return xpPercent;
+            }
+        }
+    },
+    methods:{
+        async updateDisplayName(){
+            if(this.isAuthUser){
+                const displayNameValueSelector = document.querySelector('#name_field');
+                const displayNameValue = displayNameValueSelector.value;
+                if(displayNameValue !== this.userDisplayName){
+                    try {
+                        await updateUserDisplayName(displayNameValue);
+                        this.uploaded = true;
+                        setTimeout(()=>{
+                            this.uploaded = false;
+                        },1500)
+                    } catch (error) {
+                        console.log(error)
+                    }
+                } 
             }
         }
     }

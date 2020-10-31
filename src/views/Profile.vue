@@ -24,12 +24,17 @@ export default {
     async mounted(){
       let dbUser;
       const uid = this.$route.params.uid;
-      try {
-        dbUser = await getUser(uid);
-        this.user = dbUser;
-      } catch (error) {
-        console.log(error)
+      if(uid == this.$store.getters.getAuthUser.uid){
+          this.user =  this.$store.getters.getAuthUser;
+      } else {
+        try {
+          dbUser = await getUser(uid);
+          this.user = dbUser;
+        } catch (error) {
+          console.log(error)
+        }
       }
+
     },
     computed:{
       userAuth(){
