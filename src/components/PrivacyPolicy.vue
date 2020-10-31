@@ -1,5 +1,5 @@
 <template>
-    <article class="nes-container with-title is-centered  text-dark text-left mt-4">
+    <article class="nes-container bg__white white with-title is-centered  text-dark text-left mt-4">
         <p class="title">Privacy Policy</p>
         <p>Your privacy is important to us. It is typein.ninja's policy to respect your privacy regarding any information we may collect from you across our website, <a href="http://typein.ninja">http://typein.ninja</a>, and other sites we own and operate.</p>
         <p>We only ask for personal information when we truly need it to provide a service to you. We collect it by fair and lawful means, with your knowledge and consent. We also let you know why we’re collecting it and how it will be used.</p>
@@ -19,7 +19,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.nes-container {
-    background: white;
-}
 </style>

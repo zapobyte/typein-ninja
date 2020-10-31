@@ -172,42 +172,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-.nes-input{
-  &::placeholder {
-    font-size:0.9rem;
-  }
-}
-.game--text{
-  margin-bottom:3rem;
-}
-.game--container{
-}
-details{
-  summary{
-      outline:none;
-  }
-}
-.nes-badge{
-  font-size:0.7rem;
-  padding:0;
-  margin:0.5rem;
+@import '~@/scss/components/game_text.scss';
 
-}
-.nes-badge.is-splited{
-  padding:0;
-  margin:0.5rem;
-  font-size:0.7rem !important;
-}
-.game--container{
-  @media screen and (min-width: 980px) {
-    width:70%;
-  }
-  &--text{
-    color:#222;
-    min-width:100%;
-  }
-}
-#textinput:focus{
-  border-color:#f2f2f2;
-}
 </style>

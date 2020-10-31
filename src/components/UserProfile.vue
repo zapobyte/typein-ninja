@@ -128,17 +128,5 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-.user{
-    &-avatar{
-        width:64px !important;
-        height:64px !important;
-    }
-}
-.progress-bar{
-    background:#f2c409 !important;
-}
-.bg-white{
-    background:white;
-}
-
+@import '~@/scss/components/user_profile.scss';
 </style>

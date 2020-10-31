@@ -70,8 +70,6 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.game--list{
-    max-height: 80vh;
-    overflow: auto;
-}
+@import '~@/scss/components/game_history.scss';
+
 </style>
