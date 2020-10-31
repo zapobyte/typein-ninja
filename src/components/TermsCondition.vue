@@ -1,5 +1,5 @@
 <template>
-    <article class="nes-container with-title is-centered  text-dark text-left mt-4 ">
+    <article class="nes-container bg__white with-title is-centered  text-dark text-left mt-4 ">
 
         <p class="title">Terms of Service</p>
         <h1 class="pb-4">typein.ninja</h1>
@@ -44,7 +44,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.nes-container {
-        background: white;
-}
+
 </style>

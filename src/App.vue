@@ -50,7 +50,9 @@ a{
   right:0;
   bottom:0;
 }
-
+.bg__white{
+    background:white;
+}
 </style>
 
 <script>

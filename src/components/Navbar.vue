@@ -98,14 +98,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.navbar-toggler{
-  &:focus{
-    border:0;
-  }
-  border:0;
-}
-.dropdown-item{
-  padding-top:0.8rem;
-  padding-bottom:0.8rem;
-}
+@import '~@/scss/components/navbar.scss';
+
 </style>

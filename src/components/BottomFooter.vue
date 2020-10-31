@@ -29,28 +29,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@keyframes coinJump {
-    0%   {bottom:0px;}
-    50%  {bottom:5px;}
-    100% { bottom:0px;}
-}
-.coinJump:hover > i{
-    animation-name: coinJump;
-    position: relative;
-    animation-duration: 0.5s;
-}
+@import '~@/scss/components/bottom_footer.scss';
 
-a{
-    color:white;
-    &:hover{
-        color:#c1c1c1;
-    }
-}
-.footer{
-    width:100%;
-}
-.is-normal{
-    transform: scale(1.3) !important;
-    margin-bottom:6px;
-}
 </style>
