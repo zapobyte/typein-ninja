@@ -1,3 +1,5 @@
 export const toDate = (seconds) =>{
-    return new Date(seconds * 1000).toString().split('(')[0];
+    let date =  new Date(seconds * 1000).toString().split('(')[0];
+    date = `${date.substring(4,24)}`;
+    return date;
 }
