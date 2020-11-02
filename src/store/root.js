@@ -1,18 +1,22 @@
 import store from '@/store/index';
 
 const state = {
-    snapshots:[]
+    snapshots:[],
+    packageVersion: process.env.VUE_APP_PACKAGE_VERSION,
   };
   
   const getters = {
     getSnapshots(state){
         return state.snapshots;
+    },
+    appVersion: (state) => {
+      return state.packageVersion
     }
   };
   
   const mutations = {
     appendSnapshot(state,value){
-        state.snapshots.push(value);
+      state.snapshots.push(value);
     }
   };
   
@@ -24,7 +28,6 @@ const state = {
         })
     },
     addSnapshot(context,value){
-        console.log(value)
         context.commit('appendSnapshot',value);
     }
 }
