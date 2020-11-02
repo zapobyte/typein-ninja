@@ -41,6 +41,9 @@
                       <br> and <router-link to="/privacy-policy">Privacy Policy</router-link>.</small>
                       </p>
                   </li>
+                  <li class="text-right is-small pr-3">
+                    <small>v{{appVersion}}</small>
+                  </li>
                 </ul>
             </li>
           </ul>
@@ -48,8 +51,9 @@
   </nav>
 </template>
 
-
 <script>
+import { mapGetters } from 'vuex';
+
 import { 
   googleSignIn,
   logout
@@ -64,6 +68,7 @@ export default {
     }
   },
   computed:{
+    ...mapGetters(['appVersion']),
     isAuth(){
       return this.$store.getters.isAuth;
     },
