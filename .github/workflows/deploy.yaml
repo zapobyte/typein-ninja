@@ -1,0 +1,27 @@
+name: Deploy
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build:
+    name: Test & Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@master
+      - name: Install Dependencies
+        run: npm install
+      - name: Test Security Rules
+        run: npm run firebase-test
+      - name: executing remote ssh commands using password
+          uses: appleboy/ssh-action@master
+          with:
+            host: ${{ secrets.HOST }}
+            username: ${{ secrets.USERNAME }}
+            password: ${{ secrets.PASS }}
+            port: ${{ secrets.PORT }}
+            script: |
+              cd /var/www/html/typein-ninja
+              git pull origin master
+              npm run build
