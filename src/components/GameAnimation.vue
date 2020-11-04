@@ -1,12 +1,11 @@
 <template>
   <div class="animation--container">
       <div class="ninja">
-        <img  v-if="!gameDone" src="@/assets/gameAssets/spritesheets/idle-Sheet.png" class="ninja--player ninja--player__idle pixelated" alt="ninja player"/>
+        <img  v-if="!config.gameDone" src="@/assets/gameAssets/spritesheets/idle-Sheet.png" class="ninja--player ninja--player__idle pixelated" alt="ninja player"/>
         <img  v-else src="@/assets/gameAssets/spritesheets/slash-Sheet.png" class="ninja--player ninja--player__attack pixelated" alt="ninja player"/>
       </div>
       <div class="bg">
           <img src="~@/assets/gameAssets/bg.png" class="bg--terrain__ground">
-          <div class="bg--terrain__dummy" :class="gameDone ? 'bg--terrain__dummy__attack':''"></div>
       </div>
   </div>
 </template>
@@ -17,7 +16,7 @@
 export default {
   name:"GameAnimation",
   props:{
-    gameDone:{
+    config:{
       type:Boolean,
       default:false
   }},
