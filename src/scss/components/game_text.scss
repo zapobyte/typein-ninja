@@ -6,8 +6,6 @@
   .game--text{
     margin-bottom:3rem;
   }
-  .game--container{
-  }
   details{
     summary{
         outline:none;
@@ -25,6 +23,7 @@
     font-size:0.7rem !important;
   }
   .game--container{
+    padding-top:15vh;
     @media screen and (min-width: 980px) {
       width:70%;
     }
