@@ -1,7 +1,7 @@
 <template>
 <div class="game--container m-auto">
   <div id="gametext" class="small text-dark nes-balloon from-left nes-pointer"></div>
-  <GameAnimation :gameDone="gameDone"/>
+  <GameAnimation :config="config"/>
   <div class="game--body">
     <div class="row">
       <div class="game--difficulty mt-3 col-md-7 col-xs-12 text-left pb-3">
@@ -70,7 +70,9 @@ export default {
       startDate:0,
       acc:0,
       wpm:0,
-      gameDone:false,
+      config:{
+        gameDone:false
+      },
       inputPlaceholder:"Start typing to initiate the test..."
     }
   }, 
@@ -133,10 +135,10 @@ export default {
                   this.wordList = [];
                   textField.innerHTML = '...';
                 }),500);
-                this.gameDone=true;
+                this.config.gameDone=true;
                 setTimeout(()=>{
                   textField.innerHTML = this.isAuth ? 'Good job on finishing another training. Your experience has increased. Keep on practicing!' : "Good job.  To track your stats please login or create a new account.";
-                  this.gameDone = false;
+                  this.config.gameDone = false;
                 },3000);
             }
             inputField.value = '';
@@ -158,7 +160,7 @@ export default {
         textField.innerHTML+=`<span>${word} </span>`;
       })
       this.wordList = words;
-      this.gameDone=false;
+      this.config.gameDone=false;
       const inputField = document.querySelector('#textinput');
       inputField.focus();
     },

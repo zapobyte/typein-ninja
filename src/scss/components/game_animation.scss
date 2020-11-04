@@ -7,26 +7,8 @@
         max-width:100%;
         z-index:9999;
       }
-
-      &__dummy{
-        left:24px;
-        z-index:3;
-        @media all and (min-width:960px) {
-          left:46px;
-        }
-        top:-43px;
-        position:absolute;
-        display:inline-flex;
-        height:52px;
-        width:32px;
-        background: url('~@/assets/gameAssets/dummy.png');
-        background-size:cover;
-        &__attack{
-          animation: dummyAnimation 0.5s steps(5) infinite;
-        }
-      }
-    }
   }
+}
   .ninja{
     width:32px;
     height:52px;
@@ -56,19 +38,5 @@
     }
     to {
       transform: translate3d(-100%,0,0);
-    }
-  }
-  @keyframes dummyAnimation {
-    0%{
-      transform:rotate(0deg);
-    }
-    35%{
-      transform:rotate(-1deg);
-    }
-    75%{
-      transform:rotate(1deg);
-    }
-    100%{
-      transform:rotate(0deg);
     }
   }
