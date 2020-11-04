@@ -1,30 +1,20 @@
-.animation--container{
-    min-height:10vh;
-  }
+
   .bg{
-    width:100%;
     position:relative;
+    max-width:100%;
     &--terrain{
-      &__body{
-      display:inline-flex;
-      height:24px;
-      width:calc(100% - 64px);
-      background: url('~@/assets/gameAssets/body.png');
-      background-size:contain;
+      &__ground{
+        max-width:100%;
+        z-index:9999;
       }
-      &__tree{
-        right:66px;
-        top:-86px;
-        position:absolute;
-        display:inline-flex;
-        height:86px;
-        width:52px;
-        background: url('~@/assets/gameAssets/tree.png');
-        background-size:cover;
-      }
+
       &__dummy{
-        left:28px;
-        top:-52px;
+        left:24px;
+        z-index:3;
+        @media all and (min-width:960px) {
+          left:46px;
+        }
+        top:-43px;
         position:absolute;
         display:inline-flex;
         height:52px;
@@ -35,37 +25,17 @@
           animation: dummyAnimation 0.5s steps(5) infinite;
         }
       }
-      &__building{
-        right:16px;
-        top:-86px;
-        position:absolute;
-        display:inline-flex;
-        height:86px;
-        width:52px;
-        background: url('~@/assets/gameAssets/building.png');
-        background-size:cover;
-      }
-      &__lend{
-        display:inline-flex;
-        height:24px;
-        width:24px;
-        background: url('~@/assets/gameAssets/left-end.png');
-        background-size:contain;
-      }
-      &__rend{
-        display:inline-flex;
-        height:24px;
-        width:24px;
-        background: url('~@/assets/gameAssets/right-end.png');
-        background-size:contain;
-      }
     }
   }
   .ninja{
-    margin-left:0.5rem;
     width:32px;
     height:52px;
     overflow:hidden;
+    margin-bottom:-6px;
+    margin-left:2px;
+    @media all and (min-width:960px) {
+      margin-left:20px;
+    }
     &--player{
       width:128px;
       height:52px;

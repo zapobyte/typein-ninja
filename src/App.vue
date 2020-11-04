@@ -18,7 +18,7 @@ html,body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: white !important;
-  background:rgb(55,37,56) !important;
+  background:#5a6988 !important;
   font-size:14px;
 }
 small{

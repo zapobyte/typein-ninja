@@ -13,9 +13,8 @@ admin.initializeApp();
  * Function checks for valid pull request and that PR is closed so it can sync and increment the app version value to the oen stored in real time database
  */  
 exports.githubHook = functions.region(region).https.onRequest( async (req, res) => {
-
       try {
-              // check if PR is closed
+        // check if PR is closed
         const payload  = JSON.parse(req.body.payload);
         const prClosed = payload.action == "closed" &&payload.pull_request.state == "closed";
         // get title of the PR

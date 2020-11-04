@@ -5,12 +5,8 @@
         <img  v-else src="@/assets/gameAssets/spritesheets/slash-Sheet.png" class="ninja--player ninja--player__attack pixelated" alt="ninja player"/>
       </div>
       <div class="bg">
+          <img src="~@/assets/gameAssets/bg.png" class="bg--terrain__ground">
           <div class="bg--terrain__dummy" :class="gameDone ? 'bg--terrain__dummy__attack':''"></div>
-          <div class="bg--terrain__building"></div>
-          <div class="bg--terrain__tree"></div>
-          <div  class="bg--terrain__lend" alt="background"/>
-          <div  class="bg--terrain__body" alt="background"/>
-          <div  class="bg--terrain__rend" alt="background"/>
       </div>
   </div>
 </template>
