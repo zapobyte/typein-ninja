@@ -41,7 +41,7 @@
         <input type="text" name="inputField" id="textinput" class="nes-input d-inline-flex " @keydown="inputCheck" :placeholder="inputPlaceholder">
       </div>
       <div class="col-xs-12 col-md-2 text-right align-self-center">
-        <button class="nes-btn m-auto " type="button"  @click="reset()" :disabled="gameDone">reset</button>
+        <button class="nes-btn m-auto " type="button"  @click="reset()" :disabled="config.gameDone">reset</button>
       </div>
     </div>
   </div>

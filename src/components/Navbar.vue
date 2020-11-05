@@ -48,6 +48,10 @@
             </li>
           </ul>
       </div>
+      <Modal @confirm="deleteAcc">
+        <template v-slot:title><h4 class='text-danger pb-2'>{{modal.title}}</h4></template>
+        <template v-slot:body> <p v-html="modal.body"></p></template>
+      </Modal>
   </nav>
 </template>
 
@@ -61,11 +65,19 @@ import {
 import {
   deleteCurrentUser
 } from '@/functions/user';
+import Modal from '@/components/Dialog.vue';
 export default {
   name:'Navbar',
   data(){
     return {
+      modal:{
+        title:"Account removal",
+        body:"You are about to delete you're account. All your information and records will be lost for ever as they will be removed from our database. <br> Are you sure you want to do that?"
+      }
     }
+  },
+  components:{
+    Modal
   },
   computed:{
     ...mapGetters(['appVersion']),
@@ -90,12 +102,10 @@ export default {
       this.$router.push({path: `/profile/${this.user.uid}`})
     },
     deleteAccount(){
-      const confirmation = confirm("Do you really wanna delete your account?");
-      if(confirmation){
-        deleteCurrentUser();
-      } else {
-        return;
-      }
+      document.getElementById('dialog').showModal();
+    },
+    deleteAcc(){
+      deleteCurrentUser();
     }
   },
 

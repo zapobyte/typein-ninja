@@ -97,23 +97,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.game--list{
-  max-height: 80vh;
-  overflow: auto;
-}
-.nes-avatar{
-  width:64px !important;
-  height:64px !important;
-  image-rendering: pixelated;
-}
-.nes-table--row{
-  transition: 0.3s all ease;
-  &:hover{
-    background:#212529;
-    color:white;
-    border-color: white !important;
-    transition: 0.15s all ease;
-  }
-}
+@import '~@/scss/pages/scoreboard.scss';
+
 
 </style>

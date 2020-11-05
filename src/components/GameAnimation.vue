@@ -17,8 +17,10 @@ export default {
   name:"GameAnimation",
   props:{
     config:{
-      type:Boolean,
-      default:false
+      type: Object,
+      default:{
+        gameDone:false
+      }
   }},
   data() {
     return {
