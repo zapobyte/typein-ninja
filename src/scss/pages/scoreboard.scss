@@ -16,3 +16,16 @@
       transition: 0.15s all ease;
     }
   }
+  .border{
+    &-gold{
+      border:3px double  #AF9500;
+
+    }
+    &-silver{
+      border:3px  double #B4B4B4;
+
+    }
+    &-bronze{
+      border:3px  double #6A3805;
+    }
+  }

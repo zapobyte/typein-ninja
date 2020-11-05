@@ -22,7 +22,7 @@
                         </div>
                         <div class="col-12  text__small">
                             <p>  <i class="nes-icon mr-2 is-small is-half star"></i>LVL {{ user ? user.lvl : '' }}</p>
-                            <p><i class="nes-icon  mr-2  coin is-small"></i>RANK {{ user ? user.rank : '' }}</p>
+                            <p>RANK {{ user ? user.rank : '' }}</p>
                         </div>
                     </div>   
                 </div>

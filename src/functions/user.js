@@ -87,7 +87,7 @@ export const getUser = async (data) => {
 export const getUsers = async () => {
     let db = firebase.firestore();
     try {
-        const usersDoc =  await db.collection("users").limit(100).get();
+        const usersDoc =  await db.collection("users").get();
         const users = usersDoc.docs.map(user=>user.data())
         return users;
     } catch (error) {
