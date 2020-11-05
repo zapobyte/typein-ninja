@@ -2,41 +2,42 @@
 <section>
   <div class="nes-container col-12 is-white text-dark with-title bg-white mb-3">
     <p class="title ">Profile</p>
-    <div class="row  align-items-center">
-      <div class="col-auto align-self-start">
+    <div class="row ">
+      <div class="col-auto align-self-start text__small">
         <img class="nes-avatar is-large" alt="Gravatar image example" :src="user.photoURL" style="image-rendering: pixelated;">
+        <div style="width:64px" class="pt-2 text__small text-break text-wrap">
+                <div class="progress" v-if="user.uid == this.userAuth.uid">
+                    <div class="progress-bar" role="progressbar" :style="'width:' + percent + '%'" aria-valuenow="percent" :aria-valuemin="percent" aria-valuemax="100" > 
+                        {{percent}}%
+                    </div>
+                </div>            
+            </div>
         </div>
         <div class="col">
-            <div class="row align-items-start">
-                <div class="col-12 ">
+            <div class="row no-gutters align-items-start ">
+                <div class="text-left col-xs-12 col-md-6">
                     <div class="row no-gutters ">
-                        <div class="text-left col-xs-12 col-md-6">
-                            <div class="row align-items-center">
-                                <div class="col-12">
-                                    <input type="text" id="name_field" :class="uploaded ? 'text__small  nes-input is-success':'text__small  nes-input'"  :value="userDisplayName" @blur="updateDisplayName" :disabled="!isAuthUser"/></div>
-                                <div class="col-12"><i class="nes-icon is-small star"></i> LVL {{ user ? user.lvl : '' }}
-                                </div>
-                            <div class="col-12 pt-2">
-                                <div class="progress" v-if="user.uid == this.userAuth.uid">
-                                    <div class="progress-bar" role="progressbar" :style="'width:' + percent + '%'" aria-valuenow="percent" :aria-valuemin="percent" aria-valuemax="100" >{{percent}}%</div>
-                                </div>
-                            </div>
-                        </div>   
+                        <div class="col-12">
+                            <input type="text" id="name_field" :class="uploaded ? 'text__small  nes-input is-success':'text__small  nes-input'"  :value="userDisplayName" @blur="updateDisplayName" :disabled="!isAuthUser"/>
                         </div>
-                        <div class="text-right col-xs-12 col-md-6" title="best score">
-                            <i class="nes-icon trophy"></i>
-                            <a href="#" class="nes-badge  is-small is-splited mr-3">
-                                <span class="is-dark ">wpm</span>
-                                <span class="is-success">{{user.best ? user.best.wpm : '0'}}</span>
-                            </a>
-                            <i class="nes-icon trophy"></i>
-                            <a href="#" class="nes-badge  is-small is-splited mr-3">
-                                <span class="is-dark ">acc</span>
-                                <span class="is-success">   {{user.best ? user.best.acc : '0'}}</span>
-                            </a>
+                        <div class="col-12  text__small">
+                            <p>  <i class="nes-icon mr-2 is-small is-half star"></i>LVL {{ user ? user.lvl : '' }}</p>
+                            <p><i class="nes-icon  mr-2  coin is-small"></i>RANK {{ user ? user.rank : '' }}</p>
                         </div>
-                    </div>
-                </div>   
+                    </div>   
+                </div>
+                <div class="text-right col-xs-12 col-md-6" title="best score">
+                    <i class="nes-icon trophy"></i>
+                    <a href="#" class="nes-badge  is-small is-splited mr-3">
+                        <span class="is-dark ">wpm</span>
+                        <span class="is-success">{{user.best ? user.best.wpm : '0'}}</span>
+                    </a>
+                    <i class="nes-icon trophy"></i>
+                    <a href="#" class="nes-badge  is-small is-splited mr-3">
+                        <span class="is-dark ">acc</span>
+                        <span class="is-success">   {{user.best ? user.best.acc : '0'}}</span>
+                    </a>
+                </div>
             </div>
         </div>
     </div>

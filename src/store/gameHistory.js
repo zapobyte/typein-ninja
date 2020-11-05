@@ -48,7 +48,8 @@ const state = {
   };
   
   const actions = {
-    addGameHistory(context,value){
+   async addGameHistory(context,value){
+       try {
         const user = store.getters.getAuthUser;
         const newGameEntry = {
             ...value,
@@ -59,12 +60,18 @@ const state = {
         let xp = difficulties[value.difficulty].xp;
         let newXp = Number(user.xp) + xp;
         let newLvl = Math.floor(newXp / 1000);
+        const userRank = await store.dispatch('getUserRank',newXp);
         const data = {
             xp: newXp,
-            lvl:newLvl > 1 ? newLvl:1
+            lvl:newLvl > 1 ? newLvl:1,
+            rank:userRank
         }
         store.dispatch('updateUser',data);
         context.commit('setScore',data);
+       } catch (error) {
+           console.log(error)
+       }
+       
     }
   };
   

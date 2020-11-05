@@ -5,13 +5,14 @@
     <input type="text" id="search" class="nes-input" v-model="search">
   </div>
 
-  <div class="nes-table-responsive text-dark game--list">
+  <div class="nes-table-responsive text-dark text__small game--list">
     <table class="nes-table is-bordered m-0 mt-4 text-center is-center w-100">
       <thead>
         <tr>
           <th style="width:110px"></th>
           <th>NAME</th>
           <th  style="width:110px">LVL</th>
+          <th >RANK</th>
           <th style="width:110px">BEST ACC</th>
           <th style="width:110px">BEST WPM</th>
           <th>DIFFICULTY</th>
@@ -23,6 +24,7 @@
           <td><img :src="user.photoURL" class="nes-avatar"/></td>
           <td>{{ user.displayName}}</td>
           <td>{{ user.lvl}}</td>
+          <td>{{ user.rank}}</td>
           <td>{{ user.best.acc}}</td>
           <td>{{ user.best.wpm}}</td>
           <td>{{ user.best.difficulty}}</td>

@@ -13,7 +13,8 @@ export const createFsUser = async (user) =>{
             xp:0,
             uid:user.uid,
             lvl:1,
-            best
+            best,
+            rank:'Apprentice'
         });
         return dbUser;
     }catch(error){
@@ -56,12 +57,14 @@ export const updateUserDisplayName = async (displayName) => {
 export const updateUser = async (data) =>{
     let db = firebase.firestore();
     const currentUser = firebase.auth().currentUser;
-    const updateDate = {
+    const updateData = {
         xp:data.xp,
-        lvl:data.lvl
+        lvl:data.lvl,
+        rank:data.rank
     }
+    console.log(updateData)
     try{
-        const dbUser = await db.collection('users').doc(currentUser.uid).update(updateDate);
+        const dbUser = await db.collection('users').doc(currentUser.uid).update(updateData);
         return dbUser;
     }catch(error){
         console.error(error.message);

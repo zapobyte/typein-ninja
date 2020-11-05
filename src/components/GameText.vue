@@ -5,22 +5,38 @@
   <div class="game--body">
     <div class="row">
       <div class="game--difficulty mt-3 col-md-7 col-xs-12 text-left pb-3">
-          <details>
-            <summary class="text-uppercase align-items-center">Difficulty
-            <a href="#" class=" text-lowercase nes-badge text-left mr-auto">
-              <span :class="$store.getters.getGameDifficulity ? 'is-success' : 'is-error' ">{{$store.getters.getGameDifficulity}}</span>
-            </a> 
-            </summary>
-            <a href="#" class="nes-badge" @click="setGameDifficulty('easy')">
-              <span :class="$store.getters.getGameDifficulity =='easy' ? 'is-success' : 'is-error' ">easy</span>
-            </a> 
-            <a href="#" class="nes-badge " @click="setGameDifficulty('normal')">
-              <span :class="$store.getters.getGameDifficulity =='normal' ? 'is-success' : 'is-error' ">normal</span>
-            </a> 
-            <a href="#" class="nes-badge " @click="setGameDifficulty('hard')">
-              <span :class="$store.getters.getGameDifficulity =='hard' ? 'is-success' : 'is-error' ">hard</span>
-            </a> 
-        </details>
+            <div class="row text-uppercase ">
+              <div class="col" @click="selectMode">
+                <span class="p-1" v-if="mode">-</span>
+                <span class="p-1" v-else>+</span>
+                <span class="p-1">Mode</span>
+                <a href="#" class="nes-badge is-splited  text-left mr-auto">
+                  <span class="is-dark">WORDS</span>
+                  <span :class="$store.getters.getGameDifficulity ? 'is-success' : 'is-error' ">{{$store.getters.getGameDifficulity}}</span>
+                </a>
+              </div>
+            </div>
+            <div class="col-12" v-if="mode">
+              <label class="border-top">
+                <input type="radio" class="nes-radio" name="answer" checked />
+                <span class="text__small">WORDS</span>
+              </label>
+           <!--    <label>
+                <input type="radio" class="nes-radio" name="answer" checked disabled/>
+                <span class="text__small">COUNTDOWN</span>
+              </label> -->
+            </div>
+            <div class="col-12 game--difficulty--options" v-if="mode">
+              <a href="#" class="nes-badge" @click="setGameDifficulty('easy')">
+                <span :class="$store.getters.getGameDifficulity =='easy' ? 'is-success' : 'is-error' ">easy</span>
+              </a> 
+              <a href="#" class="nes-badge " @click="setGameDifficulty('normal')">
+                <span :class="$store.getters.getGameDifficulity =='normal' ? 'is-success' : 'is-error' ">normal</span>
+              </a> 
+              <a href="#" class="nes-badge " @click="setGameDifficulty('hard')">
+                <span :class="$store.getters.getGameDifficulity =='hard' ? 'is-success' : 'is-error' ">hard</span>
+              </a> 
+            </div>
       </div>
       <div class="game--stats col-md-5 mt-3 col-xs-12 mb-3 text-right">
           <span  title="word per minute">
@@ -73,7 +89,8 @@ export default {
       config:{
         gameDone:false
       },
-      inputPlaceholder:"Start typing to initiate the test..."
+      inputPlaceholder:"Start typing to initiate the test...",
+      mode:false
     }
   }, 
   mounted(){
@@ -83,6 +100,9 @@ export default {
     ...mapGetters(['isAuth','getAuthUser']),
   },
   methods:{
+    selectMode(){
+      this.mode = !this.mode;
+    },
     inputCheck(e){
       let inputField = document.getElementById('textinput');
       let textField = document.getElementById('gametext');
