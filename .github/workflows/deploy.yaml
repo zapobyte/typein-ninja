@@ -1,20 +1,14 @@
-name: Deploy
+name: Deploy application to DigitalOcean
 on:
   push:
     branches:
       - master
 jobs:
   build:
-    name: Test & Deploy
+    name: Deploy
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repo
-        uses: actions/checkout@master
-      - name: Install Dependencies
-        run: npm install
-      - name: Test Security Rules
-        run: npm run firebase-test
-      - name: executing remote ssh commands using password
+      - name: executing remote ssh commands
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
