@@ -19,8 +19,8 @@
                   <span class=" pl-2" :class="$route.name == 'Profile' ? 'text-white' : ''">{{ $store.getters.isAuth ? `${user.displayName}`:'account'}}</span>
                 </a>
                 <ul class="dropdown-menu mr-auto" aria-labelledby="navbarDropdown">
-                  <li class="dropdown-item " v-if="isAuth">
-                      <a @click="toProfile($event)">
+                  <li class="dropdown-item " v-if="isAuth"  @click="toProfile($event)">
+                      <a>
                       profile</a> 
                   </li>
                   <li class="dropdown-item " v-if="isAuth" @click="logout">

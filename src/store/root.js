@@ -22,13 +22,13 @@ const state = {
   
   const actions = {
     unsubscribeSnapshots(context,value){
-        const snapshots = context.getters.getSnapshots;
-        snapshots.forEach((snapshot)=>{
-            snapshot();
-        })
+      const snapshots = context.getters.getSnapshots;
+      snapshots.forEach((snapshot)=>{
+          snapshot();
+      })
     },
     addSnapshot(context,value){
-        context.commit('appendSnapshot',value);
+      context.commit('appendSnapshot',value);
     }
 }
   

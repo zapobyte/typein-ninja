@@ -4,14 +4,43 @@
     <label for="name_field">Search user</label>
     <input type="text" id="search" class="nes-input" v-model="search">
   </div>
-
-  <div class="nes-table-responsive text-dark game--list">
-    <table class="nes-table is-bordered m-0 mt-4 text-center is-center w-100">
+  <div class="nes-container with-title is-left text-dark bg-white mt-4">
+    <p class="title">   <i class="nes-icon star is-small"></i> {{month}} Best Ninjas </p>
+    <div class="row no-gutters">
+      <div class="col  nes-container is-rounded is-dark " v-for="(bestUser,index) in bestMonthUsers" :key="Math.random(100)">
+        <div class="row">
+          <div class="col-xs-12 col-auto">
+            <img :src="bestUser.photoURL" class="nes-avatar border-gold"   v-if="index==0 "/>
+            <img :src="bestUser.photoURL" class="nes-avatar border-silver"   v-else-if="index==1 "/>
+            <img :src="bestUser.photoURL" class="nes-avatar border-bronze"   v-else/>
+          </div>
+          <div class="col-xs-12 col">
+           <div class='row no-gutters '>
+              <div class="col-xs-12 col-md-7">
+              <p> {{bestUser.displayName}}</p>
+              <span class="text__small">{{bestUser.rank}}</span>
+              </div>
+              <div class="text__small col-xs-12 col-md-5 text-right">
+                <span> {{bestUser.wpm}}</span> /
+                <span>  {{bestUser.acc}}</span> @ 
+                <span>{{bestUser.difficulty}}</span>
+              </div>
+           </div>
+              
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <div class="nes-table-responsive text-dark text__small game--list">
+    <table class="nes-table is-bordered m-0 mt-4 text-center is-center w-100 ">
       <thead>
         <tr>
           <th style="width:110px"></th>
           <th>NAME</th>
           <th  style="width:110px">LVL</th>
+          <th >RANK</th>
           <th style="width:110px">BEST ACC</th>
           <th style="width:110px">BEST WPM</th>
           <th>DIFFICULTY</th>
@@ -23,6 +52,7 @@
           <td><img :src="user.photoURL" class="nes-avatar"/></td>
           <td>{{ user.displayName}}</td>
           <td>{{ user.lvl}}</td>
+          <td>{{ user.rank}}</td>
           <td>{{ user.best.acc}}</td>
           <td>{{ user.best.wpm}}</td>
           <td>{{ user.best.difficulty}}</td>
@@ -37,9 +67,10 @@
 <script>
 import UserProfile from '@/components/UserProfile';
 import { getUsers,getUser } from '@/functions/user';
-import { getBestUserGame } from '@/functions/gameHistory';
+import { getBestUserGame,getCurrentMonthGames } from '@/functions/gameHistory';
 import {
-    toDate
+    toDate,
+    getMonth
 } from '@/functions/utility';
 
 export default {
@@ -50,11 +81,29 @@ export default {
   data(){
     return{
       search:'',
-      searchList:[]
+      searchList:[],
+      bestMonthUsers:[]
     }
   },
   async mounted(){
+    const currentMonth = getMonth();
+    const bestWPM = 0;
+    const date = new Date();
+    const from = new Date(date.getFullYear(), date.getMonth());
+    const to = new Date(date.getFullYear(), date.getMonth()+1, 1);
+    const dates = {
+      from:from,
+      to:to
+    }
+
     try {
+      const games = await getCurrentMonthGames(dates);
+      const best3 = [];
+      for(let i = 0;i<3;i++){
+        if(games[i]){
+          best3.push(games[i]);
+        }
+      }
       const users = await getUsers();
       users.forEach(async (user)=>{
         const bestGame = await getBestUserGame(user.uid);
@@ -64,6 +113,15 @@ export default {
             ...user
         }
         this.searchList.push(data)
+        best3.forEach((u,i)=>{
+         if(u && user && u.uid == user.uid){
+          best3[i] = {
+            ...best3[i],
+            ...user
+          }
+         }  
+        })
+        this.bestMonthUsers = best3;
       }
     })
     } catch (error) {
@@ -71,6 +129,9 @@ export default {
     }
   },
   computed:{
+    month(){
+      return getMonth();
+    },
     users(){
       return this.searchList.filter(user => {
         return user.displayName.toLowerCase().includes(this.search.toLowerCase())
