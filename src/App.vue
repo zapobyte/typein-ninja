@@ -13,49 +13,8 @@
 </template>
 
 <style lang="scss">
-html,body {
-  font-family: 'Press Start 2P', cursive;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: white !important;
-  background:#5a6988 !important;
-  font-size:14px;
-}
-small{
-  font-size:70% !important;
-}
-a{
-  text-decoration: none !important;
-  transition: 0.15s all ease-in;
-  :hover{
-    transition: 0.15s all ease-in;
-  }
-}
+@import '~@/scss/app.scss';
 
-.router{
-  flex:1;
-}
-.nes-avatar{
-  border:2px solid #222;
-}
-
-.loading{
-  text-align: center;
-  width:auto;
-  height:300px;
-  position:absolute;
-  margin:auto;
-  top:0;
-  left:0;
-  right:0;
-  bottom:0;
-}
-.bg__white{
-    background:white;
-}
-.text__small{
-  font-size:80%;
-}
 </style>
 
 <script>

@@ -12,9 +12,9 @@
                     <div class="row no-gutters ">
                         <div class="text-left col-xs-12 col-md-6">
                             <div class="row align-items-center">
-                                <div class="col-8">
+                                <div class="col-12">
                                     <input type="text" id="name_field" :class="uploaded ? 'text__small  nes-input is-success':'text__small  nes-input'"  :value="userDisplayName" @blur="updateDisplayName" :disabled="!isAuthUser"/></div>
-                                <div class="col-4 text-right"><i class="nes-icon is-small star"></i> LVL {{ user ? user.lvl : '' }}
+                                <div class="col-12"><i class="nes-icon is-small star"></i> LVL {{ user ? user.lvl : '' }}
                                 </div>
                             <div class="col-12 pt-2">
                                 <div class="progress" v-if="user.uid == this.userAuth.uid">
@@ -49,7 +49,7 @@
             <details>
                 <summary class="position-relative">{{game.difficulty}}</summary>
                 <div class="nes-container is-rounded is-dark">
-                    <ul class="nes-list is-circle">
+                    <ul class="nes-list text__small">
                         <li>WPM: {{game.wpm}} </li>
                         <li>Accuracy: {{game.acc}} </li>
                         <li>Difficulty: {{game.difficulty}} </li>
