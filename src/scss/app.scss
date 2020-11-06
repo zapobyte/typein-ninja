@@ -47,3 +47,18 @@ https://github.com/nostalgic-css/NES.css/issues/434 */
 .nes-container.is-rounded, .nes-balloon{
     border-image-repeat:unset !important;
 }
+
+
+.bg{
+  &-gold{
+    background-color: $gold;
+
+  }
+  &-silver{
+    background-color: $silver;
+
+  }
+  &-bronze{
+    background-color: $bronze;
+  }
+}

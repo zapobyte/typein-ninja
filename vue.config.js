@@ -5,6 +5,15 @@ const webpack = require('webpack');
 module.exports = {
     // enable/disable eslint error messages
     lintOnSave:false,
+    css: {
+        loaderOptions: {
+          scss: {
+            additionalData: `
+            @import "@/scss/variables.scss";
+            `
+          },
+        }
+    },
     configureWebpack: {
         plugins: [
             new webpack.DefinePlugin({

@@ -13,10 +13,10 @@
                 </router-link>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle text-right" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle text-right text-truncate" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false" style="max-width:200px">
                   <i class="nes-icon is-small heart" v-if="$store.getters.isAuth"></i>
                   <i class="nes-icon is-small heart is-half" v-else></i>
-                  <span class=" pl-2" :class="$route.name == 'Profile' ? 'text-white' : ''">{{ $store.getters.isAuth ? `${user.displayName}`:'account'}}</span>
+                  <span class="text-truncate pl-2" :class="$route.name == 'Profile' ? 'text-white' : ''">{{ $store.getters.isAuth ? `${user.displayName}`:'account'}}</span>
                 </a>
                 <ul class="dropdown-menu mr-auto" aria-labelledby="navbarDropdown">
                   <li class="dropdown-item " v-if="isAuth"  @click="toProfile($event)">

@@ -16,16 +16,27 @@
       transition: 0.15s all ease;
     }
   }
+
   .border{
     &-gold{
-      border:3px double  #AF9500;
+      border:5px double  $gold;
 
     }
     &-silver{
-      border:3px  double #B4B4B4;
+      border:5px  double $silver;
 
     }
     &-bronze{
-      border:3px  double #6A3805;
+      border:5px  double $bronze;
+    }
+  }
+  .best-user{
+    padding:1rem;
+    border-radius:4px;
+    &:hover{
+      background:#212529;
+      color:white;
+      border-color: white !important;
+      transition: 0.15s all ease;
     }
   }
