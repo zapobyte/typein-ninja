@@ -26,10 +26,10 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^7.12.1",
     "eslint-plugin-vue": "^7.1.0",
-    "sass": "^1.28.0",
+    "sass": "^1.29.0",
     "sass-loader": "^10.0.5",
     "vue-template-compiler": "^2.6.11",
-    "webpack": "^4.0.0"
+    "webpack": "^4.44.2"
   },
   "description": "typein.ninja is a typing test for speed and accuracy with gamify elements.",
   "main": ".eslintrc.js",
