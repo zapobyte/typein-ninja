@@ -5,32 +5,28 @@
     <input type="text" id="search" class="nes-input" v-model="search">
   </div>
   <div class="nes-container with-title is-left text-dark bg-white mt-4">
-    <p class="title">   <i class="nes-icon star is-small"></i> {{month}} Best Ninjas </p>
+    <p class="title">  <i class="nes-icon star is-small"></i> {{month}} Best Ninjas </p>
+    <p class="text__small pt-2">Current month standings for best players.<br> <small class="text-muted">{{ new Date}}</small></p>
     <div class="row no-gutters">
-      <div class="col  nes-container is-rounded is-dark " v-for="(bestUser,index) in bestMonthUsers" :key="Math.random(100)">
-        <div class="row">
-          <div class="col-xs-12 col-auto">
+      <div class="col-4 best-user" v-for="(bestUser,index) in bestMonthUsers" :key="bestUser.uid+  Math.random()" @click="$router.push({
+            path:`/profile/${bestUser.uid}`
+          })" :id="bestUser.uid" v-if="bestMonthUsers.length > 0">
+        <div class="row is-dark">
+          <div class="col-xs-12 col-3 text-left ml-auto">
             <img :src="bestUser.photoURL" class="nes-avatar border-gold"   v-if="index==0 "/>
             <img :src="bestUser.photoURL" class="nes-avatar border-silver"   v-else-if="index==1 "/>
-            <img :src="bestUser.photoURL" class="nes-avatar border-bronze"   v-else/>
+            <img :src="bestUser.photoURL" class="nes-avatar border-bronze"   v-else/>         
           </div>
-          <div class="col-xs-12 col">
-           <div class='row no-gutters '>
-              <div class="col-xs-12 col-md-7">
-              <p> {{bestUser.displayName}}</p>
-              <span class="text__small">{{bestUser.rank}}</span>
-              </div>
-              <div class="text__small col-xs-12 col-md-5 text-right">
-                <span> {{bestUser.wpm}}</span> /
-                <span>  {{bestUser.acc}}</span> @ 
-                <span>{{bestUser.difficulty}}</span>
-              </div>
-           </div>
-              
+          <div class="col-xs-12 col-9" >
+              <p class="text-truncate">   <i class="nes-icon coin is-small" ></i> {{bestUser.displayName}}</p>
+              <p class="text__small">{{bestUser.rank}} /
+              <span class="text__small">LVL</span> 
+              <span class="text__small">  {{bestUser.lvl}}</span>
+              </p>
           </div>
         </div>
-        
       </div>
+      <div class="col-12" v-else> No Users recorded for this month </div>
     </div>
   </div>
   <div class="nes-table-responsive text-dark text__small game--list">
@@ -82,7 +78,8 @@ export default {
     return{
       search:'',
       searchList:[],
-      bestMonthUsers:[]
+      bestMonthUsers:[],
+      positions:['gold','silver','bronze']
     }
   },
   async mounted(){

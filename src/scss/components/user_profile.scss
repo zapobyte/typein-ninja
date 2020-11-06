@@ -12,10 +12,14 @@
 }
 
 .progress-bar{
-    background:#f2c409 !important;
+    background:$yellow !important;
 }
 .nes-list{
     list-style: none;
     margin:0;
     padding:0;
+}
+
+.nes-input.is-success{
+    border-bottom: 1px solid green !important;
 }
