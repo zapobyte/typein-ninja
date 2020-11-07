@@ -6,7 +6,8 @@
   </div>
   <div class="nes-container with-title is-left text-dark bg-white mt-4">
     <p class="title">  <i class="nes-icon star is-small"></i> {{month}} Best Ninjas </p>
-    <p class="text__small pt-2">Current month standings for best players.<br> <small class="text-muted">{{ new Date}}</small></p>
+    <p class="pb-0 mb-0 text__small pt-2">Current month best players.<br></p>
+    <p class="pb-0 mb-0 text__small"><small class="text-muted">{{ new Date().toString().split('GMT')[0]}}</small></p>
     <div class="row no-gutters">
       <div class="col-4 best-user" v-for="(bestUser,index) in bestMonthUsers" :key="bestUser.uid+  Math.random()" @click="$router.push({
             path:`/profile/${bestUser.uid}`
@@ -18,8 +19,8 @@
             <img :src="bestUser.photoURL" class="nes-avatar border-bronze"   v-else/>         
           </div>
           <div class="col-xs-12 col-9" >
-              <p class="text-truncate">   <i class="nes-icon coin is-small" ></i> {{bestUser.displayName}}</p>
-              <p class="text__small">{{bestUser.rank}} /
+              <p class="text-truncate">   <i class="nes-icon trophy is-small" :class="`color-${positions[index]}`" ></i> {{bestUser.displayName}}</p>
+              <p class="text__small">{{bestUser.rank}} 
               <span class="text__small">LVL</span> 
               <span class="text__small">  {{bestUser.lvl}}</span>
               </p>

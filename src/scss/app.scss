@@ -62,3 +62,27 @@ https://github.com/nostalgic-css/NES.css/issues/434 */
     background-color: $bronze;
   }
 }
+
+.color{
+  &-gold{
+    color:$gold !important;
+    &:before{
+      color:$gold !important;
+
+    }
+  }
+  &-silver{
+    color:$silver !important;
+    &:before{
+      color:$silver !important;
+
+    }
+  }
+  &-bronze{
+    color:$bronze !important;
+    &:before{
+      color:$bronze !important;
+
+    }
+  }
+}
