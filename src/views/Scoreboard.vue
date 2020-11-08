@@ -8,27 +8,19 @@
     <p class="title">  <i class="nes-icon star is-small"></i> {{month}} Best Ninjas </p>
     <p class="pb-0 mb-0 text__small pt-2">Current month best players.<br></p>
     <p class="pb-0 mb-0 text__small"><small class="text-muted">{{ new Date().toString().split('GMT')[0]}}</small></p>
-    <div class="row no-gutters">
+    <div class="row no-gutters"  v-if="bestMonthUsers.length > 0">
       <div class="col-4 best-user" v-for="(bestUser,index) in bestMonthUsers" :key="bestUser.uid+  Math.random()" @click="$router.push({
             path:`/profile/${bestUser.uid}`
-          })" :id="bestUser.uid" v-if="bestMonthUsers.length > 0">
-        <div class="row is-dark">
-          <div class="col-xs-12 col-3 text-left ml-auto">
-            <img :src="bestUser.photoURL" class="nes-avatar border-gold"   v-if="index==0 "/>
-            <img :src="bestUser.photoURL" class="nes-avatar border-silver"   v-else-if="index==1 "/>
-            <img :src="bestUser.photoURL" class="nes-avatar border-bronze"   v-else/>         
-          </div>
-          <div class="col-xs-12 col-9" >
-              <p class="text-truncate">   <i class="nes-icon trophy is-small" :class="`color-${positions[index]}`" ></i> {{bestUser.displayName}}</p>
-              <p class="text__small">{{bestUser.rank}} 
-              <span class="text__small">LVL</span> 
-              <span class="text__small">  {{bestUser.lvl}}</span>
-              </p>
-          </div>
-        </div>
+          })" :id="bestUser.uid">
+      
+          <p class="text-truncate">   <i class="nes-icon trophy is-small" :class="`color-${positions[index]}`" ></i> {{bestUser.displayName}}</p>
+          <p class="text__small">{{bestUser.rank}} </p>
+          <p><small class="text__small">LVL
+    {{bestUser.lvl}}</small>
+          </p>
       </div>
-      <div class="col-12" v-else> No Users recorded for this month </div>
     </div>
+    <div class="col-12" v-else> No Users recorded for this month </div>
   </div>
   <div class="nes-table-responsive text-dark text__small game--list">
     <table class="nes-table is-bordered m-0 mt-4 text-center is-center w-100 ">
