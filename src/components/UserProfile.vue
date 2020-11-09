@@ -22,7 +22,11 @@
                         </div>
                         <div class="col-12  text__small">
                             <p>  <i class="nes-icon mr-3 is-small is-full star"></i>LVL {{ user ? user.lvl : '' }} </p>
-                            <p><img :src='"~@/assets/gameAssets/ranks/rank_" + user.rank ? user.rank.toLowerCase().split(" ").join("_") +".png" : "~@/assets/gameAssets/ranks/rank_apprentice.png" ' style="width:24px; margin-left:-4px;" /> {{ user ? user.rank : '' }}</p>
+                            <p>
+                                <img :src='"~@/assets/gameAssets/ranks/rank_" +user.rank.toLowerCase().split(" ").join("_")  +".png" ' style="width:24px; margin-left:-4px;" v-if="user.rank"/>
+                                <img :src='"~@/assets/gameAssets/ranks/rank_apprentice.png" ' style="width:24px; margin-left:-4px;" v-else/>
+
+                                 {{ user ? user.rank : '' }}</p>
                         </div>
                     </div>   
                 </div>

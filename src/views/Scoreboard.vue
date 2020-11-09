@@ -16,10 +16,13 @@
             <p class="title  "> <i class="nes-icon trophy" :class="`color-${positions[index]}`" ></i></p>
             <p><img class="img-fluid nes-avatar" :src="bestUser.photoURL" /></p>
             <p :class="`color-${positions[index]}`">   {{bestUser.displayName}}</p>
-            <p class="text__small"<img :src='"~@/assets/gameAssets/ranks/rank_" + user.rank ? user.rank.toLowerCase().split(" ").join("_") +".png" : "~@/assets/gameAssets/ranks/rank_apprentice.png" ' style="width:24px; margin-left:-4px;" /> {{bestUser.rank}} </p>
-                <p><small class="text__small"><i class="nes-icon mr-3 is-small is-full star"></i>LVL
-          {{bestUser.lvl}}</small>
-                </p>
+            <p class="text__small">
+                    <img :src='"~@/assets/gameAssets/ranks/rank_" +bestUser.rank.toLowerCase().split(" ").join("_")  +".png" ' style="width:24px; margin-left:-4px;" v-if="bestUser.rank"/>
+                                <img :src='"~@/assets/gameAssets/ranks/rank_apprentice.png" ' style="width:24px; margin-left:-4px;" v-else/>
+            {{bestUser.rank}} </p>
+            <p><small class="text__small"><i class="nes-icon mr-3 is-small is-full star"></i>LVL
+      {{bestUser.lvl}}</small>
+            </p>
           </div>
 
       </div>
