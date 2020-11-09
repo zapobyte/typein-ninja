@@ -1,26 +1,32 @@
 const state = {
     ranks:[{
         name:"Apprentice",
-        xp:0
+        xp:0,
+        img:'~@/assets/gameAssets/ranks/rank_apprentice.png'
     },{
         name:"Genin",
-        xp:25000
+        xp:25000,
+        img:'~@/assets/gameAssets/ranks/rank_genin.png'
     },
     {
         name:"Chunin",
-        xp:15000
+        xp:15000,
+        img:'~@/assets/gameAssets/ranks/rank_chunin.png'
     },
     {
         name:"Jonin",
-        xp:35000
+        xp:35000,
+        img:'~@/assets/gameAssets/ranks/rank_jonin.png'
     },
     {
         name:"Ninja",
-        xp:50000
+        xp:50000,
+        img:'~@/assets/gameAssets/ranks/rank_ninja.png'
     },
     {
         name:"Master Ninja",
-        xp:100000
+        xp:100000,
+        img:'~@/assets/gameAssets/ranks/rank_master_ninja.png'
     }]
   };
   
