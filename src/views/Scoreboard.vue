@@ -4,20 +4,24 @@
     <label for="name_field">Search user</label>
     <input type="text" id="search" class="nes-input" v-model="search">
   </div>
-  <div class="nes-container with-title is-left text-dark bg-white mt-4">
-    <p class="title">  <i class="nes-icon star is-small"></i> {{month}} Best Ninjas </p>
-    <p class="pb-0 mb-0 text__small pt-2">Current month best players.<br></p>
-    <p class="pb-0 mb-0 text__small"><small class="text-muted">{{ new Date().toString().split('GMT')[0]}}</small></p>
+  <div class="nes-container p-0 with-title is-centered  border-0 bg-transparent text-white">
+    <p class="title bg-transparent mt-2 mb-2"><i class="nes-icon mr-2 star is-small"></i>{{month}} Best Ninjas </p>
+    <p class="pl-4 text__small"><small class="pl-2">{{ new Date().toString().split('GMT')[0]}}</small></p>
     <div class="row no-gutters"  v-if="bestMonthUsers.length > 0">
-      <div class="col-4 best-user" v-for="(bestUser,index) in bestMonthUsers" :key="bestUser.uid+  Math.random()" @click="$router.push({
+      <div class="col-4 best-user" v-for="(bestUser,index) in bestMonthUsers" :key="bestUser.uid+  Math.random()">
+          
+          <div class="nes-container bg-white text-dark text-center m-auto with-title is-centered"  @click="$router.push({
             path:`/profile/${bestUser.uid}`
           })" :id="bestUser.uid">
-      
-          <p class="text-truncate">   <i class="nes-icon trophy is-small" :class="`color-${positions[index]}`" ></i> {{bestUser.displayName}}</p>
-          <p class="text__small">{{bestUser.rank}} </p>
-          <p><small class="text__small">LVL
-    {{bestUser.lvl}}</small>
-          </p>
+            <p class="title  "> <i class="nes-icon trophy" :class="`color-${positions[index]}`" ></i></p>
+            <p><img class="img-fluid nes-avatar" :src="bestUser.photoURL" /></p>
+            <p :class="`color-${positions[index]}`">   {{bestUser.displayName}}</p>
+            <p class="text__small">{{bestUser.rank}} </p>
+                <p><small class="text__small">LVL
+          {{bestUser.lvl}}</small>
+                </p>
+          </div>
+
       </div>
     </div>
     <div class="col-12" v-else> No Users recorded for this month </div>

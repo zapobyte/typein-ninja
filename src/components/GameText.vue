@@ -11,24 +11,14 @@
                 <p class="d-flex p-0 m-0 align-items-center">
                 <span class="p-1" v-if="mode">-</span>
                 <span class="p-1" v-else>+</span>
-                <span>Mode</span>
-                <a href="#" class="nes-badge is-splited  text-left mr-auto">
-                  <span class="is-dark">WORDS</span>
-                  <span :class="$store.getters.getGameDifficulity ? 'is-success' : 'is-error' ">{{$store.getters.getGameDifficulity}}</span>
-                </a>
+                  <a href="#" class="nes-badge is-splited  text-left mr-auto">
+                    <span class="is-dark">Mode</span>
+                    <span :class="$store.getters.getGameDifficulity ? 'is-success' : 'is-error' ">{{$store.getters.getGameDifficulity}}</span>
+                  </a>
                 </p>
-                
               </div>
             </div>
             <div class="col-12" v-if="mode">
-              <label class="">
-                <input type="radio" class="nes-radio" name="answer" checked />
-                <span class="text__small">WORDS</span>
-              </label>
-           <!--    <label>
-                <input type="radio" class="nes-radio" name="answer" checked disabled/>
-                <span class="text__small">COUNTDOWN</span>
-              </label> -->
             </div>
             <div class="col-12 game--difficulty--options" v-if="mode">
               <a href="#" class="nes-badge" @click="setGameDifficulty('easy')">
