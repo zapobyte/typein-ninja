@@ -4,7 +4,7 @@ const version = JSON.parse(packageJson).version || 0;
 const webpack = require('webpack');
 module.exports = {
     // enable/disable eslint error messages
-    lintOnSave:true,
+    lintOnSave:false,
     css: {
         loaderOptions: {
             sass: {
