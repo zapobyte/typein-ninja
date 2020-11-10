@@ -5,7 +5,7 @@
     <input type="text" id="search" class="nes-input" v-model="search">
   </div>
   <div class="nes-container p-0 with-title is-centered  border-0 bg-transparent text-white">
-    <p class="title bg-transparent mt-2 mb-2"><i class="nes-icon mr-2 star is-small"></i>{{month}} Best Ninjas </p>
+    <p class="title bg-transparent mt-2 pt-2 mb-2"><i class="nes-icon mr-2 star is-small"></i>{{month}} Best Ninjas </p>
     <p class="pl-4 text__small"><small class="pl-2">{{ new Date().toString().split('GMT')[0]}}</small></p>
     <div class="row no-gutters"  v-if="bestMonthUsers.length > 0">
       <div class="col-4 best-user" v-for="(bestUser,index) in bestMonthUsers" :key="bestUser.uid+  Math.random()">
@@ -17,8 +17,8 @@
             <p><img class="img-fluid nes-avatar" :src="bestUser.photoURL" /></p>
             <p :class="`color-${positions[index]}`">   {{bestUser.displayName}}</p>
             <p class="text__small">
-                    <img :src='"~@/assets/gameAssets/ranks/rank_" +bestUser.rank.toLowerCase().split(" ").join("_")  +".png" ' style="width:24px; margin-left:-4px;" v-if="bestUser.rank"/>
-                                <img :src='"~@/assets/gameAssets/ranks/rank_apprentice.png" ' style="width:24px; margin-left:-4px;" v-else/>
+            <img :src='"~@/assets/gameAssets/ranks/rank_" +bestUser.rank.toLowerCase().split(" ").join("_")  +".png" ' style="width:24px; margin-left:-4px;" v-if="bestUser.rank"/>
+            <img :src='"~@/assets/gameAssets/ranks/rank_apprentice.png" ' style="width:24px; margin-left:-4px;" v-else/>
             {{bestUser.rank}} </p>
             <p><small class="text__small"><i class="nes-icon mr-3 is-small is-full star"></i>LVL
       {{bestUser.lvl}}</small>
@@ -93,37 +93,38 @@ export default {
       to:to
     }
 
-    try {
-      const games = await getCurrentMonthGames(dates);
-      const best3 = [];
-      for(let i = 0;i<3;i++){
-        if(games[i]){
-          best3.push(games[i]);
-        }
+  try {
+    const games = await getCurrentMonthGames(dates);
+    const best3 = [];
+    for(let i = 0;i<3;i++){
+      if(games[i]){
+        best3.push(games[i]);
       }
-      const users = await getUsers();
-      users.forEach(async (user)=>{
-        const bestGame = await getBestUserGame(user.uid);
-        if(bestGame){
-          const data = {
-            ...bestGame,
-            ...user
-        }
-        this.searchList.push(data)
-        best3.forEach((u,i)=>{
-         if(u && user && u.uid == user.uid){
-          best3[i] = {
-            ...best3[i],
-            ...user
-          }
-         }  
-        })
-        this.bestMonthUsers = best3;
-      }
-    })
-    } catch (error) {
-      console.log(error)
     }
+    const users = await getUsers();
+    users.forEach(async (user)=>{
+      const bestGame = await getBestUserGame(user.uid);
+      if(bestGame){
+        const data = {
+          ...bestGame,
+          ...user
+      }
+      this.searchList.push(data)
+      best3.forEach((u,i)=>{
+        if(u && user && u.uid == user.uid){
+        best3[i] = {
+          ...best3[i],
+          ...user
+        }
+        }  
+      })
+      this.bestMonthUsers = best3;
+    }
+  })
+
+  } catch (error) {
+    console.log(error);
+  }
   },
   computed:{
     month(){

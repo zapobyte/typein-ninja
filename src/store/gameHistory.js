@@ -49,6 +49,7 @@ const state = {
   
   const actions = {
    async addGameHistory(context,value){
+    context.dispatch('setLoading',true);
        try {
         const user = store.getters.getAuthUser;
         const newGameEntry = {
@@ -68,8 +69,11 @@ const state = {
         }
         store.dispatch('updateUser',data);
         context.commit('setScore',data);
+        context.dispatch('setLoading',false);
        } catch (error) {
-           console.log(error)
+           console.log(error);
+           context.dispatch('setLoading',false);
+
        }
        
     }

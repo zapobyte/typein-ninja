@@ -40,11 +40,16 @@ const mutations = {
 };  
   
 const actions = {
-        async setGameDifficulty({commit},gameDifficulty){
-            commit('setGameDifficulty',gameDifficulty)
+        async setGameDifficulty({commit,dispatch},gameDifficulty){
+            dispatch('setLoading',true);
+            commit('setGameDifficulty',gameDifficulty);
+            dispatch('setLoading',false);
+
         },
         setLoading({commit},value){
+            dispatch('setLoading',true);
             commit('updateLoading',value);
+            dispatch('setLoading',false);
         }
   };
   
