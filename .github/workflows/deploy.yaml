@@ -15,7 +15,9 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASS }}
           port: ${{ secrets.PORT }}
+          script_stop: true
           script: |
-            cd /var/www/html/typein-ninja
-            git pull origin master
+            cd /var/www/html/typein-ninja &&
+            git pull origin master &&
             npm run build
+            
