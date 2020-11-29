@@ -138,7 +138,7 @@ export default {
                     date:new Date(this.startDate)
                   });
                   if(this.acc >= this.getAuthUser.best.acc && this.wpm > this.getAuthUser.best.wpm){
-                    this.$store.dispatch('updateUserBestGame',{
+                    this.$store.dispatch('updateUserBestGame', {
                       wpm:this.wpm,
                       acc:this.acc,
                       difficulty:this.$store.getters.getGameDifficulity
@@ -189,5 +189,4 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 @import '~@/scss/components/game_text.scss';
-
 </style>

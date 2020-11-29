@@ -18,38 +18,16 @@ const state = {
     getUserDifficulty(state){
         return state.difficulty;
     },
-    getUserWpm(state){
-        return state.wpm;
-    },
-    getUserAcm(state){
-        return state.acc;
-    },
-    getDate(state){
-        return state.date;
-    }
   };
   
   const mutations = {
     setScore(state,value){
         state = value;
     },
-    setDifficulty(state,value){
-        state.difficulty = value;
-    },
-    setUserWpm(state,value){
-        state.wpm = value;
-    },
-    setUserAcc(state,value){
-        state.acm = value;
-    },
-    setDate(state,value){
-        state.date = value;
-    }
   };
   
   const actions = {
    async addGameHistory(context,value){
-    context.dispatch('setLoading',true);
        try {
         const user = store.getters.getAuthUser;
         const newGameEntry = {
@@ -68,14 +46,10 @@ const state = {
             rank:userRank
         }
         store.dispatch('updateUser',data);
-        context.commit('setScore',data);
-        context.dispatch('setLoading',false);
+        context.commit('setScore',value);
        } catch (error) {
            console.log(error);
-           context.dispatch('setLoading',false);
-
        }
-       
     }
   };
   

@@ -47,7 +47,9 @@ https://github.com/nostalgic-css/NES.css/issues/434 */
 .nes-container.is-rounded, .nes-balloon{
     border-image-repeat:unset !important;
 }
-
+.nes-badge {
+  width:13em !important;
+}
 
 .bg{
   &-gold{

@@ -35,13 +35,15 @@
                         <i class="nes-icon google is-small mr-1"></i>
                         <small>Signin with Google</small>
                       </button>
-                      <p><small>
-                      *by login you agree with  <br>
-                      our <router-link to="/terms-condition">Terms and Conditions</router-link>
-                      <br> and <router-link to="/privacy-policy">Privacy Policy</router-link>.</small>
-                      </p>
                   </li>
-                  <li class="text-right is-small pr-3">
+                  <li class="p-3">
+                    <small>
+                      *by Signin you agree with our 
+                      <router-link to="/terms-condition">Terms and Conditions</router-link>
+                      and <router-link to="/privacy-policy">Privacy Policy</router-link>.
+                      </small>
+                  </li>
+                  <li class="text-right text__small pr-3">
                     <small>v{{appVersion}}</small>
                   </li>
                 </ul>

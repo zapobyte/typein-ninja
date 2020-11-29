@@ -5,7 +5,6 @@ import {
 } from '@/functions/user'
 const state = {
     user:{},
-    users:[],
     token:'',
 };
   
@@ -41,9 +40,6 @@ const mutations = {
     },
     setUser(state,value){
         state.user = value;
-    },
-    setUsers(state,value){
-        state.users= value;
     }
 };
   
@@ -79,9 +75,6 @@ const actions = {
             console.log(error);
             return error.message;  
         }
-    },
-    async addUserXp({commit},data){
-        commit('setUserXp',data)
     }
   };
   
