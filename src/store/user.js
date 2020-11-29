@@ -48,9 +48,6 @@ const actions = {
         commit('setUser',user);
     },
     async authenticate({commit},{user, token}){
-        if(!user){
-            return;
-        }
         try {
             await getOrCreateFsUser(user);
             commit('setToken',token);

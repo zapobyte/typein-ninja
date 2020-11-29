@@ -59,14 +59,7 @@ export default {
     try {
       let users = await getUsers();
       users.forEach(async (user)=>{
-        const bestGame = await getBestUserGame(user.uid);
-        if(bestGame){
-          const data = {
-            ...bestGame,
-            ...user
-          }
           this.searchList.push(data);
-        }
       })
     } catch (error) {
       console.log(error);

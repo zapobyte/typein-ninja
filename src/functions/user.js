@@ -1,4 +1,3 @@
-import { getBestUserGame } from '@/functions/gameHistory';
 import store from '../store'
 import firebase from 'firebase';
 
