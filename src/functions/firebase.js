@@ -2,6 +2,7 @@ import firebase from 'firebase/app'
 import store from '../store';
 
 export const firebaseInit = () => {
+
     firebase.initializeApp({
         apiKey: process.env.VUE_APP_API_KEY,
         authDomain: process.env.VUE_APP_AUTH_DOMAIN,
@@ -12,18 +13,15 @@ export const firebaseInit = () => {
         appId: process.env.VUE_APP_APP_ID,
     });
 
-    firebase.auth().onAuthStateChanged(async user => { 
+    firebase.auth().onAuthStateChanged(async user => {
         store.dispatch('setLoading',true);
         if(user){
             const token = user.refreshToken;
             store.dispatch('authenticate',{user,token});
-            setTimeout(()=>{
-                store.dispatch('setLoading',false);
-            },500);
         } else {
-            store.dispatch('setLoading',false);
             logout();
         }
+        store.dispatch('setLoading',false);
     })
 }
 
@@ -50,9 +48,7 @@ export const googleSignIn = ()=>{
 
 export const logout = () => {
     store.dispatch('unsubscribeSnapshots');
-    store.dispatch('authenticate',false);
     store.dispatch('setUser',{});
     localStorage.setItem('token','');
-    store.dispatch('setLoading',false)
     firebase.auth().signOut();
 }

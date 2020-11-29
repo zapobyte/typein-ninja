@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark col-12 align-self-start">
-      <router-link to="/" class="navbar-brand" >typein.ninja</router-link>
+      <router-link to="/" class="navbar-brand">typein.ninja</router-link>
       <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
       </button>
@@ -35,13 +35,15 @@
                         <i class="nes-icon google is-small mr-1"></i>
                         <small>Signin with Google</small>
                       </button>
-                      <p><small>
-                      *by login you agree with  <br>
-                      our <router-link to="/terms-condition">Terms and Conditions</router-link>
-                      <br> and <router-link to="/privacy-policy">Privacy Policy</router-link>.</small>
-                      </p>
                   </li>
-                  <li class="text-right is-small pr-3">
+                  <li class="p-3">
+                    <small>
+                      *by Signin you agree with our 
+                      <router-link to="/terms-condition">Terms and Conditions</router-link>
+                      and <router-link to="/privacy-policy">Privacy Policy</router-link>.
+                      </small>
+                  </li>
+                  <li class="text-right text__small pr-3">
                     <small>v{{appVersion}}</small>
                   </li>
                 </ul>
@@ -102,7 +104,15 @@ export default {
       this.$router.push({path: `/profile/${this.user.uid}`})
     },
     deleteAccount(){
-      document.getElementById('dialog').showModal();
+      const isChrome = navigator.userAgent.includes("Chrome") && navigator.vendor.includes("Google Inc");
+
+      if(isChrome){
+        document.getElementById('dialog').showModal();
+      } else {
+        if(confirm('Are you sure you want to delete your account and all info associated with it?')){
+          deleteCurrentUser();
+        }
+      }
     },
     deleteAcc(){
       deleteCurrentUser();

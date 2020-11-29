@@ -5,7 +5,6 @@ import {
 } from '@/functions/user'
 const state = {
     user:{},
-    users:[],
     token:'',
 };
   
@@ -41,9 +40,6 @@ const mutations = {
     },
     setUser(state,value){
         state.user = value;
-    },
-    setUsers(state,value){
-        state.users= value;
     }
 };
   
@@ -52,9 +48,6 @@ const actions = {
         commit('setUser',user);
     },
     async authenticate({commit},{user, token}){
-        if(!user){
-            return;
-        }
         try {
             await getOrCreateFsUser(user);
             commit('setToken',token);
@@ -79,9 +72,6 @@ const actions = {
             console.log(error);
             return error.message;  
         }
-    },
-    async addUserXp({commit},data){
-        commit('setUserXp',data)
     }
   };
   

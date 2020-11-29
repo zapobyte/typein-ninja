@@ -33,7 +33,7 @@ const state = {
   const getters = {
     getRanks(state){
         return state.ranks;
-    },
+    }
   };
   
   const mutations = {
@@ -41,13 +41,11 @@ const state = {
   
   const actions = {
     getUserRank(context,xp){
-        context.dispatch('setLoading',true);
         const rank = context.getters.getRanks.find((rank)=>{
-            return xp > rank.xp;
+            return xp >= rank.xp;
         })
-        context.dispatch('setLoading',false);
         return rank.name;
-    },
+    }
 }
   
   export default {

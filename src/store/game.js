@@ -14,8 +14,7 @@ const state = {
             xp:125,
             count:50
         }
-    },
-    loading:false,
+    }
   };
   
 const getters = {
@@ -24,29 +23,19 @@ const getters = {
     },
     getGameDifficulity(state){
         return state.gameDifficulty;
-    },
-    getLoading(state){
-        return state.loading;
     }
 };
   
 const mutations = {
     setGameDifficulty(state,value){
-        state.gameDifficulty= value;
-    },
-    updateLoading(state,value){
-        state.loading=value;
+        state.gameDifficulty = value;
     }
 };  
   
 const actions = {
-        async setGameDifficulty({commit},gameDifficulty){
-            commit('setGameDifficulty',gameDifficulty);
-
-        },
-        setLoading({commit},value){
-            commit('updateLoading',value);
-        }
+    async setGameDifficulty({commit},gameDifficulty){
+        commit('setGameDifficulty',gameDifficulty);
+    }
   };
   
 export default {
