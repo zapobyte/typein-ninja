@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import Vuex, { Store } from 'vuex';
+import Vuex from 'vuex';
 import user from '@/store/user';
 import game from '@/store/game';
 import root from '@/store/root';

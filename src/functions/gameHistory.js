@@ -16,12 +16,15 @@ export const getBestUserGame = async (uid)=>{
 }
 export const getBestUserGameByDiff = async (uid,difficulty)=>{
    try {
-        let db = firebase.firestore(); 
-        const games = await db.collection("gameHistory").where("uid","==",uid).where("difficulty","==",difficulty).get();
-        const docs = games.docs.map(doc=> doc.data())
-        const bestGame = docs.sort((a,b)=>{
-            return a.acc == 100 && b.wpm - a.wpm;
-        })
+    let db = firebase.firestore(); 
+    const games = await db.collection("gameHistory").where("uid","==",uid).where("difficulty","==",difficulty).get();
+    const docs = games.docs.map(doc=> doc.data())
+    let bestGame = docs.sort((a,b)=>{
+        return a.acc > 85 && b.wpm - a.wpm;
+    })
+    bestGame = bestGame.sort((a,b)=>{
+        return b.acc - a.acc;
+    })
     return bestGame[0];
    }catch (error) {
     console.log(error);

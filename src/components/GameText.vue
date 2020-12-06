@@ -82,7 +82,7 @@ export default {
       config:{
         gameDone:false
       },
-      inputPlaceholder:"Start typing to initiate the test...",
+      inputPlaceholder:"Start typing the text here to initiate the Test ...",
       mode:false
     }
   }, 
