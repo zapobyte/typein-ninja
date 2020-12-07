@@ -5,8 +5,7 @@ import firebase from 'firebase';
 export const createFsUser = async (user) =>{
     let db = firebase.firestore();
     try{
-        const bestGame = await getBestUserGame(user.uid);
-        const best = bestGame ? bestGame : { wpm:0, acc:0,difficulty:'' };
+        const best = { wpm:0, acc:0,difficulty:'' };
         const dbUser = await db.collection('users').doc(user.uid).set({
             displayName: user.displayName,
             photoURL:user.photoURL,
@@ -62,7 +61,6 @@ export const updateUser = async (data) =>{
         lvl:data.lvl,
         rank:data.rank
     }
-    console.log(updateData)
     try{
         const dbUser = await db.collection('users').doc(currentUser.uid).update(updateData);
         return dbUser;
@@ -81,7 +79,6 @@ export const getUser = async (data) => {
         console.error(error.message);
         throw new error;
     }
- 
 }
 
 export const getUsers = async () => {
@@ -103,8 +100,7 @@ export const getOrCreateFsUser = async (user)=>{
         if(!dbUser){   
             await createFsUser(user);
         }
-        const unsubscribe = db.collection("users").doc(user.uid)
-        .onSnapshot( async function(doc) {
+        const unsubscribe = db.collection("users").doc(user.uid).onSnapshot( async function(doc) {
             const data = doc.data();
             return store.dispatch('setUser',data);
         });

@@ -1,37 +1,49 @@
 .nes-input{
-    &::placeholder {
-      font-size:0.9rem;
-    }
+  &::placeholder {
+    font-size:0.85rem;
+    color:rgba(0, 0, 0, 0.774);
   }
-  .game--text{
-    margin-bottom:3rem;
+}
+
+.game--text{
+  margin-bottom:3rem;
+}
+details{
+  summary{
+    outline:none;
   }
-  details{
-    summary{
-      outline:none;
-    }
+}
+.nes-badge{
+  font-size:0.7rem;
+  padding:0;
+  margin:0.5rem;
+}
+.nes-badge.is-splited{
+  padding:0;
+  margin:0.5rem;
+  font-size:0.7rem !important;
+}
+
+.game--container{
+  padding-top:5vh;
+  @media screen and (min-width: 980px) {
+    width:70%;
   }
-  .nes-badge{
-    font-size:0.7rem;
-    padding:0;
-    margin:0.5rem;
-  
+  &--text{
+    color:#222;
+    min-width:100%;
   }
-  .nes-badge.is-splited{
-    padding:0;
-    margin:0.5rem;
-    font-size:0.7rem !important;
+}
+
+#textinput:focus{
+  border-color:#f2f2f2;
+}
+
+.icon{
+  width:28px;
+  transition: 0.5s all ease-in-out;
+  &.rotate{
+    transition: 0.5s all ease-in-out;
+    transform: rotate(10deg);
   }
-  .game--container{
-    padding-top:5vh;
-    @media screen and (min-width: 980px) {
-      width:70%;
-    }
-    &--text{
-      color:#222;
-      min-width:100%;
-    }
-  }
-  #textinput:focus{
-    border-color:#f2f2f2;
-  }
+}

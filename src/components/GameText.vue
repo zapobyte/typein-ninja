@@ -7,10 +7,8 @@
       <div class="game--difficulty mt-3 col-md-7 col-xs-12 text-left pb-3">
             <div class="row text-uppercase ">
               <div class="col align-self-center" @click="selectMode">
-
                 <p class="d-flex p-0 m-0 align-items-center">
-                <span class="p-1" v-if="mode">-</span>
-                <span class="p-1" v-else>+</span>
+                  <img src="@/assets/gameAssets/icon.png" class="icon" :class="{'rotate':mode}"/> 
                   <a href="#" class="nes-badge is-splited  text-left mr-auto">
                     <span class="is-dark">Mode</span>
                     <span :class="$store.getters.getGameDifficulity ? 'is-success' : 'is-error' ">{{$store.getters.getGameDifficulity}}</span>
@@ -83,7 +81,7 @@ export default {
       config:{
         gameDone:false
       },
-      inputPlaceholder:"Start typing to initiate the test...",
+      inputPlaceholder:"Start typing the text here to initiate the Test ...",
       mode:false
     }
   }, 
@@ -138,7 +136,7 @@ export default {
                     date:new Date(this.startDate)
                   });
                   if(this.acc >= this.getAuthUser.best.acc && this.wpm > this.getAuthUser.best.wpm){
-                    this.$store.dispatch('updateUserBestGame',{
+                    this.$store.dispatch('updateUserBestGame', {
                       wpm:this.wpm,
                       acc:this.acc,
                       difficulty:this.$store.getters.getGameDifficulity
@@ -189,5 +187,4 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 @import '~@/scss/components/game_text.scss';
-
 </style>

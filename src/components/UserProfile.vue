@@ -18,15 +18,16 @@
                 <div class="text-left col-xs-12 col-md-6">
                     <div class="row no-gutters ">
                         <div class="col-12">
-                            <input type="text" id="name_field" :class="uploaded ? 'text__small  nes-input is-success':'text__small  nes-input'"  :value="userDisplayName" @blur="updateDisplayName" :disabled="!isAuthUser"/>
+                            <input type="text" id="name_field" class="text__small nes-input" :class="{'border-success':uploaded}"  :value="userDisplayName" @blur="updateDisplayName" :disabled="!isAuthUser"/>
                         </div>
                         <div class="col-12  text__small">
-                            <p>  <i class="nes-icon mr-3 is-small is-full star"></i>LVL {{ user ? user.lvl : '' }} </p>
+                            <p>  
+                                <i class="nes-icon mr-3 is-small is-full star"></i>LVL {{ user ? user.lvl : '' }} </p>
                             <p>
-                                <img :src='"~@/assets/gameAssets/ranks/rank_" +user.rank.toLowerCase().split(" ").join("_")  +".png" ' style="width:24px; margin-left:-4px;" v-if="user.rank"/>
-                                <img :src='"~@/assets/gameAssets/ranks/rank_apprentice.png" ' style="width:24px; margin-left:-4px;" v-else/>
+                            <img :src='"~@/assets/gameAssets/ranks/rank_" +user.rank.toLowerCase().split(" ").join("_")  +".png" ' style="width:24px; margin-left:-4px;" v-if="user.rank"/>
+                            <img :src='"~@/assets/gameAssets/ranks/rank_apprentice.png" ' style="width:24px; margin-left:-4px;" v-else/>
 
-                                 {{ user ? user.rank : '' }}</p>
+                                {{ user ? user.rank : '' }}</p>
                         </div>
                     </div>   
                 </div>
@@ -52,7 +53,7 @@
     <div class="row">
         <div class="col-xs-12 col-md-4" v-for="game in bests" :key="game.acc">
             <details>
-                <summary class="position-relative">{{game.difficulty}}</summary>
+                <summary class="position-relative">on <b>{{game.difficulty}}</b> difficulty</summary>
                 <div class="nes-container is-rounded is-dark">
                     <ul class="nes-list text__small">
                         <li>WPM: {{game.wpm}} </li>
