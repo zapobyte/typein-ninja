@@ -1,6 +1,10 @@
 {
   "name": "typein-ninja",
+<<<<<<< HEAD
   "version": "1.5.0",
+=======
+  "version": "1.5.1",
+>>>>>>> 0f3f069cad3813a9d5e7927450965a4b51b44e35
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
