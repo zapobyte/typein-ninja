@@ -18,7 +18,7 @@
                 <div class="text-left col-xs-12 col-md-6">
                     <div class="row no-gutters ">
                         <div class="col-12">
-                            <input type="text" id="name_field" :class="uploaded ? 'text__small  nes-input is-success':'text__small  nes-input'"  :value="userDisplayName" @blur="updateDisplayName" :disabled="!isAuthUser"/>
+                            <input type="text" id="name_field" class="text__small nes-input" :class="{'border-success':uploaded}"  :value="userDisplayName" @blur="updateDisplayName" :disabled="!isAuthUser"/>
                         </div>
                         <div class="col-12  text__small">
                             <p>  

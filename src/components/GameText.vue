@@ -8,8 +8,7 @@
             <div class="row text-uppercase ">
               <div class="col align-self-center" @click="selectMode">
                 <p class="d-flex p-0 m-0 align-items-center">
-                  <span class="p-1" v-if="mode">-</span>
-                  <span class="p-1" v-else>+</span>
+                  <img src="@/assets/gameAssets/icon.png" class="icon" :class="{'rotate':mode}"/> 
                   <a href="#" class="nes-badge is-splited  text-left mr-auto">
                     <span class="is-dark">Mode</span>
                     <span :class="$store.getters.getGameDifficulity ? 'is-success' : 'is-error' ">{{$store.getters.getGameDifficulity}}</span>
