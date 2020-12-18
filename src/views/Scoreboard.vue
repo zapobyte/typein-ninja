@@ -6,7 +6,7 @@
   </div>
  
   <div class="nes-table-responsive text-dark text__small game--list">
-    <table class="nes-table is-bordered m-0 mt-4 text-center is-center w-100 ">
+    <table class="nes-table is-bordered mt-4 text-center is-center w-100 ">
       <thead>
         <tr>
           <th style="width:110px"></th>

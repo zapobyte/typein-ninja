@@ -1,8 +1,9 @@
 <template>
   <section class="pt-4 game--history">
-    <div class="row pb-2">
+    <div class="row no-gutters pb-2">
         <div class="col-xs-12 col-md-6">HISTORY</div>
     </div>
+    <div class="container-fluid">
     <div class="nes-table-responsive text-dark game--list">
         <table class="nes-table is-bordered is-centered w-100 game--list text-center">
             <thead>
@@ -22,6 +23,7 @@
             </tr>
             </tbody>
         </table>
+    </div>
     </div>
   </section>
 </template>
