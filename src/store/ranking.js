@@ -33,7 +33,7 @@ const state = {
   const getters = {
     getRanks(state){
         return state.ranks;
-    },
+    }
   };
   
   const mutations = {
@@ -45,7 +45,7 @@ const state = {
             return xp >= rank.xp;
         })
         return rank.name;
-    },
+    }
 }
   
   export default {
