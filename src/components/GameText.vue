@@ -16,19 +16,17 @@
                 </p>
               </div>
             </div>
-            <div class="col-12" v-if="mode">
-            </div>
-            <div class="col-12 game--difficulty--options" v-if="mode">
-              <a href="#" class="nes-badge" @click="setGameDifficulty('easy')">
-                <span :class="$store.getters.getGameDifficulity =='easy' ? 'is-success' : 'is-error' ">easy</span>
-              </a> 
-              <a href="#" class="nes-badge " @click="setGameDifficulty('normal')">
-                <span :class="$store.getters.getGameDifficulity =='normal' ? 'is-success' : 'is-error' ">normal</span>
-              </a> 
-              <a href="#" class="nes-badge " @click="setGameDifficulty('hard')">
-                <span :class="$store.getters.getGameDifficulity =='hard' ? 'is-success' : 'is-error' ">hard</span>
-              </a> 
-            </div>
+            <div class="col-12 options"  v-show="mode">
+                <a href="#" class="nes-badge" @click="setGameDifficulty('easy')">
+                  <span :class="$store.getters.getGameDifficulity =='easy' ? 'is-success' : 'is-error' ">easy</span>
+                </a> 
+                <a href="#" class="nes-badge " @click="setGameDifficulty('normal')">
+                  <span :class="$store.getters.getGameDifficulity =='normal' ? 'is-success' : 'is-error' ">normal</span>
+                </a> 
+                <a href="#" class="nes-badge " @click="setGameDifficulty('hard')">
+                  <span :class="$store.getters.getGameDifficulity =='hard' ? 'is-success' : 'is-error' ">hard</span>
+                </a>
+            </div> 
       </div>
       <div class="game--stats col-md-5 mt-3 col-xs-12 mb-3 text-right">
           <span  title="word per minute">
@@ -81,7 +79,7 @@ export default {
       config:{
         gameDone:false
       },
-      inputPlaceholder:"Start typing the text here to initiate the Test ...",
+      inputPlaceholder:"Start the Test by typing the above text here ...",
       mode:false
     }
   }, 
@@ -111,6 +109,9 @@ export default {
               const correct = inputField.value == this.wordList[this.currentWord];
               if(correct){
                   this.correctKeys += this.wordList[this.currentWord].length; 
+                  if(this.currentWord == 0){
+                    children[0].classList.remove('text-info');
+                  }
                   children[this.currentWord].classList.add('text-success');
               } else {
                 children[this.currentWord].classList.add('text-danger');
@@ -160,7 +161,7 @@ export default {
     reset(gameDifficult){
       const difficulty = gameDifficult ? gameDifficult : this.$store.getters.getGameDifficulity;
       const textField = document.getElementById('gametext');
-      textField.innerHTML = '';
+          textField.innerHTML = '';
       this.wordList = [];
       this.correctKeys=0;
       this.currentWord=0;
@@ -173,6 +174,8 @@ export default {
       })
       this.wordList = words;
       this.config.gameDone=false;
+      let children = textField.childNodes;
+      children[0].classList.add('text-info');
       const inputField = document.querySelector('#textinput');
       inputField.focus();
     },
