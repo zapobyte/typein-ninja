@@ -7,7 +7,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto ">
             <li class="nav-item">
-                <router-link class="nav-link text-right" :class="$route.name == 'Scoreboard' ? 'active' : ''" to="/scoreboard" aria-expanded="false">
+                <router-link class="nav-link text-right" :class="{'active' : $route.name == 'Scoreboard'}" to="/scoreboard" aria-expanded="false">
                   <i class="nes-icon trophy is-small"></i>
                   <span class="pl-2">scoreboard</span>
                 </router-link>
@@ -16,7 +16,7 @@
                 <a class="nav-link dropdown-toggle text-right text-truncate" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false" style="max-width:200px">
                   <i class="nes-icon is-small heart" v-if="$store.getters.isAuth"></i>
                   <i class="nes-icon is-small heart is-half" v-else></i>
-                  <span class="text-truncate pl-2" :class="$route.name == 'Profile' ? 'text-white' : ''">{{ $store.getters.isAuth ? `${user.displayName}`:'account'}}</span>
+                  <span class="text-truncate pl-2" :class="{ 'text-white' : $route.name == 'Profile' }">{{ $store.getters.isAuth ? `${user.displayName}`:'account'}}</span>
                 </a>
                 <ul class="dropdown-menu mr-auto" aria-labelledby="navbarDropdown">
                   <li class="dropdown-item " v-if="isAuth"  @click="toProfile($event)">

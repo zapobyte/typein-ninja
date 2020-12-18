@@ -4,15 +4,21 @@
     color:rgba(0, 0, 0, 0.774);
   }
 }
-
-.game--text{
-  margin-bottom:3rem;
-}
-details{
-  summary{
-    outline:none;
+.game{
+  &--difficulty{
+    transition: 0.3s all ease-in-out;
+    & .options{
+      transition: 0.3s all ease-in-out;
+    }
+  }
+  &--container{
+    padding-top:5vh;
+    @media screen and (min-width: 980px) {
+      width:70%;
+    }
   }
 }
+
 .nes-badge{
   font-size:0.7rem;
   padding:0;
@@ -24,26 +30,20 @@ details{
   font-size:0.7rem !important;
 }
 
-.game--container{
-  padding-top:5vh;
-  @media screen and (min-width: 980px) {
-    width:70%;
-  }
-  &--text{
-    color:#222;
-    min-width:100%;
-  }
-}
 
 #textinput:focus{
   border-color:#f2f2f2;
 }
 
 .icon{
-  width:28px;
-  transition: 0.5s all ease-in-out;
+  margin-top:-3px;
+  width:26px;
+  transition: 0.3s all ease-in-out;
+  transform: rotate(90deg);
+  cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAzElEQVRYR+2X0Q6AIAhF5f8/2jYXZkwEjNSVvVUjDpcrGgT7FUkI2D9xRfQETwNIiWO85wfINfQUEyxBG2ArsLwC0jioGt5zFcwF4OYDPi/mBYKm4t0U8ATgRm3ThFoAqkhNgWkA0jJLvaOVSs7j3qMnSgXWBMiWPXe94QqMBMBc1VZIvaTu5u5pQewq0EqNZvIEMCmxAawK0DNkay9QmfFNAJUXfgGgUkLaE7j/h8fnASkxHTz0DGIBMCnBeeM7AArpUd3mz2x3C7wADglA8BcWMZhZAAAAAElFTkSuQmCC) 14 0,pointer;
   &.rotate{
-    transition: 0.5s all ease-in-out;
+    transition: 0.3s all ease-in-out;
     transform: rotate(10deg);
+    margin-right:2px;
   }
 }

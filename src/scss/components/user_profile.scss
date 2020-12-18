@@ -1,16 +1,11 @@
-.user{
-    &-avatar{
-        width:64px !important;
-        height:64px !important;
-    }
-}
+
 .nes-input{
     &.border-success{
         border-left: 3px solid green !important;
     }
     &#name_field{
         border:0px;
-        border-left:3px $yellow solid;
+        border-bottom:3px $yellow solid;
     }
 } 
 .progress-bar{

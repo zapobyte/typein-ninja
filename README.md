@@ -1,6 +1,6 @@
-# ![ninja](http://typein.ninja/ninja.gif)typein-ninja
+# ![ninja](https://typein.ninja/ninja.gif)typein-ninja
 
-[typein.ninja](http://typein.ninja) -  A free online typing speed and accuracy game test website. Test and train your typing accuracy and speed with a new gamify website and become a master keyboard ninja..
+[typein.ninja](https://typein.ninja) -  A free online typing speed and accuracy game test website. Test and train your typing accuracy and speed with a new gamify website and become a master keyboard ninja..
 
 **Features**:
 - 3 difficulty levels: `easy`,`normal`,`hard`.

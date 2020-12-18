@@ -4,7 +4,10 @@
     }
     border:0;
   }
-.dropdown-item{
+.dropdown{
+  align-self: flex-end;
+  &-item{
     padding-top:0.8rem;
     padding-bottom:0.8rem;
+  }
 }
