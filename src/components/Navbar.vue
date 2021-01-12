@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark col-12 align-self-start">
-      <router-link to="/" class="navbar-brand" >typein.ninja</router-link>
+      <h1><router-link to="/" class="navbar-brand" >typein.ninja</router-link></h1>
       <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
       </button>
