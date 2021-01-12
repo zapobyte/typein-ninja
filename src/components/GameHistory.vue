@@ -66,7 +66,7 @@ export default {
     methods:{
         toDate(seconds){
             return toDate(seconds);
-        },
+        }
     }
 }
 </script>

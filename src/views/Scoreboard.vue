@@ -16,7 +16,6 @@
           <th style="width:110px">BEST ACC</th>
           <th style="width:110px">BEST WPM</th>
           <th>DIFFICULTY</th>
-          <th >Date</th>
         </tr>
       </thead>
       <tbody>
@@ -28,7 +27,6 @@
           <td>{{ user.best.acc}}</td>
           <td>{{ user.best.wpm}}</td>
           <td>{{ user.best.difficulty}}</td>
-          <td>{{ toDate(user.date.seconds) }}</td>
         </tr>  
       </tbody>
     </table>
@@ -56,21 +54,16 @@ export default {
     }
   },
   async mounted(){
+    this.$store.dispatch('setLoading',true);
     try {
       let users = await getUsers();
       users.forEach(async (user)=>{
-        const bestGame = await getBestUserGame(user.uid);
-        if(bestGame){
-          const data = {
-            ...bestGame,
-            ...user
-          }
-          this.searchList.push(data);
-        }
+          this.searchList.push(user);
       })
     } catch (error) {
       console.log(error);
     }
+    this.$store.dispatch('setLoading',false);
   },
   computed:{
     users(){

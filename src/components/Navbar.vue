@@ -104,7 +104,15 @@ export default {
       this.$router.push({path: `/profile/${this.user.uid}`})
     },
     deleteAccount(){
-      document.getElementById('dialog').showModal();
+      const isChrome = navigator.userAgent.includes("Chrome") && navigator.vendor.includes("Google Inc");
+
+      if(isChrome){
+        document.getElementById('dialog').showModal();
+      } else {
+        if(confirm('Are you sure you want to delete your account and all info associated with it?')){
+          deleteCurrentUser();
+        }
+      }
     },
     deleteAcc(){
       deleteCurrentUser();
