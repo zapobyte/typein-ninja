@@ -19,5 +19,6 @@ jobs:
           script: |
             cd /var/www/html/typein-ninja &&
             git pull origin master &&
+            npm install &&
             npm run build
             

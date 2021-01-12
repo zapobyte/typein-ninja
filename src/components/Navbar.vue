@@ -12,7 +12,7 @@
                   <span class="pl-2">scoreboard</span>
                 </router-link>
             </li>
-            <li class="nav-item dropdown" style="width:350px">
+            <li class="nav-item dropdown" style="max-width:350px">
                 <a class="nav-link dropdown-toggle text-right text-truncate" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false" >
                   <i class="nes-icon is-small heart" v-if="$store.getters.isAuth"></i>
                   <i class="nes-icon is-small heart is-half" v-else></i>
