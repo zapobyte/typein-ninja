@@ -1,12 +1,16 @@
 {
   "name": "typein-ninja",
-  "version": "1.5.2",
+  "version": "1.5.3",
   "private": true,
+  "description": "typein.ninja is a typing test for speed and accuracy with gamify elements.",
+  "author": "",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "sitemap": "vue-cli-service sitemap"
   },
+  "main": ".eslintrc.js",
   "dependencies": {
     "core-js": "^3.6.5",
     "dotenv": "^8.2.0",
@@ -26,21 +30,21 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^7.12.1",
     "eslint-plugin-vue": "^7.1.0",
+    "esm": "^3.2.25",
     "sass": "^1.29.0",
     "sass-loader": "^10.0.5",
+    "sitemap-webpack-plugin": "^1.0.0",
+    "vue-cli-plugin-sitemap": "~2.3.0",
     "vue-template-compiler": "^2.6.11",
     "webpack": "^4.44.2"
   },
-  "description": "typein.ninja is a typing test for speed and accuracy with gamify elements.",
-  "main": ".eslintrc.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/lowlightdev/typein.ninja.git"
-  },
-  "author": "",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/lowlightdev/typein.ninja/issues"
   },
-  "homepage": "https://github.com/lowlightdev/typein.ninja#readme"
+  "homepage": "https://github.com/lowlightdev/typein.ninja#readme",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lowlightdev/typein.ninja.git"
+  }
 }
