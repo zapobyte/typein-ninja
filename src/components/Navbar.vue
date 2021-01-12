@@ -12,11 +12,11 @@
                   <span class="pl-2">scoreboard</span>
                 </router-link>
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle text-right text-truncate" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false" style="max-width:200px">
+            <li class="nav-item dropdown" style="width:350px">
+                <a class="nav-link dropdown-toggle text-right text-truncate" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false" >
                   <i class="nes-icon is-small heart" v-if="$store.getters.isAuth"></i>
                   <i class="nes-icon is-small heart is-half" v-else></i>
-                  <span class="text-truncate pl-2" :class="{ 'text-white' : $route.name == 'Profile' }">{{ $store.getters.isAuth ? `${user.displayName}`:'account'}}</span>
+                  <span class="text-truncate pl-2" :class="{ 'text-white' : $route.name == 'Profile' }" >{{ $store.getters.isAuth ? `${user.displayName}`:'account'}}</span>
                 </a>
                 <ul class="dropdown-menu mr-auto" aria-labelledby="navbarDropdown">
                   <li class="dropdown-item " v-if="isAuth"  @click="toProfile($event)">
