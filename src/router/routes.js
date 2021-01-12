@@ -1,10 +1,9 @@
-import Home from '../views/Home.vue';
 
 const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: () => import(/* webpackChunkName: "about" */ '../views/Home.vue')
   },
   {
     path: '/profile/:uid',
@@ -40,4 +39,4 @@ const routes = [
   }
 ]
 
-export default routes;
+module.exports = routes;
