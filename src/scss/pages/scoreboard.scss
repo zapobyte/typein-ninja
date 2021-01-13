@@ -1,47 +1,44 @@
-.game--list{
-    max-height: 80vh;
-    overflow: auto;
+.game--list {
+  max-height: 80vh;
+  overflow: auto;
 }
-.nes-avatar{
-  width:64px !important;
-  height:64px !important;
+.nes-avatar {
+  width: 64px !important;
+  height: 64px !important;
   image-rendering: pixelated;
 }
-.nes-table--row{
+.nes-table--row {
   transition: 0.3s all ease;
-  &:hover{
-    background:#212529;
-    color:white;
+  &:hover {
+    background: #212529;
+    color: white;
     border-color: white !important;
     transition: 0.15s all ease;
   }
 }
 
-.border{
-  &-gold{
-    border:5px double  $gold;
-
+.border {
+  &-gold {
+    border: 5px double $gold;
   }
-  &-silver{
-    border:5px  double $silver;
-
+  &-silver {
+    border: 5px double $silver;
   }
-  &-bronze{
-    border:5px  double $bronze;
+  &-bronze {
+    border: 5px double $bronze;
   }
 }
 
-.best-user{
-  padding:1rem;
-  border-radius:4px;
-  &  .nes-container{
-    max-width:235px;
-      &:hover{
-        background:#212529;
-        color:white;
-        border-color: white !important;
-        transition: 0.15s all ease;
-      }
+.best-user {
+  padding: 1rem;
+  border-radius: 4px;
+  & .nes-container {
+    max-width: 235px;
+    &:hover {
+      background: #212529;
+      color: white;
+      border-color: white !important;
+      transition: 0.15s all ease;
+    }
   }
-
 }

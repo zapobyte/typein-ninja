@@ -1,8 +1,8 @@
 <template>
-  <div id="app" class="container"> 
-    <div class="row no-gutters flex-column align-items-start min-vh-100" >
+  <div id="app" class="container">
+    <div class="row no-gutters flex-column align-items-start min-vh-100">
       <Navbar />
-      <router-view class="router" :key="$route.params.uid ? $route.params.uid :'0' "/>
+      <router-view class="router" :key="$route.params.uid ? $route.params.uid : '0'" />
       <BottomFooter />
     </div>
     <div class="loading align-items-center row" v-if="loading">
@@ -12,7 +12,6 @@
       </div>
     </div>
   </div>
-
 </template>
 
 <style lang="scss">
@@ -20,29 +19,26 @@
 </style>
 
 <script>
-import { 
-  firebaseInit,
-} from '@/functions/firebase.js';
+import { firebaseInit } from '@/functions/firebase.js';
 import Navbar from '@/components/Navbar';
 import BottomFooter from '@/components/BottomFooter';
 
 export default {
-  name:'App',
-  components:{
+  name: 'App',
+  components: {
     Navbar,
-    BottomFooter
+    BottomFooter,
   },
-  data(){
-    return {
-    }
+  data() {
+    return {};
   },
-  computed:{
-    loading(){
-      return this.$store.getters.getLoading
-    }
+  computed: {
+    loading() {
+      return this.$store.getters.getLoading;
+    },
   },
-  created(){
+  created() {
     firebaseInit();
-  }
-}
+  },
+};
 </script>
