@@ -9,10 +9,10 @@ import ranking from '@/store/ranking';
 Vue.use(Vuex);
 export default new Vuex.Store({
   modules: {
-    user:user,
+    user: user,
     game,
-    gameHistory:gameHistory,
-    root:root,
-    ranking:ranking
-  }
+    gameHistory: gameHistory,
+    root: root,
+    ranking: ranking,
+  },
 });

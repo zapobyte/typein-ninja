@@ -1,8 +1,9 @@
 # ![ninja](https://typein.ninja/ninja.gif)typein-ninja
 
-[typein.ninja](https://typein.ninja) -  A free online typing speed and accuracy game test website. Test and train your typing accuracy and speed with a new gamify website and become a master keyboard ninja..
+[typein.ninja](https://typein.ninja) - A free online typing speed and accuracy game test website. Test and train your typing accuracy and speed with a new gamify website and become a master keyboard ninja..
 
 **Features**:
+
 - 3 difficulty levels: `easy`,`normal`,`hard`.
 - get experience on each test completed and grow your ninja to be the best
 - search other players
@@ -16,6 +17,7 @@ Each new word is counted when pressing `space`. To reset a game press the `reset
 To change the difficulty click the difficulty and select a new one.
 
 ## Used to make this project
+
 - [NodeJS](https://nodejs.org) - NodeJS
 - [VueJS](https://vuejs.org/) - Frontend Framework
 - [ness.css](https://nostalgic-css.github.io/NES.css/) - NES.css is NES-style (8bit-like) CSS Framework.
@@ -27,16 +29,16 @@ and many more. view `package.json` file for all other packages used.
 
 The project is open source and all that is being worked on can be view in [issues](https://github.com/zapobyte/typein-ninja/issues) and [project](https://github.com/zapobyte/typein-ninja/projects). If you wish to help please open a [Pull Requset](https://github.com/zapobyte/typein-ninja/pulls) or issue.
 
-
 If you like and enjoy this,might consider buying a coffee. Would be much appreciated <a href='https://ko-fi.com/Y8Y62AE28' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://cdn.ko-fi.com/cdn/kofi5.png?v=2' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>.
 
 :heart: Thank you for dropping by.
 
-
 ## Project setup
+
 This is a serverless app the backend is firebase managed. To run the application a [Google Firebase](https://firebase.google.com/) account is needed.
 
 The config is setup using env variables which are found in `.env` file. A sample config looks like:
+
 ```
 VUE_APP_API_KEY=
 VUE_APP_AUTH_DOMAIN=
@@ -47,28 +49,33 @@ VUE_APP_MSG_ID=
 VUE_APP_APP_ID=
 VUE_APP_ANALYTICS_ID=
 ```
+
 To generate this values you will need to generate a firebase config for your app. More information [here](https://firebase.google.com/docs/web/setup).
 
 ### Install
+
 ```
 npm install
 ```
 
 ### Compiles and hot-reloads for development
+
 ```
 npm run serve
 ```
 
 ### Compiles and minifies for production
+
 ```
 npm run build
 ```
 
 ### Lints and fixes files
+
 ```
 npm run lint
 ```
 
 ### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
 
+See [Configuration Reference](https://cli.vuejs.org/config/).

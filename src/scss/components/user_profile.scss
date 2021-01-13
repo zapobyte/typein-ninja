@@ -1,19 +1,18 @@
-
-.nes-input{
-    &.border-success{
-        border-left: 3px solid green !important;
-    }
-    &#name_field{
-        border:0px;
-        border-bottom:3px $yellow solid;
-    }
-} 
-.progress-bar{
-    background:$yellow !important;
+.nes-input {
+  &.border-success {
+    border-left: 3px solid green !important;
+  }
+  &#name_field {
+    border: 0px;
+    border-bottom: 3px $yellow solid;
+  }
+}
+.progress-bar {
+  background: $yellow !important;
 }
 
-.nes-list{
-    list-style: none;
-    margin:0;
-    padding:0;
+.nes-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }

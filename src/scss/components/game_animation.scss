@@ -1,41 +1,40 @@
-
-  .bg{
-    position:relative;
-    max-width:100%;
-    &--terrain{
-      &__ground{
-        max-width:100%;
-      }
+.bg {
+  position: relative;
+  max-width: 100%;
+  &--terrain {
+    &__ground {
+      max-width: 100%;
+    }
   }
 }
-  .ninja{
-    width:32px;
-    height:42px;
-    overflow:hidden;
-    margin-bottom:-6px;
-    margin-left:2px;
-    @media all and (min-width:960px) {
-      margin-left:20px;
+.ninja {
+  width: 32px;
+  height: 42px;
+  overflow: hidden;
+  margin-bottom: -6px;
+  margin-left: 2px;
+  @media all and (min-width: 960px) {
+    margin-left: 20px;
+  }
+  &--player {
+    width: 128px;
+    height: 42px;
+    &__idle {
+      animation: moveIdleSpriteSheet 0.5s steps(4) infinite;
     }
-    &--player{
-      width:128px;
-      height:42px;
-      &__idle{
-          animation: moveIdleSpriteSheet 0.5s steps(4) infinite;
-      }
-      &__attack{
-          animation: moveIdleSpriteSheet 0.5s steps(4) infinite;
-      }
+    &__attack {
+      animation: moveIdleSpriteSheet 0.5s steps(4) infinite;
     }
   }
-  .pixelated{
-    image-rendering: pixelated;
+}
+.pixelated {
+  image-rendering: pixelated;
+}
+@keyframes moveIdleSpriteSheet {
+  from {
+    transform: translate3d(0px, 0, 0);
   }
-  @keyframes moveIdleSpriteSheet {
-    from{
-      transform: translate3d(0px,0,0);
-    }
-    to {
-      transform: translate3d(-100%,0,0);
-    }
+  to {
+    transform: translate3d(-100%, 0, 0);
   }
+}

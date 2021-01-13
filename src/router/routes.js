@@ -1,9 +1,8 @@
-
 const routes = [
   {
     path: '/',
     name: 'Home',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Home.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/Home.vue'),
   },
   {
     path: '/profile/:uid',
@@ -11,7 +10,7 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/Profile.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/Profile.vue'),
   },
   {
     path: '/scoreboard',
@@ -19,7 +18,7 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/Scoreboard.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/Scoreboard.vue'),
   },
   {
     path: '/terms-condition',
@@ -27,7 +26,7 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '@/components/TermsCondition.vue')
+    component: () => import(/* webpackChunkName: "about" */ '@/components/TermsCondition.vue'),
   },
   {
     path: '/privacy-policy',
@@ -35,8 +34,8 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '@/components/PrivacyPolicy.vue')
-  }
-]
+    component: () => import(/* webpackChunkName: "about" */ '@/components/PrivacyPolicy.vue'),
+  },
+];
 
 module.exports = routes;

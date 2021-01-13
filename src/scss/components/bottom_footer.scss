@@ -1,24 +1,30 @@
 @keyframes coinJump {
-    0%   {bottom:0px;}
-    50%  {bottom:5px;}
-    100% { bottom:0px;}
+  0% {
+    bottom: 0px;
+  }
+  50% {
+    bottom: 5px;
+  }
+  100% {
+    bottom: 0px;
+  }
 }
-.coinJump:hover > i{
-    animation-name: coinJump;
-    position: relative;
-    animation-duration: 0.5s;
+.coinJump:hover > i {
+  animation-name: coinJump;
+  position: relative;
+  animation-duration: 0.5s;
 }
 
-a{
-    color:white;
-    &:hover{
-        color:#c1c1c1;
-    }
+a {
+  color: white;
+  &:hover {
+    color: #c1c1c1;
+  }
 }
-.footer{
-    width:100%;
+.footer {
+  width: 100%;
 }
-.is-normal{
-    transform: scale(1.3) !important;
-    margin-bottom:6px;
+.is-normal {
+  transform: scale(1.3) !important;
+  margin-bottom: 6px;
 }
