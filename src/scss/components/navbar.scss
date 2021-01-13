@@ -1,13 +1,13 @@
-.navbar-toggler{
-    &:focus{
-      border:0;
-    }
-    border:0;
+.navbar-toggler {
+  &:focus {
+    border: 0;
   }
-.dropdown{
+  border: 0;
+}
+.dropdown {
   align-self: flex-end;
-  &-item{
-    padding-top:0.8rem;
-    padding-bottom:0.8rem;
+  &-item {
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
   }
 }

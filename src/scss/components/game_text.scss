@@ -1,49 +1,50 @@
-.nes-input{
+.nes-input {
   &::placeholder {
-    font-size:0.85rem;
-    color:rgba(0, 0, 0, 0.774);
+    font-size: 0.85rem;
+    color: rgba(0, 0, 0, 0.774);
   }
 }
-.game{
-  &--difficulty{
+.game {
+  &--difficulty {
     transition: 0.3s all ease-in-out;
-    & .options{
+    & .options {
       transition: 0.3s all ease-in-out;
     }
   }
-  &--container{
-    padding-top:5vh;
+  &--container {
+    padding-top: 5vh;
     @media screen and (min-width: 980px) {
-      width:70%;
+      width: 70%;
     }
   }
 }
 
-.nes-badge{
-  font-size:0.7rem;
-  padding:0;
-  margin:0.5rem;
+.nes-badge {
+  font-size: 0.7rem;
+  padding: 0;
+  margin: 0.5rem;
 }
-.nes-badge.is-splited{
-  padding:0;
-  margin:0.5rem;
-  font-size:0.7rem !important;
-}
-
-
-#textinput:focus{
-  border-color:#f2f2f2;
+.nes-badge.is-splited {
+  padding: 0;
+  margin: 0.5rem;
+  font-size: 0.7rem !important;
 }
 
-.icon{
-  margin-top:-3px;
-  width:26px;
+#textinput:focus {
+  border-color: #f2f2f2;
+}
+
+.icon {
+  margin-top: -3px;
+  width: 26px;
   transition: 0.3s all ease-in-out;
   transform: rotate(90deg);
-  cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAzElEQVRYR+2X0Q6AIAhF5f8/2jYXZkwEjNSVvVUjDpcrGgT7FUkI2D9xRfQETwNIiWO85wfINfQUEyxBG2ArsLwC0jioGt5zFcwF4OYDPi/mBYKm4t0U8ATgRm3ThFoAqkhNgWkA0jJLvaOVSs7j3qMnSgXWBMiWPXe94QqMBMBc1VZIvaTu5u5pQewq0EqNZvIEMCmxAawK0DNkay9QmfFNAJUXfgGgUkLaE7j/h8fnASkxHTz0DGIBMCnBeeM7AArpUd3mz2x3C7wADglA8BcWMZhZAAAAAElFTkSuQmCC) 14 0,pointer;
-  &.rotate{
+  cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAzElEQVRYR+2X0Q6AIAhF5f8/2jYXZkwEjNSVvVUjDpcrGgT7FUkI2D9xRfQETwNIiWO85wfINfQUEyxBG2ArsLwC0jioGt5zFcwF4OYDPi/mBYKm4t0U8ATgRm3ThFoAqkhNgWkA0jJLvaOVSs7j3qMnSgXWBMiWPXe94QqMBMBc1VZIvaTu5u5pQewq0EqNZvIEMCmxAawK0DNkay9QmfFNAJUXfgGgUkLaE7j/h8fnASkxHTz0DGIBMCnBeeM7AArpUd3mz2x3C7wADglA8BcWMZhZAAAAAElFTkSuQmCC)
+      14 0,
+    pointer;
+  &.rotate {
     transition: 0.3s all ease-in-out;
     transform: rotate(10deg);
-    margin-right:2px;
+    margin-right: 2px;
   }
 }
