@@ -28,7 +28,7 @@
             DIFFICULTY
           </div>
       </div>
-      <div class="row bg-light nes-table is-bordered "  v-for="user in users" :key="user.uid" @click="goToProfile" :id="user.uid">
+      <div class="row  nes-table is-bordered user"  v-for="user in users" :key="user.uid" @click="goToProfile" :id="user.uid">
         <div class="col-1" title="Go to user profile">
            <img :src="user.photoURL" class="nes-avatar img-fluid" />
         </div>

@@ -25,16 +25,8 @@ div{
   }
 }
 
-.best-user {
-  padding: 1rem;
-  border-radius: 4px;
-  & .nes-container {
-    max-width: 235px;
-    &:hover {
-      background: #212529;
-      color: white;
-      border-color: white !important;
-      transition: 0.15s all ease;
-    }
+.user{
+  &:hover{
+    background:#e4e4e4;
   }
 }

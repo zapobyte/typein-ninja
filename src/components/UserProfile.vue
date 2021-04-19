@@ -39,12 +39,11 @@
                     </div>
                     <div class="col-xs-12 col-lg-6 text-center">
                       <img
-                        :src="'~@/assets/gameAssets/ranks/rank_' + user.rank.toLowerCase().split(' ').join('_') + '.png'"
+                        :src="rankUrl"
                         style="width: 24px; margin-left: -4px"
                         v-if="user.rank"
                       />
-                      <img :src="'~@/assets/gameAssets/ranks/rank_apprentice.png'" style="width: 24px; margin-left: -4px" v-else />
-
+                      <img src="@/assets/gameAssets/ranks/rank_apprentice.png" style="width: 24px; margin-left: -4px" v-else/>
                       {{ user ? user.rank : '' }}
                     </div>
                   </div>
@@ -169,8 +168,12 @@ export default {
         return xpPercent;
       }
     },
+  rankUrl(){
+      return require(`@/assets/gameAssets/ranks/rank_${this.$props.user.rank.toLowerCase().split(' ').join('_')}.png`);
+    },
   },
   methods: {
+    
     toDate(seconds) {
       return toDate(seconds);
     },
