@@ -3,15 +3,13 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 import 'nes.css/css/nes.min.css';
-import VueAnalytics from 'vue-analytics';
+import VueGtag from "vue-gtag";
 require('dotenv').config();
+Vue.use(VueGtag, {
+  config: { id: process.env.VUE_APP_ANALYTICS_ID, }
+}, router);
 
 Vue.config.productionTip = false;
-//and then use it in main.js
-Vue.use(VueAnalytics, {
-  id: process.env.VUE_APP_ANALYTICS_ID,
-  router,
-});
 
 new Vue({
   router,

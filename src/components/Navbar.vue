@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark col-12 align-self-start">
-    <h1><router-link to="/" class="navbar-brand">typein.ninja</router-link></h1>
+    <h1 class="align-self-start"><router-link to="/" class="navbar-brand">typein.ninja</router-link></h1>
     <button
       class="navbar-toggler ml-auto"
       type="button"
@@ -37,12 +37,14 @@
             <li class="dropdown-item" v-if="isAuth" @click="deleteAccount">
               <span class="text-danger"> <i class="nes-icon close is-small"></i> delete account</span>
             </li>
+
             <li class="dropdown-item" v-if="!isAuth">
               <button type="button" class="nes-btn is-small" @click="login">
                 <i class="nes-icon google is-small mr-1"></i>
                 <small>Signin with Google</small>
               </button>
             </li>
+
             <li class="p-3">
               <small>
                 *by Signin you agree with our
@@ -51,6 +53,7 @@
                 <router-link to="/privacy-policy">Privacy Policy</router-link>.
               </small>
             </li>
+
             <li class="text-right text__small pr-3">
               <small>v{{ appVersion }}</small>
             </li>
