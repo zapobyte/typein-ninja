@@ -7,6 +7,20 @@ body {
   background: #5a6988 !important;
   font-size: 14px;
 }
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background-image: none;
+  background-repeat: no-repeat;
+  background-size: 8px auto;
+  opacity: 0;
+}
+::-webkit-scrollbar-thumb {
+  background: #222;
+}
+
 small {
   font-size: 70% !important;
 }
