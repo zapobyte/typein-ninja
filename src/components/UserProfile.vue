@@ -44,7 +44,7 @@
                         v-if="user.rank"
                       />
                       <img src="@/assets/gameAssets/ranks/rank_apprentice.png" style="width: 24px; margin-left: -4px" v-else/>
-                      {{ user ? user.rank : '' }}
+                      {{ user ? user.rank : 'Apprentice' }}
                     </div>
                   </div>
                 </div>
