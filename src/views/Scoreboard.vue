@@ -6,30 +6,52 @@
     </div>
 
     <div class="nes-table-responsive text-dark text__small game--list">
-      <table class="nes-table is-bordered mt-4 text-center is-center w-100">
-        <thead>
-          <tr>
-            <th style="width: 110px"></th>
-            <th>NAME</th>
-            <th style="width: 110px">LVL</th>
-            <th>RANK</th>
-            <th style="width: 110px">BEST ACC</th>
-            <th style="width: 110px">BEST WPM</th>
-            <th>DIFFICULTY</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr title="Go to user profile" v-for="user in users" :key="user.uid" @click="goToProfile" :id="user.uid" class="nes-table--row">
-            <td><img :src="user.photoURL" class="nes-avatar" /></td>
-            <td>{{ user.displayName }}</td>
-            <td>{{ user.lvl }}</td>
-            <td>{{ user.rank }}</td>
-            <td>{{ user.best.acc }}</td>
-            <td>{{ user.best.wpm }}</td>
-            <td>{{ user.best.difficulty }}</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="row bg-light nes-table is-bordered mt-4">
+          <div class="col-1">
+          </div>
+          <div class="col-2">
+            NAME
+          </div>
+          <div class="col-1">
+            LVL
+          </div>
+          <div class="col-2">
+            RANK
+          </div>
+          <div class="col-2">
+            BEST ACC
+          </div>
+          <div class="col-2">
+            BEST WPM
+          </div>
+          <div class="col-2">
+            DIFFICULTY
+          </div>
+      </div>
+      <div class="row bg-light nes-table is-bordered "  v-for="user in users" :key="user.uid" @click="goToProfile" :id="user.uid">
+        <div class="col-1" title="Go to user profile">
+           <img :src="user.photoURL" class="nes-avatar img-fluid" />
+        </div>
+        <div class="col-2">
+          {{ user.displayName }}
+        </div>
+        <div class="col-1">
+          {{ user.lvl }}
+        </div>
+        <div class="col-2">
+          {{ user.rank }}
+        </div>
+        <div class="col-2">
+          {{ user.best.acc }}
+        </div>
+        <div class="col-2">
+          {{ user.best.wpm }}
+        </div>
+        <div class="col-2">
+          {{ user.best.difficulty }}
+        </div>
+      </div>
+    
     </div>
   </section>
 </template>

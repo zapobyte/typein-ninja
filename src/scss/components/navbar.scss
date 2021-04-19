@@ -11,3 +11,8 @@
     padding-bottom: 0.8rem;
   }
 }
+.dropdown-menu{
+  @media screen and (max-width:1200) {
+    position: static !important;
+  }
+}
