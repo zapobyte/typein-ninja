@@ -50,7 +50,7 @@ const actions = {
       localStorage.setItem('token', token);
     } catch (error) {
       console.log(error);
-      return error.message;
+      throw error;
     }
   },
   async updateUserBestGame(context, data) {
@@ -58,7 +58,7 @@ const actions = {
       await updateUserBest(data);
     } catch (error) {
       console.log(error);
-      return error.message;
+      throw error;
     }
   },
   async updateUser(context, data) {
@@ -66,7 +66,7 @@ const actions = {
       await updateUserFs(data);
     } catch (error) {
       console.log(error);
-      return error.message;
+      throw error;
     }
   },
 };

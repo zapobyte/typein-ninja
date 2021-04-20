@@ -72,7 +72,7 @@
     </div>
 
     <div class="nes-container col-12 is-white text-dark with-title bg-white mb-3">
-      <p class="title">Best score</p>
+      <p class="title"> Best score</p>
       <div class="row no-gutters">
         <div class="col-xs-12 col-md-4" v-for="game in bests" :key="game.acc">
           <details>
@@ -81,10 +81,10 @@
             </summary>
             <div class="nes-container is-rounded is-dark">
               <ul class="nes-list text__small">
-                <li>WPM: {{ game.wpm }}</li>
-                <li>Accuracy: {{ game.acc }}</li>
-                <li>Difficulty: {{ game.difficulty }}</li>
-                <li>Date: {{ toDate(game.date.seconds) }}</li>
+                <li>Words Per Minute: <b>{{ game.wpm }}</b></li>
+                <li>Accuracy: <b>{{ game.acc }}</b></li>
+                <li>Difficulty:  <b>{{ game.difficulty }}</b></li>
+                <li>Date:  <b>{{ toDate(game.date.seconds) }}</b></li>
               </ul>
             </div>
           </details>
@@ -95,7 +95,6 @@
 </template>
 
 <script>
-import store from '@/store/index';
 import { getBestUserGameByDiff } from '@/functions/gameHistory';
 import { updateUserDisplayName } from '@/functions/user';
 import { toDate } from '@/functions/utility';
@@ -168,8 +167,8 @@ export default {
         return xpPercent;
       }
     },
-  rankUrl(){
-      return require(`@/assets/gameAssets/ranks/rank_${this.$props.user.rank.toLowerCase().split(' ').join('_')}.png`);
+    rankUrl(){
+        return require(`@/assets/gameAssets/ranks/rank_${this.$props.user.rank.toLowerCase().split(' ').join('_')}.png`);
     },
   },
   methods: {
