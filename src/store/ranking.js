@@ -44,7 +44,7 @@ const mutations = {};
 const actions = {
   getUserRank(context, xp) {
     const rank = context.getters.getRanks.find((rank) => {
-      if(  rank.xp >= xp ){
+      if(  rank.xp <= xp ){
         return rank;
       }
     });
