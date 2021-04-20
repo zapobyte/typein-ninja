@@ -3,27 +3,25 @@
     <div class="row no-gutters pb-2">
       <div class="col-xs-12 col-md-6">HISTORY</div>
     </div>
-    <div class="container-fluid">
-      <div class="nes-table-responsive text-dark game--list">
-        <table class="nes-table is-bordered is-centered w-100 game--list text-center">
-          <thead>
-            <tr>
-              <th>WPM</th>
-              <th>ACC</th>
-              <th>DIFFICULTY</th>
-              <th>DATE</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="game in games" :key="`${game.uid}${Math.random()}`">
-              <td>{{ game.wpm }}</td>
-              <td>{{ game.acc }}</td>
-              <td>{{ game.difficulty }}</td>
-              <td>{{ toDate(game.date.seconds) }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+    <div class="nes-table-responsive text-dark game--list">
+      <table class="nes-table is-bordered is-centered w-100 game--list text-center">
+        <thead>
+          <tr>
+            <th>WPM</th>
+            <th>ACC</th>
+            <th>DIFFICULTY</th>
+            <th>DATE</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="game in games" :key="`${game.uid}${Math.random()}`">
+            <td>{{ game.wpm }}</td>
+            <td>{{ game.acc }}</td>
+            <td>{{ game.difficulty }}</td>
+            <td>{{ toDate(game.date.seconds) }}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </section>
 </template>
@@ -61,7 +59,7 @@ export default {
   methods: {
     toDate(seconds) {
       return toDate(seconds);
-    },
+    }
   },
 };
 </script>
