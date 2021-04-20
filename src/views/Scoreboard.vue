@@ -28,7 +28,7 @@
             DIFFICULTY
           </div>
       </div>
-      <div class="row align-items-center text-center  nes-table is-bordered user"  v-for="user in users" :key="user.uid" @click="goToProfile" :id="user.uid">
+      <div class="row align-items-center text-center  nes-table is-bordered user"  v-for="user in users" :key="user.uid" @click="goToProfile(user.uid)" :id="user.uid" :ref="user.uid">
         <div class="col-1" title="Go to user profile">
            <img :src="user.photoURL" class="nes-avatar img-fluid" />
         </div>
@@ -93,13 +93,10 @@ export default {
     toDate(seconds) {
       return toDate(seconds);
     },
-    async goToProfile(e) {
-      e.preventDefault();
+    async goToProfile(data) {
       try {
-        const id = e.target.parentElement.id;
-        const user = this.searchList.find((user) => user.uid == id);
         this.$router.push({
-          path: `/profile/${user.uid}`,
+          path: `/profile/${data}`,
         });
       } catch (error) {
         console.log(error);
