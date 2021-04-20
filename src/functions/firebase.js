@@ -17,10 +17,11 @@ export const firebaseInit = () => {
     if (user) {
       const token = user.refreshToken;
       store.dispatch('authenticate', { user, token });
+      store.dispatch('setLoading', false);
     } else {
       logout();
+      store.dispatch('setLoading', false);
     }
-    store.dispatch('setLoading', false);
   });
 };
 

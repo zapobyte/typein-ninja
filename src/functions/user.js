@@ -38,7 +38,7 @@ export const updateUserBest = async (data) => {
     return dbUser;
   } catch (error) {
     console.error(error.message);
-    throw new error();
+    throw error;
   }
 };
 export const updateUserDisplayName = async (displayName) => {
@@ -52,7 +52,7 @@ export const updateUserDisplayName = async (displayName) => {
     return dbUser;
   } catch (error) {
     console.error(error.message);
-    throw new error();
+    throw  error;
   }
 };
 export const updateUser = async (data) => {
@@ -68,7 +68,7 @@ export const updateUser = async (data) => {
     return dbUser;
   } catch (error) {
     console.error(error.message);
-    throw new error();
+    throw error;
   }
 };
 export const getUser = async (data) => {
@@ -79,19 +79,19 @@ export const getUser = async (data) => {
     return newUser.data();
   } catch (error) {
     console.error(error.message);
-    throw new error();
+    throw  error;
   }
 };
 
 export const getUsers = async () => {
   let db = firebase.firestore();
   try {
-    const usersDoc = await db.collection('users').get();
+    const usersDoc = await db.collection('users').orderBy('displayName').get();
     const users = usersDoc.docs.map((user) => user.data());
     return users;
   } catch (error) {
     console.error(error.message);
-    throw new error();
+    throw  error;
   }
 };
 
@@ -112,7 +112,7 @@ export const getOrCreateFsUser = async (user) => {
     store.dispatch('addSnapshot', unsubscribe);
   } catch (error) {
     console.error(error.message);
-    throw new error();
+    throw  error;
   }
 };
 
@@ -139,5 +139,6 @@ export const deleteCurrentUser = () => {
     })
     .catch(function (error) {
       console.error('Error removing document: ', error);
+      throw error;
     });
 };
