@@ -116,29 +116,18 @@ export const getOrCreateFsUser = async (user) => {
   }
 };
 
-export const deleteCurrentUser = () => {
+export const deleteCurrentUser = async () => {
   const user = firebase.auth().currentUser;
   let db = firebase.firestore();
-  db.collection('users')
-    .doc(user.uid)
-    .delete()
-    .then(async function () {
-      const games = await db.collection('gameHistory').where('uid', '==', user.uid).get();
-      games.forEach(async (game) => {
-        await game.ref.delete();
-      });
-      user
-        .delete()
-        .then(function () {
-          window.location.href = '/';
-        })
-        .catch(function (error) {
-          // An error happened.
-          console.log(error);
-        });
-    })
-    .catch(function (error) {
-      console.error('Error removing document: ', error);
-      throw error;
+  try {
+    await db.collection('users').doc(user.uid).delete();
+    const games = await db.collection('gameHistory').where('uid', '==', user.uid).get();
+    games.forEach(async (game) => {
+      await game.ref.delete();
     });
+    await user.delete();
+    window.location.href = '/';
+  } catch (error) {
+    throw error;
+  }
 };

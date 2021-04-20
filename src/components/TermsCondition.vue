@@ -1,7 +1,7 @@
 <template>
   <article class="nes-container bg__white with-title is-centered text-dark text-left mt-4">
-    <p class="title">Terms of Service</p>
-    <h1 class="pb-4">typein.ninja</h1>
+    <p class="title">Terms and Conditions</p>
+    <hr>
     <h3>1. Terms</h3>
     <p>
       By accessing the website at
