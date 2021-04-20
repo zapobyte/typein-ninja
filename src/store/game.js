@@ -2,15 +2,15 @@ const state = {
   gameDifficulty: 'easy',
   difficulty: {
     easy: {
-      xp: 75,
+      xp: 100,
       count: 10,
     },
     normal: {
-      xp: 100,
+      xp: 150,
       count: 25,
     },
     hard: {
-      xp: 125,
+      xp: 200,
       count: 50,
     },
   },

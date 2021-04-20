@@ -7,7 +7,7 @@ const state = {
     },
     {
       name: 'Genin',
-      xp: 25000,
+      xp: 7500,
       img: '~@/assets/gameAssets/ranks/rank_genin.png',
     },
     {
@@ -44,7 +44,9 @@ const mutations = {};
 const actions = {
   getUserRank(context, xp) {
     const rank = context.getters.getRanks.find((rank) => {
-      return xp >= rank.xp;
+      if(  rank.xp >= xp ){
+        return rank;
+      }
     });
     return rank.name;
   },
