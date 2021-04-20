@@ -7,7 +7,7 @@ const state = {
     },
     {
       name: 'Genin',
-      xp: 75,
+      xp: 7500,
       img: '~@/assets/gameAssets/ranks/rank_genin.png',
     },
     {
