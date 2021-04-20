@@ -19,18 +19,9 @@ const getters = {
       return user;
     });
   },
-  getUserXp(state) {
-    return state.appVersion;
-  },
 };
 
 const mutations = {
-  setUserXp(state, value) {
-    state.user.xp = value;
-  },
-  setUserLvl(state, value) {
-    state.user.lvl = value;
-  },
   setToken(state, token) {
     state.token = token;
   },

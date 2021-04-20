@@ -40,7 +40,7 @@
         </div>
         <div class="col-2">
           <img
-            :src="rankUrl(user.rank)"
+            :src="rankUrl(user.rank) ? rankUrl(user.rank) : require(`@/assets/gameAssets/ranks/rank_apprentice.png`)"
             style="width: 24px; margin-left: -4px"
             v-if="user.rank"
           /> {{ user && user.rank ? user.rank : 'Apprentice' }}

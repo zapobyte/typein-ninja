@@ -1,6 +1,7 @@
 <template>
   <article class="nes-container bg__white white with-title is-centered text-dark text-left mt-4">
     <p class="title">Privacy Policy</p>
+    <hr>
     <p>
       Your privacy is important to us. It is typein.ninja's policy to respect your privacy regarding any information we may collect from you across our website,
       <a href="http://typein.ninja">http://typein.ninja</a>, and other sites we own and operate.
