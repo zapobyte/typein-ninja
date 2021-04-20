@@ -1,15 +1,9 @@
 <template>
   <div id="app" class="container">
-    <div class="row no-gutters flex-column align-items-start min-vh-100">
+    <div class="row no-gutters flex-column align-items-start min-vh-100" v-if="!this.$store.getters.getLoading">
       <Navbar />
       <router-view class="router" :key="$route.params.uid ? $route.params.uid : '0'" />
       <BottomFooter />
-    </div>
-    <div class="loading align-items-center row" v-if="loading">
-      <div class="col-12">
-        <p>LOADING</p>
-        <img src="~@/assets/loading.gif" class="img-fluid" />
-      </div>
     </div>
   </div>
 </template>
@@ -33,9 +27,6 @@ export default {
     return {};
   },
   computed: {
-    loading() {
-      return this.$store.getters.getLoading;
-    },
   },
   created() {
     if (process.env.NODE_ENV == 'production' && window.location.protocol !== 'https:') {

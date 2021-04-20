@@ -1,6 +1,6 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark col-12 align-self-start">
-    <h1 class="align-self-start"><router-link to="/" class="navbar-brand">typein.ninja</router-link></h1>
+  <nav class="navbar navbar-expand-lg navbar-dark col-12 align-items-center">
+    <h1 class="align-self-start"><router-link to="/" class="navbar-brand">typein.ninja <small> - typing accuracy & speed test</small> </router-link></h1>
     <button
       class="navbar-toggler ml-auto"
       type="button"
@@ -46,12 +46,10 @@
             </li>
 
             <li class="p-3">
-              <small>
                 *by Signin you agree with our
                 <router-link to="/terms-condition">Terms and Conditions</router-link>
                 and
                 <router-link to="/privacy-policy">Privacy Policy</router-link>.
-              </small>
             </li>
 
             <li class="text-right text__small pr-3">

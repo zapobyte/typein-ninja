@@ -9,7 +9,6 @@ import UserProfile from '@/components/UserProfile';
 import store from '@/store/index';
 import GameHistory from '@/components/GameHistory';
 import { getUser } from '@/functions/user';
-import { getBestUserGame } from '@/functions/gameHistory';
 export default {
   name: 'Profile',
   components: {

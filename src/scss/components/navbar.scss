@@ -16,3 +16,16 @@
     position: static !important;
   }
 }
+small{
+  font-size:70% !important;
+}
+.collapse{
+  @media screen and (min-width:960px) {
+    width:auto;
+  }
+  margin:auto;
+  margin-right:0;
+}
+.navbar-brand{
+  white-space: normal;
+}
