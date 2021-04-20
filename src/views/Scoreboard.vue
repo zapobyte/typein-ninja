@@ -5,8 +5,8 @@
       <input type="text" id="search" class="nes-input" v-model="search" />
     </div>
 
-    <div class="nes-table-responsive text-center text-dark text__small game--list">
-      <div class="row bg-light nes-table is-bordered mt-4">
+    <div class="nes-table-responsive text-center text-dark text__small game--list  mt-4">
+      <div class="row bg-light nes-table is-bordered">
           <div class="col-1">
           </div>
           <div class="col-2">
