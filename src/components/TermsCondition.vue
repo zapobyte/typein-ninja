@@ -1,5 +1,5 @@
 <template>
-  <article class="nes-container bg__white with-title is-centered text-dark text-left mt-4">
+  <article class="nes-container bg__white with-title is-centered text-dark text-start mt-4">
     <p class="title">Terms and Conditions</p>
     <hr>
     <h3>1. Terms</h3>
