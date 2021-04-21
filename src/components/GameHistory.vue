@@ -3,7 +3,7 @@
     <div class="row no-gutters pb-2">
       <div class="col-xs-12 col-md-6">HISTORY</div>
     </div>
-    <div class="nes-table-responsive text-dark game--list">
+    <div class="nes-table-responsive text-dark game--list" v-if="games.length > 0">
       <table class="nes-table is-bordered is-centered w-100 game--list text-center">
         <thead>
           <tr>
@@ -22,6 +22,11 @@
           </tr>
         </tbody>
       </table>
+    </div>
+    <div class="row" v-else>
+      <div class="col-12">
+          <div class="nes-table is-bordered is-centered w-100 text-dark p-4">Nohting to show yet.</div>
+      </div>
     </div>
   </section>
 </template>

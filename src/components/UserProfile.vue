@@ -15,7 +15,7 @@
         </div>
         <div class="col">
           <div class="row no-gutters align-items-start">
-            <div class="text-left col-xs-12 col-md-6">
+            <div class="text-start col-xs-12 col-md-6">
               <div class="row no-gutters">
                 <div class="col-12">
                   <input
@@ -50,8 +50,8 @@
                 </div>
               </div>
             </div>
-            <div class="col-xs-12 col-md-6 text-right" title="best score">
-              <div class="d-inline-flex text-right">
+            <div class="col-xs-12 col-md-6 text-end" title="best score">
+              <div class="d-inline-flex text-end">
                 <i class="nes-icon trophy"></i>
                 <a href="#" class="nes-badge is-small is-splited mr-3">
                   <span class="is-dark">wpm</span>
@@ -73,21 +73,30 @@
 
     <div class="nes-container col-12 is-white text-dark with-title bg-white mb-3">
       <p class="title"> Best score</p>
-      <div class="row no-gutters">
-        <div class="col-xs-12 col-md-4" v-for="game in bests" :key="game.acc">
-          <details>
-            <summary class="position-relative">
-              on <b>{{ game.difficulty }}</b> difficulty
-            </summary>
-            <div class="nes-container is-rounded is-dark">
-              <ul class="nes-list text__small">
+      <div class="row no-gutters"  v-if="bests.length > 0">
+        <div class="col-xs-12 col-md-4" v-for="game in bests" :key="game.acc"> 
+          <div class="nes-container is-rounded is-dark m-auto text-center">
+            <p class="p-0 m-0">
+              <a class="nes-btn text__small" data-bs-toggle="collapse" :href="`#${game.difficulty}`" role="button" aria-expanded="false" aria-controls="collapseExample">
+                <img src="@/assets/sword.png" style="margin-right:2px; margin-top:-5px;">{{ game.difficulty }} difficulty
+              </a>
+            </p>
+            <div class="collapse text-start mt-3" :id="game.difficulty">
+              <div class="card card-body">
+                <ul class="nes-list text-dark text__small">
                 <li>Words Per Minute: <b>{{ game.wpm }}</b></li>
                 <li>Accuracy: <b>{{ game.acc }}</b></li>
                 <li>Difficulty:  <b>{{ game.difficulty }}</b></li>
                 <li>Date:  <b>{{ toDate(game.date.seconds) }}</b></li>
               </ul>
+                </div>
             </div>
-          </details>
+          </div>
+        </div>
+      </div>
+       <div class="row no-gutters"  v-else>
+        <div class="col-12"> 
+          Nohting to show yet.
         </div>
       </div>
     </div>

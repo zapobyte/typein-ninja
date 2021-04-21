@@ -16,7 +16,7 @@
       </a>
     </div>
     <div class="col-12 text-center">
-       <small> made with <i class="nes-icon is-small heart"></i> <br> <a href="https://typein.ninja" class="text-right w-100">typein.ninja</a> ~ {{ new Date().getFullYear()}} </small>
+       <small> made with <i class="nes-icon is-small heart"></i> <br> <a href="https://typein.ninja" class="text-end w-100">typein.ninja</a> ~ {{ new Date().getFullYear()}} </small>
     </div>
   </footer>
 </template>

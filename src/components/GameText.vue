@@ -4,12 +4,12 @@
     <GameAnimation :config="config" />
     <div class="game--body">
       <div class="row">
-        <div class="game--difficulty mt-3 col-md-7 col-xs-12 text-left pb-3">
+        <div class="game--difficulty mt-3 col-md-7 col-xs-12 text-start pb-3">
           <div class="row text-uppercase">
             <div class="col align-self-center" @click="selectMode">
               <p class="d-flex p-0 m-0 align-items-center">
                 <img src="@/assets/gameAssets/icon.png" class="icon" :class="{ rotate: mode }" />
-                <a href="#" class="nes-badge is-splited text-left mr-auto">
+                <a href="#" class="nes-badge is-splited text-start mr-auto">
                   <span class="is-dark">Mode</span>
                   <span :class="$store.getters.getGameDifficulity ? 'is-success' : 'is-error'">{{ $store.getters.getGameDifficulity }}</span>
                 </a>
@@ -28,7 +28,7 @@
             </a>
           </div>
         </div>
-        <div class="game--stats col-md-5 mt-3 col-xs-12 mb-3 text-right">
+        <div class="game--stats col-md-5 mt-3 col-xs-12 mb-3 text-end">
           <span title="word per minute">
             <a href="#" class="nes-badge is-splited">
               <span class="is-dark"> WPM</span>
@@ -46,7 +46,7 @@
         <div class="col-xs-12 col-md-10">
           <input type="text" name="inputField" id="textinput" class="nes-input d-inline-flex" @keydown="inputCheck" :placeholder="inputPlaceholder" />
         </div>
-        <div class="col-xs-12 col-md-2 text-right align-self-center">
+        <div class="col-xs-12 col-md-2 text-end align-self-center">
           <button class="nes-btn m-auto" type="button" @click="reset()" :disabled="config.gameDone">reset</button>
         </div>
       </div>
