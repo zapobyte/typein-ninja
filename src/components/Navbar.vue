@@ -32,24 +32,13 @@
             </li>
 
             <li class="dropdown-item" v-if="!isAuth">
-              <button type="button" class="nes-btn is-small" @click="login" :class="{'is-disabled':!agree}" :disabled="!agree">
+              <button type="button" class="nes-btn is-small" @click="login" >
                 <i class="nes-icon google is-small mr-1"></i>
                 <small>Signin with Google</small>
               </button>
             </li>
 
-            <li class="p-3" v-if="!isAuth">
-                <label>
-                  <input type="checkbox" class="nes-checkbox" v-model="agree" @click="agreed()"/>
-                  <span>
-                    To Singin you agree with our
-                    <router-link to="/terms-condition">Terms and Conditions</router-link>
-                    and
-                    <router-link to="/privacy-policy">Privacy Policy</router-link>.
-                  </span>
-                </label>
-                
-            </li>
+          
 
             <li class="text-end text__small pe-3">
               <small>v{{ appVersion }}</small>
@@ -83,7 +72,6 @@ export default {
         body:
           "You are about to delete you're account. All your information and records will be lost for ever as they will be removed from our database. <br> Are you sure you want to do that?",
       },
-      agree:false
     };
   },
   components: {
@@ -100,9 +88,7 @@ export default {
   },
 
   methods: {
-    agreed(){
-      this.agree = !this.agree;
-    },
+
     logout() {
       logout();
       window.location.replace('/');
