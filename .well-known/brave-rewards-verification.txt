@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: typein.ninja
+Token: f119bd7a51f3808d60ddf5c3f3e3c1be0787bad2e6d928d44a030ba9b5793d03
