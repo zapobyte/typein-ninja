@@ -57,8 +57,9 @@
 <script>
 import { mapGetters } from 'vuex';
 import GameAnimation from '@/components/GameAnimation.vue';
+import wordsJSON from '@/assets/words.json';
 
-import { calculateResult, generateText } from '@/functions/typeText';
+import { calculateResult, generateText } from '@/functions/gameFunctions';
 
 export default {
   name: 'GameText',
@@ -167,7 +168,7 @@ export default {
       this.startDate = 0;
       this.acc = 0;
       this.wpm = 0;
-      const words = generateText(difficulty);
+      const words = generateText(this.$store.getters.getDifficulities,difficulty,wordsJSON);
       words.forEach((word) => {
         textField.innerHTML += `<span>${word} </span>`;
       });

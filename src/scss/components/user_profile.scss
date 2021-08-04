@@ -2,9 +2,11 @@
   &.border-success {
     border-left: 3px solid green !important;
   }
-  &#name_field {
-    border: 0px;
-    border-bottom: 3px $yellow solid;
+  border: 0px;
+  border-bottom: 3px $yellow solid;
+  margin-left:15px;
+  &:focus{
+    outline: none;
   }
 }
 .progress-bar {
@@ -15,4 +17,18 @@
   list-style: none;
   margin: 0;
   padding: 0;
+}
+.username-container{
+  position: relative;
+  & .edit{
+    width:15px;
+    height:15px;
+    bottom:0;
+    top:0;
+    margin:auto;
+    position: absolute;
+    &:hover{
+      cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAzElEQVRYR+2X0Q6AIAhF5f8/2jYXZkwEjNSVvVUjDpcrGgT7FUkI2D9xRfQETwNIiWO85wfINfQUEyxBG2ArsLwC0jioGt5zFcwF4OYDPi/mBYKm4t0U8ATgRm3ThFoAqkhNgWkA0jJLvaOVSs7j3qMnSgXWBMiWPXe94QqMBMBc1VZIvaTu5u5pQewq0EqNZvIEMCmxAawK0DNkay9QmfFNAJUXfgGgUkLaE7j/h8fnASkxHTz0DGIBMCnBeeM7AArpUd3mz2x3C7wADglA8BcWMZhZAAAAAElFTkSuQmCC) 14 0,pointer;
+    }
+  }
 }

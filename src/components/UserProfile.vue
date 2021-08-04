@@ -2,11 +2,12 @@
   <section class="profile">
     <div class="nes-container col-12 is-white text-dark with-title bg-white mb-3">
       <p class="title">Profile</p>
+
       <div class="row">
         <div class="col-auto align-self-start text__small">
           <img class="nes-avatar is-large" alt="Profile picture" :src="user.photoURL" style="image-rendering: pixelated" />
           <div style="width: 64px" class="pt-2 text__small text-break text-wrap">
-            <div class="progress" v-if="user.uid == this.userAuth.uid">
+            <div class="progress" v-if="user.uid == userAuth.uid">
               <div class="progress-bar" role="progressbar" :style="'width:' + percent + '%'" aria-valuenow="percent" :aria-valuemin="percent" aria-valuemax="100">
                 {{ percent }}%
               </div>
@@ -17,10 +18,17 @@
           <div class="row no-gutters align-items-start">
             <div class="text-start col-xs-12 col-md-6">
               <div class="row no-gutters">
-                <div class="col-12">
+                <div class="col-12 username-container">
+                  <svg class='edit' viewBox='0 0 100 100' @click="()=> $refs.username.focus()" v-if="isAuthUser">
+                  <g id="edit">
+                      <path d="M 4,96 15,65 15,65 78,2 98,22 35,85 z "></path>
+                      <line x1="15" y1="65" x2="35" y2="85"></line>
+                    </g>
+                  </svg>
                   <input
+                    maxlength="25"
+                    ref="username"
                     type="text"
-                    id="name_field"
                     class="text__small nes-input"
                     :class="{ 'border-success': uploaded }"
                     :value="userDisplayName"
@@ -69,6 +77,11 @@
           </div>
         </div>
       </div>
+
+    </div>
+    
+    <div class="chart-container mb-3 w-100" ref="chart" v-if="isAuthUser">
+
     </div>
 
     <div class="nes-container col-12 is-white text-dark with-title bg-white mb-3">
@@ -104,7 +117,7 @@
 </template>
 
 <script>
-import { getBestUserGameByDiff } from '@/functions/gameHistory';
+import { getBestUserGameByDiff, getAllGames } from '@/functions/gameHistory';
 import { updateUserDisplayName } from '@/functions/user';
 import { toDate } from '@/functions/utility';
 
@@ -120,25 +133,6 @@ export default {
       bests: [],
       uploaded: false,
     };
-  },
-  async mounted() {
-    if (this.$props.user.uid) {
-      try {
-        const uid = this.$props.user.uid;
-        if (uid) {
-          for (const difficulty of Object.keys(this.$store.getters.getDifficulities)) {
-            const game = await getBestUserGameByDiff(uid, difficulty);
-            if (game) {
-              this.bests.push(game);
-            }
-          }
-        }
-
-        this.userDisplayName = this.$props.user.displayName;
-      } catch (error) {
-        console.log(error);
-      }
-    }
   },
   async updated() {
     if (this.bests.length == 0) {
@@ -181,14 +175,13 @@ export default {
     },
   },
   methods: {
-    
     toDate(seconds) {
       return toDate(seconds);
     },
     async updateDisplayName() {
+      const usernameInput = this.$refs.username;
       if (this.isAuthUser) {
-        const displayNameValueSelector = document.querySelector('#name_field');
-        const displayNameValue = displayNameValueSelector.value;
+        const displayNameValue = usernameInput.value;
         if (displayNameValue !== this.userDisplayName) {
           try {
             await updateUserDisplayName(displayNameValue);
@@ -203,6 +196,7 @@ export default {
       }
     },
   },
+
 };
 </script>
 

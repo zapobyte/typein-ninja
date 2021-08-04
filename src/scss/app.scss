@@ -50,9 +50,7 @@ a {
   right: 0;
   bottom: 0;
 }
-.bg__white {
-  background: white;
-}
+
 .text__small {
   font-size: 80%;
 }
@@ -60,6 +58,8 @@ a {
 /* fixes bug where image pixels are spaced appart
 https://github.com/nostalgic-css/NES.css/issues/434 */
 .nes-container.is-rounded,
+.nes-input, button,
+.nes-table,
 .nes-balloon {
   border-image-repeat: unset !important;
 }

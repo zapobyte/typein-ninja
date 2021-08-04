@@ -1,4 +1,5 @@
 import { getOrCreateFsUser, updateUserBest, updateUser as updateUserFs } from '@/functions/user';
+
 const state = {
   user: {},
   token: '',

@@ -1,17 +1,13 @@
 import { createGameHistory } from '@/functions/gameHistory';
 
-import store from '@/store/index';
-
 const state = {
-  wpm: '',
-  acm: '',
   difficulty: '',
-  date: '',
+  authUsersGames:[]
 };
 
 const getters = {
-  getScore(state) {
-    return state;
+  getAuthUsersGames(state) {
+    return state.authUsersGames;
   },
   getUserDifficulty(state) {
     return state.difficulty;
@@ -19,15 +15,15 @@ const getters = {
 };
 
 const mutations = {
-  setScore(state, value) {
-    state = value;
-  },
+  setAuthUsersGames(state,data){
+    state.authUsersGames = data;
+  }
 };
 
 const actions = {
   async addGameHistory(context, value) {
     try {
-      const user = store.getters.getAuthUser;
+      const user = context.getters.getAuthUser;
       const newGameEntry = {
         ...value,
         uid: user.uid,
@@ -37,18 +33,20 @@ const actions = {
       let xp = difficulties[value.difficulty].xp;
       let newXp = Number(user.xp) + xp;
       let newLvl = Math.floor(newXp / 1000);
-      const userRank = await store.dispatch('getUserRank', newXp);
+      const userRank = await context.dispatch('getUserRank', newXp);
       const data = {
         xp: newXp,
         lvl: newLvl > 1 ? newLvl : 1,
         rank: userRank,
       };
-      store.dispatch('updateUser', data);
-      context.commit('setScore', value);
+      context.dispatch('updateUser', data);
     } catch (error) {
       console.log(error);
     }
   },
+  addAuthUsersGames(context,value){
+    context.commit('setAuthUsersGames',value);
+  }
 };
 
 export default {

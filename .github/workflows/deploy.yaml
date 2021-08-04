@@ -1,4 +1,4 @@
-name: Deploy application to DigitalOcean
+name: test & Deploy application to DigitalOcean
 on:
   push:
     branches:
@@ -8,6 +8,9 @@ jobs:
     name: Deploy
     runs-on: ubuntu-latest
     steps:
+      - name: run unit test suit
+        uses: actions/checkout@v2
+      - run: npm install && npm test
       - name: executing remote ssh commands
         uses: appleboy/ssh-action@master
         with:

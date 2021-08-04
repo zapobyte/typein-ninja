@@ -11,7 +11,7 @@
           <i class="nes-icon twitter is-normal"></i>
         </small>
       </a>
-      <a href="https://ko-fi.com/zapobyte" class="coinJump" target="_blank" title="buy me a coffee">
+      <a href="https://ko-fi.com/zapobyte" class="coin-jump" target="_blank" title="buy me a coffee">
         <i class="nes-icon coin is-normal mr-1"></i>
       </a>
     </div>

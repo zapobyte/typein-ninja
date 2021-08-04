@@ -1,25 +1,20 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark col-12 align-items-center">
-    <h1 class="align-self-start"><router-link to="/" class="navbar-brand">typein.ninja <small> - typing accuracy & speed test</small> </router-link></h1>
+    <h1 class="align-self-start col-8"><router-link to="/" class="navbar-brand">typein.ninja <small> - typing accuracy & speed test</small> </router-link></h1>
     <button class="navbar-toggler me-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse col-4" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-          <router-link class="nav-link text-end" :class="{ active: $route.name == 'Scoreboard' }" to="/scoreboard" aria-expanded="false">
-            <i class="nes-icon trophy is-small"></i>
-            <span class="ps-2">scoreboard</span>
-          </router-link>
-        </li>
+
          <li class="nav-item dropdown text-end">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle text-truncate" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <i class="nes-icon is-small heart" v-if="$store.getters.isAuth"></i>
             <i class="nes-icon is-small heart is-half" v-else></i>
-            <span class="text-truncate ps-2" :class="{ 'text-white': $route.name == 'Profile' }">{{ $store.getters.isAuth ? `${user.displayName}` : 'account' }}</span>
+            <span class="ps-2" :class="{ 'text-white': $route.name == 'Profile' }">{{ $store.getters.isAuth ? `${user.displayName}` : 'account' }}</span>
           </a>
-          <ul class="dropdown-menu me-auto" aria-labelledby="navbarDropdown">
+          <ul class="dropdown-menu ms-auto" aria-labelledby="navbarDropdown">
             <li class="dropdown-item" v-if="isAuth" @click="toProfile($event)">
               <a> profile</a>
             </li>
@@ -39,11 +34,17 @@
             </li>
 
           
-
+            <div class="dropdown-divider"></div>
             <li class="text-end text__small pe-3">
               <small>v{{ appVersion }}</small>
             </li>
           </ul>
+        </li>
+        <li class="nav-item">
+          <router-link class="nav-link text-end" :class="{ active: $route.name == 'Scoreboard' }" to="/scoreboard" aria-expanded="false">
+            <i class="nes-icon trophy is-small"></i>
+            <span class="ps-2">scoreboard</span>
+          </router-link>
         </li>
       </ul>
     </div>
@@ -88,7 +89,6 @@ export default {
   },
 
   methods: {
-
     logout() {
       logout();
       window.location.replace('/');

@@ -5,6 +5,16 @@
   }
   border: 0;
 }
+.navbar-brand{
+  white-space: normal;
+}
+.nav-link{
+  @media screen and (min-width:960px) {
+    max-width:250px;
+  }
+  max-width:100%;
+  word-break: break-all;
+}
 .dropdown {
   align-self: flex-end;
   &-item {
@@ -17,16 +27,15 @@
     position: static !important;
   }
 }
+
 small{
   font-size:70% !important;
 }
+
 .collapse{
   @media screen and (min-width:960px) {
     width:auto;
   }
   margin:auto;
   margin-right:0;
-}
-.navbar-brand{
-  white-space: normal;
 }
