@@ -8,10 +8,11 @@ jobs:
     name: Test and Deploy
     runs-on: ubuntu-latest
     steps:
-      - name: run unit test suit
+      - name: Checkout repository
         uses: actions/checkout@v2
-      - run: npm install && npm test
-      - name: executing remote ssh commands
+      - name: Install dependencies and Run unit test suit
+        run: npm install && npm test
+      - name: Executing remote ssh commands and deploy to DO
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
@@ -22,6 +23,6 @@ jobs:
           script: |
             cd /var/www/html/typein-ninja &&
             git pull origin master &&
-            npm install --production &&
+            npm install &&
             npm run build
             
