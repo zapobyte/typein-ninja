@@ -46,6 +46,7 @@ export const getAllGames = async (uid) => {
   }
 };
 
+
 export const createGameHistory = async (data) => {
   try {
     let db = firebase.firestore();

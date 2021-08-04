@@ -1,7 +1,7 @@
 .bg {
   position: relative;
   max-width: 100%;
-  &--terrain {
+  &-terrain {
     &__ground {
       max-width: 100%;
     }
@@ -27,9 +27,7 @@
     }
   }
 }
-.pixelated {
-  image-rendering: pixelated;
-}
+
 @keyframes moveIdleSpriteSheet {
   from {
     transform: translate3d(0px, 0, 0);
