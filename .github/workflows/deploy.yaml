@@ -1,11 +1,11 @@
-name: test & Deploy application to DigitalOcean
+name: Test & Deploy application to DigitalOcean
 on:
   push:
     branches:
       - master
 jobs:
   build:
-    name: Deploy
+    name: Test and Deploy
     runs-on: ubuntu-latest
     steps:
       - name: run unit test suit
