@@ -1,28 +1,14 @@
-name: Test & Deploy application to DigitalOcean
+name:  Test run on Deploy
 on:
   push:
     branches:
       - master
 jobs:
   build:
-    name: Test and Deploy
+    name: Run test suite
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: Install dependencies and Run unit test suit
         run: npm install && npm test
-      - name: Executing remote ssh commands and deploy to DO
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASS }}
-          port: ${{ secrets.PORT }}
-          script_stop: true
-          script: |
-            cd /var/www/html/typein-ninja &&
-            git pull origin master &&
-            npm install &&
-            npm run build
-            
