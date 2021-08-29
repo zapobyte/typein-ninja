@@ -3,11 +3,13 @@ import store from '../store';
 
 export const firebaseInit = () => {
   firebase.initializeApp({
-    apiKey: process.env.VUE_APP_API_KEY || "AIzaSyAJ2xVBp-w5XJJro0DdhGG0MCpOoDIXXPo",
-    authDomain: process.env.VUE_APP_AUTH_DOMAIN || 'typein-ninja.firebaseapp.com',
-    databaseURL: process.env.VUE_APP_DB_URL || "https://typein-ninja.firebaseio.com",
-    projectId: process.env.VUE_APP_PROJECT_ID || "typein-ninja",
-    appId: process.env.VUE_APP_APP_ID || "1:629164543246:web:4a5b9693072b1804abdb5f",
+    apiKey: process.env.VUE_APP_API_KEY,
+    authDomain: process.env.VUE_APP_AUTH_DOMAIN,
+    databaseURL: process.env.VUE_APP_DB_URL,
+    projectId: process.env.VUE_APP_PROJECT_ID,
+    storageBucket: process.env.VUE_APP_STORAGE_BUCKET,
+    messagingSenderId: process.env.VUE_APP_MSG_ID,
+    appId: process.env.VUE_APP_APP_ID,
   });
 
   firebase.auth().onAuthStateChanged(async (user) => {
